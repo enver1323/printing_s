@@ -9,7 +9,7 @@ use App\Entites\Languages\Language;
 use App\Entites\Translations\Translation;
 
 /**
- * Class TranslationEntryModel
+ * Class TranslationEntry
  * @package App\Entites\Translations\Entries
  *
  * @property integer $id

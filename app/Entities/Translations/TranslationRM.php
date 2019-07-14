@@ -16,6 +16,8 @@ use App\Entites\CustomReadModel;
  */
 class TranslationRM extends Translation implements CustomReadModel
 {
+    protected $fillable = [];
+
     protected $table = 'translations';
 
     public function getId()

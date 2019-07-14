@@ -9,7 +9,7 @@ use App\Entites\Translations\Translation;
 use Illuminate\Support\Collection;
 
 /**
- * Class LanguageModel
+ * Class Language
  * @package App\Entites\Languages
  *
  * @property string $code
