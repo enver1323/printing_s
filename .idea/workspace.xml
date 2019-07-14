@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b07ce3ef-6839-406a-8117-30d9b8c2c11f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Languages/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Languages/Language.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Languages/LanguageRM.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Languages/LanguageRM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntry.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntry.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntryRM.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntryRM.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Entities/Translations/TranslationRM.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Entities/Translations/TranslationRM.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,14 +56,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Entities/Translations/Translation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+            <state relative-caret-position="-145">
+              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
               <folding>
                 <element signature="e#46#74#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -100,7 +104,6 @@
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/resources/sass/admin.scss" />
         <option value="$PROJECT_DIR$/resources/js/admin.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/auth.php" />
         <option value="$PROJECT_DIR$/app/Entities/CustomModel.php" />
         <option value="$PROJECT_DIR$/app/Entities/CustomReadModel.php" />
@@ -116,6 +119,7 @@
         <option value="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntry.php" />
         <option value="$PROJECT_DIR$/app/Entities/Translations/Entries/TranslationEntryRM.php" />
         <option value="$PROJECT_DIR$/app/Entities/Translations/TranslationRM.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -316,12 +320,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563097293117</updated>
-      <workItem from="1563097296158" duration="6999000" />
+      <workItem from="1563097296158" duration="7538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6999000" />
+    <option name="totallyTimeSpent" value="7538000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -338,12 +342,12 @@
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2184547" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2184547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" sideWeight="0.49972206" weight="0.39455095" />
+      <window_info active="true" anchor="bottom" id="Terminal" sideWeight="0.49972206" visible="true" weight="0.39455095" />
       <window_info anchor="bottom" id="Event Log" sideWeight="0.50027794" side_tool="true" weight="0.32996973" />
       <window_info anchor="bottom" id="Database Console" weight="0.32996973" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -533,13 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="true" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/auth.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -671,11 +668,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Entities/Translations/Translation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        <state relative-caret-position="-145">
+          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
           <folding>
             <element signature="e#46#74#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
