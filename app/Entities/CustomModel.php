@@ -26,4 +26,9 @@ abstract class CustomModel extends Model
             'translation_id',
             $column);
     }
+
+    public function getEntry(string $column, string $lang = null): string
+    {
+        return $this->translationEntries($column)->where('language_code', '=', $lang)->first()->entry;
+    }
 }

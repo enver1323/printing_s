@@ -5,9 +5,24 @@ namespace App\Entities\Brands;
 
 
 use App\Entities\CustomReadModel;
+use App\Entities\Images\Image;
+use App\Entities\Translations\Entries\TranslationEntry;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 
+/**
+ * Class Brand
+ * @package App\Entities\Brands
+ *
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ * @property integer $image_id
+ *
+ * Relations:
+ * @property TranslationEntry $nameEntry
+ * @property TranslationEntry $descEntry
+ * @property Image $image
+ */
 class BrandRM extends Brand implements CustomReadModel
 {
     protected $table = 'brands';
@@ -17,7 +32,10 @@ class BrandRM extends Brand implements CustomReadModel
     public function __get($key)
     {
         if($key === 'name')
-            return $this->nameEntries(App::getLocale());
+            return $this->getTranslatedNameEntry();
+
+        if($key === 'description')
+            return $this->getTranslatedDescEntry();
 
         return parent::__get($key);
     }
@@ -35,5 +53,15 @@ class BrandRM extends Brand implements CustomReadModel
     public function getPaginated(int $itemsPerPage)
     {
         return $this->paginate($itemsPerPage);
+    }
+
+    public function getTranslatedNameEntry(string $lang = null)
+    {
+        return $this->getEntry('name', $lang);
+    }
+
+    public function getTranslatedDescEntry(string $lang = null)
+    {
+        return $this->getEntry('description', $lang);
     }
 }
