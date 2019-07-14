@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Entites\Languages;
+namespace App\Entities\Languages;
 
 
-use App\Entites\CustomModel;
-use App\Entites\Translations\Translation;
+use App\Entities\CustomModel;
+use App\Entities\Translations\Translation;
 use Illuminate\Support\Collection;
 
 /**

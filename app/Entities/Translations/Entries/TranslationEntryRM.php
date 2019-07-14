@@ -4,10 +4,9 @@
 namespace App\Entities\Translations\Entries;
 
 
-use App\Entites\CustomReadModel;
-use App\Entites\Languages\Language;
-use App\Entites\Translations\Entries\TranslationEntry;
-use App\Entites\Translations\Translation;
+use App\Entities\CustomReadModel;
+use App\Entities\Languages\Language;
+use App\Entities\Translations\Translation;
 
 /**
  * Class TranslationEntryRM

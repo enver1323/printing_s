@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Entites\Translations\Entries;
+namespace App\Entities\Translations\Entries;
 
 
-use App\Entites\CustomModel;
-use App\Entites\Languages\Language;
-use App\Entites\Translations\Translation;
+use App\Entities\CustomModel;
+use App\Entities\Languages\Language;
+use App\Entities\Translations\Translation;
 
 /**
  * Class TranslationEntry

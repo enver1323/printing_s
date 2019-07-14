@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Entites\Translations;
+namespace App\Entities\Translations;
 
 
-use App\Entites\CustomModel;
-use App\Entites\Languages\Language;
-use App\Entites\Translations\Entries\TranslationEntry;
+use App\Entities\CustomModel;
+use App\Entities\Languages\Language;
+use App\Entities\Translations\Entries\TranslationEntry;
 use Illuminate\Support\Collection;
 
 /**
@@ -14,7 +14,6 @@ use Illuminate\Support\Collection;
  * @package App\Entites\Translations
  *
  * @property integer $id
- * @property string $key
  *
  * Relations:
  * @property Collection $languages

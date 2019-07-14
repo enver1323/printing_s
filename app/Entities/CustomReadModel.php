@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Entites;
+namespace App\Entities;
 
 
 

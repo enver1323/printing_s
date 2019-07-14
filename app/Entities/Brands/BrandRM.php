@@ -1,27 +1,26 @@
 <?php
 
 
-namespace App\Entities\Languages;
+namespace App\Entities\Brands;
 
 
 use App\Entities\CustomReadModel;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 
-/**
- * Class LanguageRM
- * @package App\Entites\Languages
- *
- * @property string $code
- * @property string $name
- *
- * Relations:
- * @property Collection $translations
- */
-class LanguageRM extends Language implements CustomReadModel
+class BrandRM extends Brand implements CustomReadModel
 {
-    protected $table = 'languages';
+    protected $table = 'brands';
 
     protected $fillable = [];
+
+    public function __get($key)
+    {
+        if($key === 'name')
+            return $this->nameEntries(App::getLocale());
+
+        return parent::__get($key);
+    }
 
     public function getById($id): self
     {

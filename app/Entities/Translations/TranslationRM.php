@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Entites\Translations;
+namespace App\Entities\Translations;
 
 
 
 
-use App\Entites\CustomReadModel;
+use App\Entities\CustomReadModel;
 
 /**
  * Class TranslationRM
