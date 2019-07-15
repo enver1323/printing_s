@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Entities\Products\Data_values;
+namespace App\Entities\Products\DataValues;
 
 
 use App\Entities\CustomReadModel;
 use App\Entities\Products\Product;
-use App\Entities\Products\Data_keys\ProductDataKey;
+use App\Entities\Products\DataKeys\ProductDataKey;
 
 /**
  * Class ProductDataValueRM
@@ -14,8 +14,8 @@ use App\Entities\Products\Data_keys\ProductDataKey;
  *
  * @property integer $id
  * @property integer $product_id
- * @property string $key_id
- * @property string $value
+ * @property integer $key_id
+ * @property string $name
  *
  * Relations:
  * @property Product $product
@@ -26,6 +26,14 @@ class ProductDataValueRM extends ProductDataValue implements CustomReadModel
     protected $table = 'product_data_values';
 
     protected $fillable = [];
+
+    public function __get($key)
+    {
+        if($key === 'name')
+            return $this->getTranslatedNameEntry();
+
+        return parent::__get($key);
+    }
 
     public function getById($id)
     {
@@ -40,5 +48,10 @@ class ProductDataValueRM extends ProductDataValue implements CustomReadModel
     public function getPaginated(int $itemsPerPage)
     {
         return $this->paginate($itemsPerPage);
+    }
+
+    public function getTranslatedNameEntry(string $lang = null): string
+    {
+        return $this->getEntry('name', $lang);
     }
 }

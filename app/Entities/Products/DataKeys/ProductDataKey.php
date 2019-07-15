@@ -1,11 +1,11 @@
 <?php
 
 
-namespace App\Entities\Products\Data_keys;
+namespace App\Entities\Products\DataKeys;
 
 
 use App\Entities\CustomModel;
-use App\Entities\Translations\Translation;
+use Illuminate\Support\Collection;
 
 /**
  * Class ProductDataKey
@@ -15,14 +15,14 @@ use App\Entities\Translations\Translation;
  * @property integer $name
  *
  * Relations:
- * @property Translation $translation
+ * @property Collection $nameEntries
  */
 class ProductDataKey extends CustomModel
 {
     protected $table = 'product_data_keys';
 
-    public function translation()
+    public function nameEntries()
     {
-        return parent::translation('name');
+        return parent::translationEntries('name');
     }
 }

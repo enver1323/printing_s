@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Entities\Products\Data_keys;
+namespace App\Entities\Products\DataKeys;
 
 
 use App\Entities\CustomReadModel;
@@ -23,6 +23,14 @@ class ProductDataKeyRM extends ProductDataKey implements CustomReadModel
 
     protected $fillable = [];
 
+    public function __get($key)
+    {
+        if($key === 'name')
+            return $this->getTranslatedNameEntry();
+
+        return parent::__get($key);
+    }
+
     public function getById($id)
     {
         return $this->findOrfail($id);
@@ -36,5 +44,10 @@ class ProductDataKeyRM extends ProductDataKey implements CustomReadModel
     public function getPaginated(int $itemsPerPage)
     {
         return $this->paginate($itemsPerPage);
+    }
+
+    public function getTranslatedNameEntry(string $lang = null)
+    {
+        return $this->getEntry('name', $lang);
     }
 }

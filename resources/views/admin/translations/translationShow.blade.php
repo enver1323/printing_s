@@ -48,40 +48,6 @@
                     </div>
                 @endforeach
             @endif
-            @if($item->groups()->count())
-                <div class="row my-4">
-                    <div class="col">
-                        <strong>Groups ({{$item->groups->count()}}): </strong>
-                    </div>
-                </div>
-                @foreach($item->groups as $group)
-                    <div class="row my-4">
-                        <div class="col">
-                            <strong>{{$group->id}}: </strong>
-                            <span>{{$group->name}}</span>
-                            <br/>
-                            <span>{{$group->description}}</span>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-            @if($item->projects()->count())
-                <div class="row my-4">
-                    <div class="col">
-                        <strong>Projects ({{$item->projects->count()}}): </strong>
-                    </div>
-                </div>
-                @foreach($item->projects as $project)
-                    <div class="row my-4">
-                        <div class="col">
-                            <strong>{{$project->id}}: </strong>
-                            <span>{{$project->name}}</span>
-                            <br/>
-                            <span>{{$project->description}}</span>
-                        </div>
-                    </div>
-                @endforeach
-            @endif
         </div>
     </div>
 

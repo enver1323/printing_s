@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Entities\Products\Data_values;
+namespace App\Entities\Products\DataValues;
 
 
 use App\Entities\CustomModel;
 use App\Entities\Products\Product;
-use App\Entities\Products\Data_keys\ProductDataKey;
+use App\Entities\Products\DataKeys\ProductDataKey;
 
 /**
  * Class ProductDataValue
@@ -27,11 +27,11 @@ class ProductDataValue extends CustomModel
 
     public function product()
     {
-        return $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 
     public function productDataKey()
     {
-        return $this->hasOne(ProductDataKey::class, 'id', 'key_id');
+        return $this->belongsTo(ProductDataKey::class, 'key_id', 'id');
     }
 }

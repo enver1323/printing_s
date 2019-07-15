@@ -20,6 +20,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    const ROLE_USER = 'user';
+
     protected $table = 'users';
 
     use Notifiable;

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslationEntriesTable extends Migration
+class CreateTranslationsEntriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTranslationEntriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('translation_entries', function (Blueprint $table) {
+        Schema::create('translations_entries', function (Blueprint $table) {
             /*
              * Columns
              */

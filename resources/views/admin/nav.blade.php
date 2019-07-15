@@ -23,21 +23,6 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Projects
-    </div>
-
-    <!-- Nav Item - Projects -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.projects.index')}}">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Projects</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
         Translations
     </div>
 
@@ -53,13 +38,6 @@
         <a class="nav-link" href="{{route('admin.languages.index')}}">
             <i class="fas fa-fw fa-tshirt"></i>
             <span>Languages</span></a>
-    </li>
-
-    <!-- Nav Item - Orders -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.groups.index')}}">
-            <i class="fas fa-money-bill"></i>
-            <span>Groups</span></a>
     </li>
 
     <!-- Heading -->
