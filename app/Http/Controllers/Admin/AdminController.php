@@ -8,24 +8,28 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+    protected $service;
+
+    const ITEMS_PER_PAGE = 15;
+
     private static $view = 'admin';
 
     private static $params = [];
 
-    protected function render(string $view, array $params)
+    protected function render($view, $params = [])
     {
-        $this->setView($view);
-        $this->setParams($params);
+        self::setView($view);
+        self::setParams($params);
 
         return view(self::$view, self::$params);
     }
 
-    private function setView(string $view): void
+    protected static function setView(string $view): void
     {
         self::$view = sprintf('%s.%s', self::$view, $view);
     }
 
-    private function setParams(array $params = []): void
+    private static function setParams(array $params): void
     {
         self::$params = array_merge(self::$params, $params);
     }

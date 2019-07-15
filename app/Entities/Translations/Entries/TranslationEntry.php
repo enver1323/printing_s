@@ -9,7 +9,7 @@ use App\Entities\Languages\Language;
 use App\Entities\Translations\Translation;
 
 /**
- * Class TranslationEntry
+ * Class TranslationEntryModel
  * @package App\Entites\Translations\Entries
  *
  * @property integer $id
@@ -23,7 +23,7 @@ use App\Entities\Translations\Translation;
  */
 class TranslationEntry extends CustomModel
 {
-    protected $table = 'translation_entries';
+    protected $table = 'translations_entries';
 
     public function translation()
     {

@@ -5,11 +5,12 @@ namespace App\Entities\Languages;
 
 
 use App\Entities\CustomModel;
+use App\Entities\Translations\Entries\TranslationEntry;
 use App\Entities\Translations\Translation;
 use Illuminate\Support\Collection;
 
 /**
- * Class Language
+ * Class LanguageModel
  * @package App\Entites\Languages
  *
  * @property string $code
@@ -17,6 +18,7 @@ use Illuminate\Support\Collection;
  *
  * Relations:
  * @property Collection $translations
+ * @property Collection $entries
  */
 class Language extends CustomModel
 {
@@ -33,5 +35,13 @@ class Language extends CustomModel
             'language_code',
             'translation_id'
         )->withPivot('entry');
+    }
+
+    public function entries()
+    {
+        return $this->hasMany(TranslationEntry::class,
+            'language_code',
+            'code'
+        );
     }
 }

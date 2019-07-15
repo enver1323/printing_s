@@ -5,30 +5,19 @@ namespace App\Entities\Languages;
 
 
 use App\Entities\CustomReadModel;
-use Illuminate\Support\Collection;
+use App\Entities\Translations\Entries\TranslationEntry;
+use App\Entities\Translations\TranslationRM;
 
-/**
- * Class LanguageRM
- * @package App\Entites\Languages
- *
- * @property string $code
- * @property string $name
- *
- * Relations:
- * @property Collection $translations
- */
 class LanguageRM extends Language implements CustomReadModel
 {
     protected $table = 'languages';
 
-    protected $fillable = [];
-
-    public function getById($id): self
+    public function getById($id)
     {
         return $this->findOrFail($id);
     }
 
-    public function getAll(): ?Collection
+    public function getAll()
     {
         return $this->all();
     }
@@ -36,5 +25,15 @@ class LanguageRM extends Language implements CustomReadModel
     public function getPaginated(int $itemsPerPage)
     {
         return $this->paginate($itemsPerPage);
+    }
+
+    public function getFilledPercentage()
+    {
+        $entriesCount = TranslationEntry::count();
+
+        if($entriesCount)
+            return $this->entries()->count() / $entriesCount;
+
+        return 0;
     }
 }
