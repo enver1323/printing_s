@@ -36,7 +36,8 @@
             @if($item->entries()->count())
                 <div class="row my-4">
                     <div class="col">
-                        <strong>Entries ({{$item->entries->count()}}): </strong>
+                        <hr>
+                        <h5>Entries ({{$item->entries->count()}}): </h5>
                     </div>
                 </div>
                 @foreach($item->entries as $entry)
@@ -48,6 +49,7 @@
                     </div>
                 @endforeach
             @endif
+            <hr>
         </div>
     </div>
 

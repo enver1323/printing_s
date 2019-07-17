@@ -3,6 +3,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+
+
+
 use App\Entities\Languages\LanguageRM;
 use App\Entities\Translations\Translation;
 use App\Entities\Translations\TranslationRM;
@@ -31,7 +34,7 @@ class TranslationController extends AdminController
         list($items, $queryObject) = $this->service->search($request, self::ITEMS_PER_PAGE);
 
         return $this->render($this->getView('translationIndex'), [
-            'items' => $items->appends($request->input()),
+            'items' => $items,
             'langs' => $this->languages->getAll(),
             'searchQuery' => $queryObject
         ]);
@@ -39,7 +42,9 @@ class TranslationController extends AdminController
 
     public function create()
     {
-        return $this->render($this->getView('translationCreate'));
+        return $this->render($this->getView('translationCreate'), [
+            'langs' => $this->languages->getAll(),
+        ]);
     }
 
     public function store(TranslationStoreRequest $request)
@@ -59,7 +64,8 @@ class TranslationController extends AdminController
     public function edit(TranslationRM $translation)
     {
         return $this->render($this->getView('translationEdit'), [
-            'item' => $translation
+            'item' => $translation,
+            'langs' => $this->languages->getAll()
         ]);
     }
 
