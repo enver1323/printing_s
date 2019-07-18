@@ -19,7 +19,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -39,6 +39,9 @@
             <i class="fas fa-fw fa-tshirt"></i>
             <span>Languages</span></a>
     </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">

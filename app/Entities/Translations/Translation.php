@@ -5,7 +5,9 @@ namespace App\Entities\Translations;
 
 
 use App\Entities\CustomModel;
+use App\Entities\Groups\Group;
 use App\Entities\Languages\Language;
+use App\Entities\Projects\Project;
 use App\Entities\Translations\Entries\TranslationEntry;
 use Illuminate\Support\Collection;
 

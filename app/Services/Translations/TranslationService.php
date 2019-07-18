@@ -11,17 +11,20 @@ use App\Http\Requests\Translations\TranslationSearchRequest;
 use App\Http\Requests\Translations\TranslationStoreRequest;
 use App\Http\Requests\Translations\TranslationUpdateRequest;
 use App\Services\CustomService;
-use Illuminate\Database\Query\Builder;
+use Exception;
+use Illuminate\Database\Eloquent\Builder;
 
 class TranslationService extends CustomService
 {
     private $model;
     private $entity;
+    private $entryService;
 
-    public function __construct(Translation $entity, TranslationRM $model)
+    public function __construct(Translation $entity, TranslationRM $model, TranslationEntryService $entryService)
     {
         $this->model = $model;
         $this->entity = $entity;
+        $this->entryService = $entryService;
     }
 
     public function search(TranslationSearchRequest $request, int $itemsPerPage): array
@@ -47,12 +50,12 @@ class TranslationService extends CustomService
             $query = $query->where('key', 'LIKE', "%$object->key%");
         }
 
-        if ($request->input('languages') && !empty($request->input('languages'))) {
-            $object->languages = $request->input('languages');
+        if ($request->input('language_ids') && !empty($request->input('language_ids'))) {
+            $object->languages = $request->input('language_ids');
 
             foreach ($object->languages as $language)
                 $query = $query->whereHas('languages', function (Builder $query) use ($language) {
-                    $query->where('code', '=', $language->code);
+                    $query->where('code', '=', $language);
                 });
         }
 
@@ -70,6 +73,8 @@ class TranslationService extends CustomService
             'key' => $request->input('key')
         ]);
 
+        $this->saveEntries($request->input('entries'), $item);
+
         $this->fireStatusMessage(StatusMessage::TYPES['success'], "Translation \"$item->key\" was successfully created");
         return;
     }
@@ -78,6 +83,8 @@ class TranslationService extends CustomService
     {
         $item->key = $request->input('key');
         $item->save();
+
+        $this->saveEntries($request->input('entries'), $item);
 
         $this->fireStatusMessage(StatusMessage::TYPES['success'], "Translation \"$item->key\" was successfully modified");
         return;
@@ -89,5 +96,16 @@ class TranslationService extends CustomService
         $item->delete();
 
         $this->fireStatusMessage(StatusMessage::TYPES['success'], "Translation \"$key\" was successfully deleted");
+    }
+
+    protected function saveEntries(?array $entries, Translation $translation): void
+    {
+        try {
+            if (isset($entries) && !empty($entries))
+                $this->entryService->saveFromTranslation($entries, $translation);
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
+            $this->fireStatusMessage(StatusMessage::TYPES['danger'], "Translation entries error:\"$message\"");
+        }
     }
 }
