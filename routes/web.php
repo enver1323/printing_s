@@ -28,7 +28,7 @@ Route::group([
     Route::resources([
         'translations' => 'TranslationController',
         'languages' => 'LanguageController',
-        'users' => 'TranslationController'
+        'users' => 'UserController'
     ]);
 });
 

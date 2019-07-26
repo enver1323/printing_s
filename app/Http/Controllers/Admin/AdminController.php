@@ -12,25 +12,22 @@ class AdminController extends Controller
 
     const ITEMS_PER_PAGE = 15;
 
-    private $view = 'admin';
+    const VIEW = 'admin';
 
-    private $params = [];
+    const PARAMS = [];
 
     protected function render($view, $params = [])
     {
-        $this->setView($view);
-        $this->setParams($params);
-
-        return view($this->view, $this->params);
+        return view($this->formView($view), $this->formParams($params));
     }
 
-    protected function setView(string $view): void
+    private function formView(string $view): string
     {
-        $this->view = sprintf('%s.%s', $this->view, $view);
+        return sprintf('%s.%s', self::VIEW, $view);
     }
 
-    private function setParams(array $params): void
+    private function formParams(array $params): array
     {
-        $this->params = array_merge($this->params, $params);
+        return array_merge(self::PARAMS, $params);
     }
 }
