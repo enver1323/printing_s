@@ -75,9 +75,3 @@ class UserController extends AdminController
         return redirect()->route('admin.users.index');
     }
 }
-=======
-class UserController
-{
-
-}
->>>>>>> cb45d4f7f4137141ee91b1d39b72f57b4edc81ca
