@@ -18,17 +18,8 @@ class CreateLinesTable extends Migration
              * Columns
              */
             $table->increments('id');
-            $table->integer('name')
-                ->unsigned()
+            $table->json('name')
                 ->nullable();
-
-            /**
-             * Foreign keys
-             */
-            $table->foreign('name')
-                ->references('id')
-                ->on('translations')
-                ->onDelete('set null');
         });
     }
 

@@ -18,31 +18,20 @@ class CreateNewsTable extends Migration
              * Columns
              */
             $table->increments('id');
-            $table->integer('name')
-                ->unsigned()
-                ->nullable();
-            $table->integer('description')
-                ->unsigned()
-                ->nullable();
+            $table->json('name')->nullable();
+            $table->json('description')->nullable();
             $table->integer('created_by')
                 ->unsigned()
                 ->nullable();
-            $table->integer('created_at')->unsigned();
             $table->integer('views')
                 ->unsigned()
                 ->default(0);
+            $table->integer('updated_at')->unsigned();
+            $table->integer('created_at')->unsigned();
 
             /**
              * Foreign keys
              */
-            $table->foreign('name')
-                ->references('id')
-                ->on('translations')
-                ->onDelete('set null');
-            $table->foreign('description')
-                ->references('id')
-                ->on('translations')
-                ->onDelete('set null');
             $table->foreign('created_by')
                 ->references('id')
                 ->on('users')

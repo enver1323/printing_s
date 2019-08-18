@@ -1,104 +1,94 @@
-@extends('admin.app')
-@section('content')
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Users list</h1>
-        <a href="{{route('admin.users.create')}}" class="btn btn-primary shadow-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> New User
-        </a>
-    </div>
+@extends('layouts.admin')
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Users Filter:</h6>
+@section('content')
+    <div class="card shadow">
+        <div class="card-header">
+            <a href="{{route('admin.users.create')}}" class="btn btn-primary mr-1">Create</a>
         </div>
         <div class="card-body">
-            <form action="{{route('admin.users.index')}}" method="GET">
-                <div class="row d-flex align-items-center">
-                    <div class="col form-group">
-                        <label for="searchId">ID</label>
-                        <input type="number" class="form-control" id="searchId" placeholder="Enter ID" name="id"
-                               value="{{(isset($searchQuery->id) ? $searchQuery->id : '')}}">
-                    </div>
-                    <div class="col form-group">
-                        <label for="searchName">Name</label>
-                        <input type="text" class="form-control" id="searchName" placeholder="Enter Name" name="name"
-                               value="{{(isset($searchQuery->name) ? $searchQuery->name : '')}}">
-                    </div>
-                    <div class="col form-group">
-                        <label for="searchEmail">Email</label>
-                        <input type="text" class="form-control" id="searchEmail" placeholder="Enter email" name="email"
-                               value="{{(isset($searchQuery->email) ? $searchQuery->email : '')}}">
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-block btn-success" type="submit">
-                            <i class="fas fa-filter"></i>
-                            Filter
-                        </button>
-                    </div>
+            <form action="?" method="GET" class="form-inline">
+                <div class="form-group mx-1 mb-1">
+                    <label for="id" class="sr-only">{{__('adminPanel.id')}}</label>
+                    <input type="number" class="form-control" id="id" name="id" placeholder="ID">
                 </div>
+                <div class="form-group mx-1 mb-1">
+                    <label for="Name" class="sr-only">{{__('adminPanel.name')}}</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                </div>
+                <div class="form-group mx-1 mb-1">
+                    <label for="email" class="sr-only">{{__('adminPanel.email')}}</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="email">
+                </div>
+                <div class="form-group mx-1 mb-1">
+                    <label for="status" class="sr-only">{{__('adminPanel.status')}}</label>
+                    <select class="custom-select" name="status" id="status">
+                        <option value="">All</option>
+                        @foreach($statuses as $k => $status)
+                            <option value="{{ $k }}">{{ $status }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mx-1 mb-1">
+                    <label for="role" class="sr-only">{{__('adminPanel.role')}}</label>
+                    <select class="custom-select" name="role" id="role">
+                        <option value="">All</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role }}">{{ $role }}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+                <div class="mx-1 mb-1">
+                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i> {{__('adminPanel.search')}}</button>
+                </div>
+
             </form>
         </div>
-    </div>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Users:</h6>
-        </div>
         <div class="card-body">
-            <div class="d-flex justify-content-center">
-                {{$items->links()}}
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($users as$user)
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Options</th>
+                        <th scope="row">{{ $user->id }}</th>
+                        <td>
+                            <a href="{{route('admin.users.show',$user)}}">{{ $user->name }}</a>
+                        </td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            @if($user->isActive())
+                                <span class="badge badge-primary">{{$user->status}}</span>
+                            @endif
+                            @if($user->isWait())
+                                <span class="badge badge-secondary">{{$user->status}}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($user->isAdmin())
+                                <span class="badge badge-danger">{{$user->role}}</span>
+                            @elseif($user->isVendor())
+                                <span class="badge badge-dark">{{$user->role}}</span>
+                            @else
+                                <span class="badge badge-info">{{$user->role}}</span>
+                            @endif
+                        </td>
                     </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Options</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    @foreach($items as $item)
-                        <tr>
-                            <td>{{$item->id}}</td>
-                            <td>
-                                <a href="{{route('admin.users.show', $item)}}">{{$item->name}}</a>
-                            </td>
-                            <td>
-                                {{$item->email}}
-                            </td>
-                            <td>
-                                <a href="{{route('admin.users.edit', $item)}}">
-                                    <button class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a>
-                                <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="document.getElementById('{{$item->id}}-destroy-form').submit()">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <form id="{{$item->id}}-destroy-form"
-                              action="{{route('admin.users.destroy', $item)}}" method="POST">
-                            @method('DELETE') @csrf
-                        </form>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="d-flex justify-content-center">
-            {{$items->links()}}
+        <div class="card-footer d-flex justify-content-between">
+            {{$users->links()}}
+            <span class="align-self-center">views: {{$users->count()}}, total: {{$users->total()}}</span>
         </div>
     </div>
+
 @endsection

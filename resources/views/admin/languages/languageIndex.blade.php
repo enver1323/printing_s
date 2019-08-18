@@ -1,116 +1,58 @@
-@extends('admin.app')
-@section('content')
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Languages list</h1>
-        <a href="{{route('admin.languages.create')}}" class="btn btn-primary shadow-sm">
-            <i class="fas fa-plus fa-sm text-white-50"></i> New Language
-        </a>
-    </div>
+@extends('layouts.admin')
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Languages Filter:</h6>
+@section('content')
+    <div class="card shadow">
+        <div class="card-header">
+            <a href="{{route('admin.languages.create')}}" class="btn btn-primary mr-1">{{__('adminPanel.create')}}</a>
         </div>
+
         <div class="card-body">
-            <form action="{{route('admin.languages.index')}}" method="GET">
-                <div class="row d-flex align-items-center">
-                    <div class="col form-group">
-                        <label for="searchCode">Code</label>
-                        <input type="text" maxlength="2" class="form-control" id="searchCode" placeholder="Enter Code" name="code"
-                               value="{{(isset($searchQuery->code) ? $searchQuery->code : '')}}">
-                    </div>
-                    <div class="col form-group">
-                        <label for="searchName">Name</label>
-                        <input type="text" class="form-control" id="searchName" placeholder="Enter Name" name="name"
-                               value="{{(isset($searchQuery->name) ? $searchQuery->name : '')}}">
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-block btn-success" type="submit">
-                            <i class="fas fa-filter"></i>
-                            Filter
-                        </button>
-                    </div>
+            <form action="{{route('admin.languages.index')}}" method="GET" class="form-inline">
+                <div class="form-group mx-1 mb-1">
+                    <label for="code" class="sr-only">{{__('adminPanel.code')}}</label>
+                    <input type="text" maxlength="2" class="form-control" id="code" name="code" placeholder="{{__('adminPanel.code')}}"
+                           value="{{request('code')}}">
                 </div>
+                <div class="form-group mx-1 mb-1">
+                    <label for="name" class="sr-only">{{__('adminPanel.name')}}</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="{{__('adminPanel.name')}}"
+                           value="{{request('name')}}">
+                </div>
+                <div class="mx-1 mb-1">
+                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i> {{__('adminPanel.search')}}</button>
+                </div>
+
             </form>
         </div>
-    </div>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Languages:</h6>
-        </div>
         <div class="card-body">
-            <div class="d-flex justify-content-center">
-                {{$items->links()}}
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">{{__('adminPanel.code')}}</th>
+                    <th scope="col">{{__('adminPanel.name')}}</th>
+{{--                    <th scope="col">{{__('adminPanel.percentFill')}}</th>--}}
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($languages as $language)
                     <tr>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Percentage</th>
-                        <th>Options</th>
+                        <th scope="row">{{ $language->code }}</th>
+                        <td>
+                            <a href="{{route('admin.languages.show', $language)}}">{{ $language->name }}</a>
+                        </td>
+{{--                        <td class="langPercent">{{$language->getFilledPercentage()}}%</td>--}}
                     </tr>
-                    </thead>
-                    <tfoot>
-                    <tr>
-                        <th>Code</th>
-                        <th>Name</th>
-                        <th>Percentage</th>
-                        <th>Options</th>
-                    </tr>
-                    </tfoot>
-                    <tbody>
-                    @foreach($items as $item)
-                        <tr>
-                            <td>{{$item->code}}</td>
-                            <td>
-                                <a href="{{route('admin.languages.show', $item)}}">{{$item->name}}</a>
-                            </td>
-                            <td class="langPercent">
-                                {{$item->getFilledPercentage()}} %
-                            </td>
-                            <td>
-                                <a href="{{route('admin.languages.edit', $item)}}">
-                                    <button class="btn btn-sm btn-warning">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                </a>
-                                <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="document.getElementById('{{$item->id}}-destroy-form').submit()">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                            <form id="{{$item->id}}-destroy-form"
-                                  action="{{route('admin.languages.destroy', $item)}}" method="POST">
-                                @method('DELETE') @csrf
-                            </form>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
+                @endforeach
+                </tbody>
+            </table>
         </div>
-        <div class="d-flex justify-content-center">
-            {{$items->links()}}
+        <div class="card-footer d-flex justify-content-between">
+            {{$languages->links()}}
+            <span class="align-self-center">views: {{$languages->count()}}, total: {{$languages->total()}}</span>
         </div>
     </div>
-@endsection
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var percentFields = document.getElementsByClassName('langPercent');
-            for (var i = 0; i < percentFields.length; i++) {
-                var percent = percentFields[i].innerHTML;
-                percent = percent.split('%')[0] / 100;
-                percentFields[i].style.color = getColor(percent);
-            }
-        });
 
-        function getColor(value) {
-            var hue = ((value) * 120).toString(10);
-            return ["hsl(", hue, ",100%,50%)"].join("");
-        }
-    </script>
 @endsection
+{{--@section('scripts')--}}
+{{--    <script type="text/javascript" src="{{asset('js/admin/colorLanguage.js')}}"></script>--}}
+{{--@endsection--}}

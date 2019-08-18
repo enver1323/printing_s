@@ -1,77 +1,150 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
+use App\Domain\User\Entities\Profile;
+use App\Domain\User\Entities\User;
+use App\Domain\User\UseCases\UserService;
+use App\Http\Requests\Admin\User\UserSearchRequest;
+use App\Http\Requests\Admin\User\UserStoreRequest;
+use App\Http\Requests\Admin\User\UserUpdateRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
-use App\Entities\Users\User;
-use App\Entities\Users\UserRM;
-use App\Http\Requests\Users\UserSearchRequest;
-use App\Http\Requests\Users\UserStoreRequest;
-use App\Http\Requests\Users\UserUpdateRequest;
-use App\Services\Users\UserService;
 
+/**
+ * Class UserController
+ * @package App\Http\Controllers\Admin
+ * @property UserService $service;
+ * @property Profile $profiles;
+ * @property User $users;
+ */
 class UserController extends AdminController
 {
-    private function getView(string $view): string
-    {
-        return sprintf('users.%s', $view);
-    }
+    private $service;
+    private $users;
+    private $profiles;
 
-    public function __construct(UserService $service)
+    public function __construct(UserService $service, User $users, Profile $profiles)
     {
         $this->service = $service;
+        $this->profiles = $profiles;
+        $this->users = $users;
     }
 
-    public function index(UserSearchRequest $request)
+    /**
+     * @param UserSearchRequest $request
+     * @return View
+     */
+    public function index(UserSearchRequest $request): View
     {
-        list($items, $queryObject) = $this->service->search($request, self::ITEMS_PER_PAGE);
+        $users = $this->service->search($request)->paginate(self::ITEMS_PER_PAGE);
 
-        return $this->render($this->getView('userIndex'), [
-            'items' => $items,
-            'searchQuery' => $queryObject,
+        return $this->render('users.userIndex', [
+            'users' => $users->appends($request->input()),
+            'statuses' => $this->users::getStatuses(),
+            'roles' => $this->users::getRoles()
         ]);
     }
 
     public function create()
     {
-        return $this->render($this->getView('userCreate'));
+        return $this->render('users.userCreate', [
+            'genders' => $this->profiles->getGenders(),
+            'statuses' => $this->users::getStatuses(),
+            'roles' => $this->users::getRoles()
+        ]);
     }
 
     public function store(UserStoreRequest $request)
     {
-        $this->service->create($request);
-
-        return redirect()->route('admin.users.index');
+        try {
+            $user = $this->service->create($request);
+            return redirect()->route('admin.users.show', $user);
+        } catch (\Exception $e) {
+            return back()->with('error', $e->getMessage());
+        }
     }
 
-    public function show(UserRM $user)
+    /**
+     * @param User $user
+     * @return View
+     */
+    public function show(User $user): View
     {
-        return $this->render($this->getView('userShow'), [
-            'item' => $user
+        return $this->render('users.userShow', [
+            'user' => $user
         ]);
     }
 
-    public function edit(UserRM $user)
+    /**
+     * @param User $user
+     * @return View
+     */
+    public function edit(User $user): View
     {
-        return $this->render($this->getView('userEdit'), [
-            'item' => $user
+        return $this->render('users.userEdit', [
+            'user' => $user,
+            'genders' => $this->profiles->getGenders(),
+            'statuses' => $this->users::getStatuses(),
+            'roles' => $this->users::getRoles()
         ]);
     }
 
-    public function update(UserUpdateRequest $request, User $user)
+    /**
+     * @param UserUpdateRequest $request
+     * @param User $user
+     * @return RedirectResponse
+     * @throws \Throwable
+     */
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
     {
-        $this->service->update($request, $user);
-
-        return redirect()->route('admin.users.show', [
-            'item' => $user
-        ]);
+        try {
+            $user = $this->service->update($request, $user);
+            return redirect()->route('admin.users.show', $user);
+        } catch (\Exception | \Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
-    public function destroy(User $user)
+    /**
+     * @param User $user
+     * @return RedirectResponse
+     */
+    public function verify(User $user): RedirectResponse
     {
-        $this->service->destroy($user);
+        $this->service->verify($user->id);
+        return redirect()->route('admin.users.show', $user)->with('success', __('user.verified_successfully'));
+    }
 
-        return redirect()->route('admin.users.index');
+    /**
+     * @param User $user
+     * @return RedirectResponse
+     * @throws \Throwable
+     */
+    public function destroy(User $user): RedirectResponse
+    {
+        try {
+            $this->service->destroy($user);
+            return redirect()->route('admin.users.index')->with('success', __('user.deleted_successfully'));
+        } catch (\Exception | \Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * @param Profile $profile
+     * @return RedirectResponse
+     * @throws \Throwable
+     */
+    public function deleteProfilePhoto(Profile $profile): RedirectResponse
+    {
+        try {
+            $profile->deletePhoto();
+            return redirect()->back()
+                ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Profile photo']));
+        } catch (\Exception | \Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

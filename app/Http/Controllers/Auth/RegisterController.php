@@ -2,74 +2,74 @@
 
 namespace App\Http\Controllers\Auth;
 
-
-use App\Entities\Users\User;
+use App\Domain\User\Entities\User;
+use App\Domain\User\UseCases\UserService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\Auth\RegisterRequest;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers\Auth
+ * @property UserService $service
+ */
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    private $service;
 
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function __construct(UserService $service)
     {
+        $this->service = $service;
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function showRegistrationForm()
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return view('auth.register');
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+    public function register(RegisterRequest $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => User::ROLE_USER,
-            'created_at' => time(),
-        ]);
+        try {
+            $user = $this->service->register($request);
+            $this->setResponseMessage(
+                'success',
+                __('exceptionMessages.success.emailVerify', ['name', $user->name])
+            );
+        } catch (\Exception $e) {
+            $this->setResponseMessage(
+                'error',
+                $e->getMessage()
+            );
+        }
+        return redirect()->route('login');
+    }
+
+
+    public function verify($token)
+    {
+
+        try {
+            if(!$user = User::getByToken($token))
+                throw new NotFoundHttpException(__('exceptionMessages.error.userNF'));
+
+            $this->service->verify($user->id);
+            $this->setResponseMessage(
+                'success',
+                __('exceptionMessages.success.emailVerified')
+            );
+        } catch (\Exception $e) {
+            $this->setResponseMessage(
+                'error',
+                $e->getMessage()
+            );
+        }
+        return redirect()->route('login');
+    }
+
+
+    private function setResponseMessage($status, $message)
+    {
+        session()->flash($status, $message);
     }
 }

@@ -20,9 +20,7 @@ class CreateProductDataValuesTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('key_id')->unsigned();
-            $table->integer('name')
-                ->unsigned()
-                ->nullable();
+            $table->json('name')->nullable();
 
             /**
              * Foreign keys
@@ -35,10 +33,6 @@ class CreateProductDataValuesTable extends Migration
                 ->references('id')
                 ->on('product_data_keys')
                 ->onDelete('cascade');
-            $table->foreign('name')
-                ->references('id')
-                ->on('translations')
-                ->onDelete('set null');
         });
     }
 

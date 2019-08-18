@@ -1,77 +1,115 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
-
-use App\Entities\Languages\Language;
-use App\Entities\Languages\LanguageRM;
-use App\Http\Requests\Languages\LanguageSearchRequest;
-use App\Http\Requests\Languages\LanguageStoreRequest;
-use App\Http\Requests\Languages\LanguageUpdateRequest;
-use App\Services\Languages\LanguageService;
+use App\Domain\Translation\Entities\Language;
+use App\Domain\Translation\UseCases\LanguageService;
+use App\Http\Requests\Admin\Language\LanguageSearchRequest;
+use App\Http\Requests\Admin\Language\LanguageStoreRequest;
+use App\Http\Requests\Admin\Language\LanguageUpdateRequest;
+use Exception;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
+use Throwable;
 
 class LanguageController extends AdminController
 {
-    private function getView(string $view): string
-    {
-        return sprintf('languages.%s', $view);
-    }
+    /**
+     * @var LanguageService
+     */
+    private $service;
 
     public function __construct(LanguageService $service)
     {
         $this->service = $service;
     }
 
-    public function index(LanguageSearchRequest $request)
+    /**
+     * @param LanguageSearchRequest $request
+     * @return View
+     */
+    public function index(LanguageSearchRequest $request): View
     {
-        list($items, $queryObject) = $this->service->search($request, self::ITEMS_PER_PAGE);
+        $languages = $this->service->search($request)->paginate(self::ITEMS_PER_PAGE);
 
-        return $this->render($this->getView('languageIndex'), [
-            'items' => $items,
-            'searchQuery' => $queryObject,
+        return $this->render('languages.languageIndex', [
+            'languages' => $languages->appends($request->input()),
         ]);
     }
 
-    public function create()
+    /**
+     * @return View
+     */
+    public function create(): View
     {
-        return $this->render($this->getView('languageCreate'));
+        return $this->render('languages.languageCreate');
     }
 
-    public function store(LanguageStoreRequest $request)
+    /**
+     * @param LanguageStoreRequest $request
+     * @return RedirectResponse
+     */
+    public function store(LanguageStoreRequest $request): RedirectResponse
     {
-        $this->service->create($request);
-
-        return redirect()->route('admin.languages.index');
+        try {
+            return redirect()->route('admin.languages.show', $this->service->store($request))
+                ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Language']));
+        } catch (Throwable | Exception $e) {
+            return redirect()->route('admin.languages.index')->with('error', $e->getMessage());
+        }
     }
 
-    public function show(LanguageRM $language)
+    /**
+     * @param Language $language
+     * @return View
+     */
+    public function show(Language $language): View
     {
-        return $this->render($this->getView('languageShow'), [
-            'item' => $language
+        return $this->render('languages.languageShow', [
+            'language' => $language
         ]);
     }
 
-    public function edit(LanguageRM $language)
+    /**
+     * @param Language $language
+     * @return View
+     */
+    public function edit(Language $language): View
     {
-        return $this->render($this->getView('languageEdit'), [
-            'item' => $language
+        return $this->render('languages.languageEdit', [
+            'language' => $language
         ]);
     }
 
-    public function update(LanguageUpdateRequest $request, Language $language)
+    /**
+     * @param LanguageUpdateRequest $request
+     * @param Language $language
+     * @return RedirectResponse
+     */
+    public function update(LanguageUpdateRequest $request, Language $language): RedirectResponse
     {
-        $this->service->update($request, $language);
-
-        return redirect()->route('admin.languages.show', [
-            'item' => $language
-        ]);
+        try {
+            return redirect()->route('admin.languages.show', $this->service->update($language, $request))
+                ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Language']));
+        } catch (Throwable | Exception $e) {
+            return redirect()->route('admin.languages.index')->with('error', $e->getMessage());
+        }
     }
 
-    public function destroy(Language $language)
-    {
-        $this->service->destroy($language);
 
-        return redirect()->route('admin.languages.index');
+    /**
+     * @param Language $language
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function destroy(Language $language): RedirectResponse
+    {
+        try {
+            $this->service->destroy($language);
+            return redirect()->route('admin.languages.index')
+                ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Language']));
+        } catch (Throwable | Exception $e) {
+            return redirect()->route('admin.languages.index')->with('error', $e->getMessage());
+        }
     }
 }

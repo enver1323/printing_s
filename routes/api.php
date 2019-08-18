@@ -17,11 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::group([
+    'as' => 'ajax.',
     'prefix' => 'ajax',
-    'as' => 'api.ajax.',
-    'namespace' => 'API'
+    'namespace' => 'API',
+    'middleware' => ['ajax']
 ], function () {
-    Route::get('translations', 'AjaxController@getTranslations')->middleware('throttle:60,1')->name('translations');
-    Route::get('groups', 'AjaxController@getGroups')->middleware('throttle:60,1')->name('groups');
+    Route::get('regions', 'AjaxAdminController@getRegions')->name('regions');
+    Route::get('countries', 'AjaxAdminController@getCountries')->name('countries');
+    Route::get('categories', 'AjaxAdminController@getCategories')->name('categories');
 });

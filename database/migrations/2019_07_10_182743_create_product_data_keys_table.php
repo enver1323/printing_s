@@ -18,17 +18,7 @@ class CreateProductDataKeysTable extends Migration
              * Columns
              */
             $table->increments('id');
-            $table->integer('name')
-                ->unsigned()
-                ->nullable();
-
-            /**
-             * Foreign keys
-             */
-            $table->foreign('name')
-                ->references('id')
-                ->on('translations')
-                ->onDelete('set null');
+            $table->json('name')->nullable();
         });
     }
 

@@ -5,29 +5,28 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {
-    protected $service;
+    const ROOT_VIEW_DIR = 'admin';
 
     const ITEMS_PER_PAGE = 15;
 
-    const VIEW = 'admin';
+    private $viewParams = [];
 
-    const PARAMS = [];
-
-    protected function render($view, $params = [])
+    protected function render(string $view, array $params = []): View
     {
-        return view($this->formView($view), $this->formParams($params));
+        return view($this->modifyView($view), $this->modifyParams($params));
     }
 
-    private function formView(string $view): string
+    private function modifyView(string $view)
     {
-        return sprintf('%s.%s', self::VIEW, $view);
+        return sprintf("%s.%s", self::ROOT_VIEW_DIR, $view);
     }
 
-    private function formParams(array $params): array
+    private function modifyParams($params)
     {
-        return array_merge(self::PARAMS, $params);
+        return array_merge($this->viewParams, $params);
     }
 }

@@ -18,9 +18,7 @@ class CreateSlidesTable extends Migration
              * Columns
              */
             $table->increments('id');
-            $table->integer('image_id')
-                ->unsigned()
-                ->nullable();
+            $table->string('photo');
             $table->integer('product_id')
                 ->unsigned()
                 ->nullable();
@@ -29,10 +27,6 @@ class CreateSlidesTable extends Migration
             /*
              * Foreign keys
              */
-            $table->foreign('image_id')
-                ->references('id')
-                ->on('images')
-                ->onDelete('set null');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')

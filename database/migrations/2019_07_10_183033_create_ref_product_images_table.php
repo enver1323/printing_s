@@ -18,7 +18,7 @@ class CreateRefProductImagesTable extends Migration
              * Columns
              */
             $table->integer('product_id')->unsigned();
-            $table->integer('image_id')->unsigned();
+            $table->string('photo');
             $table->integer('sort')->unsigned()->default(1);
 
             /*
@@ -27,10 +27,6 @@ class CreateRefProductImagesTable extends Migration
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
-                ->onDelete('cascade');
-            $table->foreign('image_id')
-                ->references('id')
-                ->on('images')
                 ->onDelete('cascade');
         });
     }

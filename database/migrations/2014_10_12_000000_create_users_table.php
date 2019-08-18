@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 255)->unique();
             $table->string('password', 255);
             $table->enum('role', ['admin', 'user']);
+            $table->integer('updated_at')->unsigned();
             $table->integer('created_at')->unsigned();
         });
     }
