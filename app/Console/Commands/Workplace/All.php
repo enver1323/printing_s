@@ -11,13 +11,14 @@ class All extends Command
 {
     const FOLDERS = [
         'Repositories',
+        'ReadModels',
         'Entities',
-        'Services'
+        'UseCases'
     ];
 
     protected $signature = 'workplace:all {table_name}';
 
-    protected $description = 'create Entity, ReadRepository, Service';
+    protected $description = 'create Entity, Repository, ReadRepository, Service';
 
     public function __construct()
     {

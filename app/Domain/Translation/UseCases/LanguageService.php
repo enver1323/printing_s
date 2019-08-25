@@ -36,7 +36,7 @@ class LanguageService extends Service
      */
     public function search(LanguageSearchRequest $request)
     {
-        $query = $this->langReadRepo->getSearchQuery($this->languages, $request->code, $request->name);
+        $query = $this->langReadRepo->getSearchQuery($request->code, $request->name);
 
         return $query;
     }

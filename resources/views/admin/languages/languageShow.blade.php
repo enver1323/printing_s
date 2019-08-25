@@ -26,12 +26,6 @@
                     <span>{{$language->name}}</span>
                 </div>
             </div>
-            <div class="row mb-4">
-                <div class="col">
-                    <strong>{{__('adminPanel.percentFill')}}: </strong>
-                    <span class="langPercent">{{$language->getFilledPercentage()}}%</span>
-                </div>
-            </div>
             <hr>
         </div>
     </div>

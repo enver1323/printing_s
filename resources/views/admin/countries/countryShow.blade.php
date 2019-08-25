@@ -89,7 +89,7 @@
                         <h4 class="text-primary">{{Str::plural(__('adminPanel.region'))}}</h4>
                     </div>
                     <div class="card-body">
-                        @include('admin.regions.regionList', ['regions' => $country->regions])
+                        @include('admin.regions.regionTable', ['regions' => $country->regions])
                     </div>
                 </div>
             </div>

@@ -24,6 +24,7 @@ class CategoryResource extends BaseJsonResource
         return [
             self::ID => $this->id,
             self::NAME => $this->name,
+            self::SLUG => $this->slug,
             self::PARENT => new CategoryResource($this->whenLoaded('parent')),
             self::CHILDREN => CategoryResource::collection($this->whenLoaded('descendants')),
             self::DEPTH => $this->depth

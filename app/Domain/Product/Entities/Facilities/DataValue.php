@@ -1,0 +1,35 @@
+<?php
+
+
+namespace App\Domain\Product\Entities\Facilities;
+
+
+use App\Domain\_core\Entity;
+use App\Domain\Product\Entities\Product;
+use App\Domain\Product\Entities\ProductOption;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+
+/**
+ * Class DataValue
+ * @package App\Domain\Product\Entities\Facilities
+ *
+ * @property integer $data_key
+ * @property string $type
+ * @property integer $owner_id
+ * @property string $value
+ *
+ * Relations:
+ * @property Product|ProductOption $owner
+ */
+class DataValue extends Entity
+{
+    protected $table = 'data_values';
+
+    /**
+     * @return MorphTo
+     */
+    public function owner(): MorphTo
+    {
+        return $this->morphTo('owner');
+    }
+}

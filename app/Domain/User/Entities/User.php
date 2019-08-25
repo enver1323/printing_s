@@ -57,6 +57,22 @@ class User extends Authenticatable
     /**
      * @return bool
      */
+    public function isWait(): bool
+    {
+        return $this->status === self::STATUS_WAIT;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->status === self::STATUS_ACTIVE;
+    }
+
+    /**
+     * @return bool
+     */
     public function isAdmin(): bool
     {
         return $this->role === self::ROLE_ADMIN;

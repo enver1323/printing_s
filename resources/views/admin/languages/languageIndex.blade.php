@@ -30,7 +30,6 @@
                 <tr>
                     <th scope="col">{{__('adminPanel.code')}}</th>
                     <th scope="col">{{__('adminPanel.name')}}</th>
-{{--                    <th scope="col">{{__('adminPanel.percentFill')}}</th>--}}
                 </tr>
                 </thead>
                 <tbody>
@@ -40,7 +39,6 @@
                         <td>
                             <a href="{{route('admin.languages.show', $language)}}">{{ $language->name }}</a>
                         </td>
-{{--                        <td class="langPercent">{{$language->getFilledPercentage()}}%</td>--}}
                     </tr>
                 @endforeach
                 </tbody>

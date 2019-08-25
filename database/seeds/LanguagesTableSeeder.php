@@ -5,24 +5,20 @@ use Illuminate\Database\Seeder;
 
 class LanguagesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
-        Language::firstOrCreate([
-            'code' => 'en',
-            'name' => 'English',
-        ]);
-        Language::firstOrCreate([
-            'code' => 'ru',
-            'name' => 'Russian',
-        ]);
-        Language::firstOrCreate([
-            'code' => 'uz',
-            'name' => "O'zbek",
-        ]);
+//        factory(Language::class, 10)->create();
+
+        if (!Language::where('code', '=', 'ru')->count())
+            Language::insert([
+                'code' => 'ru',
+                'name' => 'Русский'
+            ]);
+
+        if (!Language::where('code', '=', 'en')->count())
+            Language::insert([
+                'code' => 'en',
+                'name' => 'English'
+            ]);
     }
 }

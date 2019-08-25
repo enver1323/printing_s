@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label class="col-form-label" for="category">{{__('adminPanel.category')}}</label>
-                            <select name="category_id" id="category"
+                            <select name="category_id" id="category" required
                                     class="form-control{{ $errors->has('category_id') ? ' is-invalid': '' }}">
                                 <option value="">{{__('adminPanel.choose')}}</option>
                             </select>

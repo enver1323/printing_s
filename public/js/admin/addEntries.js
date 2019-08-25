@@ -1,23 +1,24 @@
+String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 var options;
 var select;
 var mainContainer;
 var selectContainer;
 var inputName;
 
-String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
-
-function addEntries(name, containerId, selectId) {
+function addEntries(name, containerId, selectId, inputType) {
     select = document.getElementById(selectId);
     mainContainer = document.getElementById(containerId);
     selectContainer = select.parentNode.parentNode;
+    inputType = inputType !== undefined ? inputType : 'input';
     inputName = name;
 
     var option = select.options[select.selectedIndex];
 
     if (isEntryNotCreated(option))
-        addEntryField(option);
+        addEntryField(option, inputType);
 }
 
 function isEntryNotCreated(option) {
@@ -34,7 +35,7 @@ function isEntryNotCreated(option) {
     return true;
 }
 
-function addEntryField(option) {
+function addEntryField(option, inputType) {
     var div = document.createElement('div');
     setAttributes(div, {'class': 'form-group d-flex',});
 
@@ -50,7 +51,7 @@ function addEntryField(option) {
     label.innerHTML = option.value.capitalize() + " language " + inputName;
     inputContainer.appendChild(label);
 
-    var input = document.createElement('input');
+    var input = document.createElement(inputType);
     setAttributes(input, {
         'class': 'form-control entry' + inputName.capitalize() + 'Input',
         'id': "transEntry" + inputName.capitalize() + option.value.capitalize(),

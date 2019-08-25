@@ -65,6 +65,13 @@
                 </div>
             </div>
             <hr>
+            <div class="row mb-4">
+                <div class="col">
+                    <strong>{{__('adminPanel.category')}}: </strong>
+                    <a href="{{route('admin.categories.show', $brand->category)}}">{{$brand->category->name}}</a>
+                </div>
+            </div>
+            <hr>
         </div>
     </div>
 @endsection

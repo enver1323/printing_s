@@ -12,8 +12,11 @@ use Illuminate\Validation\Validator;
  * Class ValidatorExtender
  * @package App\Http\Requests\Validation
  */
-class ValidatorExtender
+class ValidatorExtender implements Extender
 {
+    /**
+     * Registers extenders, macros and morphs
+     */
     public static function extend(): void
     {
         ValidatorFacade::extend('keysExist', function ($attribute, $value, $parameters, $validator) {

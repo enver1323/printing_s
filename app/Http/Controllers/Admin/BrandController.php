@@ -4,8 +4,8 @@
 namespace App\Http\Controllers\Admin;
 
 
-use App\Domain\Brands\Entities\Brand;
-use App\Domain\Brands\UseCases\BrandService;
+use App\Domain\Brand\Entities\Brand;
+use App\Domain\Brand\UseCases\BrandService;
 use App\Domain\Translation\Entities\Language;
 use App\Http\Requests\Admin\Brand\BrandSearchRequest;
 use App\Http\Requests\Admin\Brand\BrandStoreRequest;
@@ -127,6 +127,10 @@ class BrandController extends AdminController
         }
     }
 
+    /**
+     * @param Brand $brand
+     * @return RedirectResponse
+     */
     public function deletePhoto(Brand $brand)
     {
         try {

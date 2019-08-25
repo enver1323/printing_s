@@ -8,6 +8,7 @@ return [
     'change' => 'Change',
     'create' => 'Create',
     'cabinet' => 'Cabinet',
+    'products' => 'Products',
     'register' => 'Register',
     'countries' => 'Countries',
     'dashboard' => 'Dashboard',

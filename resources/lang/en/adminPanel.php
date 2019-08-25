@@ -19,6 +19,7 @@ return [
     'region' => 'Region',
     'choose' => 'Choose option',
     'category' => 'Category',
+    'brand' => 'Brand',
 
     'user' => 'User',
     'role' => 'Role',
@@ -43,15 +44,23 @@ return [
     'update' => 'Update',
     'search' => 'Search',
 
+    'author' => 'Author',
+    'option' => 'Option',
+    'product' => 'Product',
+    'dataKey' => 'Data key',
+
     'addEntry' => 'Choose language to add entry',
 
     'userCreate' => 'Create user',
+    'brandCreate' => 'Create brand',
     'regionCreate' => 'Create region',
+    'optionCreate' => 'Create product option',
+    'dataKeyCreate' => 'Create Data Key',
     'countryCreate' => 'Create country',
     'profileCreate' => 'Create profile',
+    'productCreate' => 'Create Product',
     'languageCreate' => 'Create language',
     'categoryCreate' => 'Create category',
-    'brandCreate' => 'Create brand',
 
     'percentFill' => 'Filled Percentage',
 

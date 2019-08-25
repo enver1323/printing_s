@@ -44,10 +44,10 @@ services:
     volumes:
       - ./storage/docker/mysql:/var/lib/mysql
     environment:
-      - "MYSQL_ROOT_PASSWORD=123"
-      - "MYSQL_USER=root"
-      - "MYSQL_PASSWORD=123"
-      - "MYSQL_DATABASE=printing_s"
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_USER=laravel"
+      - "MYSQL_PASSWORD=root"
+      - "MYSQL_DATABASE=laravel"
     ports:
       - "33061:3306"
   redis:

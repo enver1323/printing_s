@@ -3,7 +3,7 @@
 namespace App\Console\Commands\User;
 
 use App\Domain\User\Entities\User;
-use App\Domain\User\Services\UserService;
+use App\Domain\User\UseCases\UserService;
 use Illuminate\Console\Command;
 
 /**

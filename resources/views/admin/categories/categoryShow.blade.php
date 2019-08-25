@@ -10,6 +10,9 @@
                             <a href="{{ route('admin.categories.create', $category) }}" class="btn btn-success mr-1">
                                 {{__('adminPanel.new') .' '. __('adminPanel.category')}}
                             </a>
+                            <a href="{{ route('admin.products.data.keys.create', $category) }}" class="btn btn-outline-success mr-1">
+                                {{__('adminPanel.new') .' '. __('adminPanel.dataKey')}}
+                            </a>
                             <a href="{{ route('admin.categories.edit', $category) }}" class="btn btn-primary mr-1">
                                 {{__('adminPanel.edit')}}
                             </a>

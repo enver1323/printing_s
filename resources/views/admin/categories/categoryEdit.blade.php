@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label class="col-form-label" for="parent">{{__('adminPanel.parent')}}</label>
-                            <select name="parent_id" id="parent"
+                            <select name="parent_id" id="parent" required
                                     class="form-control{{ $errors->has('parent_id') ? ' is-invalid': '' }}">
                                 <option value="">{{__('adminPanel.choose')}}</option>
                                 @isset($category->parent)

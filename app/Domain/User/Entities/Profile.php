@@ -4,7 +4,7 @@ namespace App\Domain\User\Entities;
 
 use App\Domain\_core\Entity;
 use App\Domain\_core\Photo\Photo;
-use App\Domain\_core\Photo\ManagesPhotos;
+use App\Domain\_core\Photo\HasPhoto;
 use App\Domain\Country\Entities\Country;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Profile extends Entity
 {
-    use ManagesPhotos;
+    use HasPhoto;
 
     public const GENDER_MALE = 'male';
     public const GENDER_FEMALE = 'female';
