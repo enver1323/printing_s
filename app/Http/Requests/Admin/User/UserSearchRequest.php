@@ -31,7 +31,6 @@ class UserSearchRequest extends FormRequest
             'id' => 'nullable|numeric|exists:users,id',
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'status' => ['nullable','string','max:255', Rule::in(User::getStatuses())],
             'role' => ['nullable','alpha_dash','max:16', Rule::in(User::getRoles())],
         ];
     }

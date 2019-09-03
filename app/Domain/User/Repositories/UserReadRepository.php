@@ -43,9 +43,6 @@ class UserReadRepository extends ReadRepository
         if (isset($email))
             $query = $query->where('email', 'like', "%$email%");
 
-        if (isset($status))
-            $query = $query->where('status', '=', $status);
-
         if (isset($role))
             $query = $query->where('role', '=', $role);
 

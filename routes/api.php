@@ -25,9 +25,7 @@ Route::group([
     'middleware' => ['ajax']
 ], function () {
     Route::get('brands', 'AjaxAdminController@getBrands')->name('brands');
-    Route::get('regions', 'AjaxAdminController@getRegions')->name('regions');
     Route::get('products', 'AjaxAdminController@getProducts')->name('products');
     Route::get('languages', 'AjaxAdminController@getLanguages')->name('languages');
-    Route::get('countries', 'AjaxAdminController@getCountries')->name('countries');
     Route::get('categories', 'AjaxAdminController@getCategories')->name('categories');
 });

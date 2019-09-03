@@ -47,11 +47,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             $this->clearLoginAttempts($request);
             $user = Auth::user();
-            /** @var User $user */
-            if(!$user->isActive()){
-                Auth::logout();
-                return back()->with('error', __('auth.You need to confirm'));
-            }
+
             return redirect()->intended(route('cabinet.home'));
         }
         $this->incrementLoginAttempts($request);

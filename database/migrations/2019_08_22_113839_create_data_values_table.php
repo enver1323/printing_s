@@ -16,14 +16,17 @@ class CreateDataValuesTable extends Migration
         Schema::create('data_values', function (Blueprint $table) {
             /** Columns */
             $table->integer('data_key')->unsigned();
-            $table->integer('owner_id')->unsigned();
-            $table->primary(['data_key', 'owner_id']);
+            $table->integer('product_id')->unsigned();
+            $table->primary(['data_key', 'product_id']);
             $table->json('value');
-            $table->string('owner_type');
 
             /** Foreign keys */
             $table->foreign('data_key')
                 ->on('data_keys')
+                ->references('id')
+                ->onDelete('cascade');
+            $table->foreign('product_id')
+                ->on('products')
                 ->references('id')
                 ->onDelete('cascade');
         });

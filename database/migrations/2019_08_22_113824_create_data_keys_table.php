@@ -17,16 +17,6 @@ class CreateDataKeysTable extends Migration
             /** Columns */
             $table->increments('id');
             $table->json('name');
-            $table->boolean('is_required');
-            $table->integer('category_id')->unsigned();
-            $table->json('input');
-            $table->string('type');
-
-            /** Foreign Keys */
-            $table->foreign('category_id')
-                ->on('categories')
-                ->references('id')
-                ->onDelete('restrict');
         });
     }
 

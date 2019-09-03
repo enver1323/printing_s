@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Domain\User\Entities\Profile;
 use App\Domain\User\Entities\User;
 use App\Domain\User\UseCases\UserService;
 use App\Http\Requests\Admin\User\UserSearchRequest;
@@ -16,19 +15,16 @@ use Illuminate\View\View;
  * Class UserController
  * @package App\Http\Controllers\Admin
  * @property UserService $service;
- * @property Profile $profiles;
  * @property User $users;
  */
 class UserController extends AdminController
 {
     private $service;
     private $users;
-    private $profiles;
 
-    public function __construct(UserService $service, User $users, Profile $profiles)
+    public function __construct(UserService $service, User $users)
     {
         $this->service = $service;
-        $this->profiles = $profiles;
         $this->users = $users;
     }
 
@@ -50,7 +46,6 @@ class UserController extends AdminController
     public function create()
     {
         return $this->render('users.userCreate', [
-            'genders' => $this->profiles->getGenders(),
             'statuses' => $this->users::getStatuses(),
             'roles' => $this->users::getRoles()
         ]);
@@ -85,7 +80,6 @@ class UserController extends AdminController
     {
         return $this->render('users.userEdit', [
             'user' => $user,
-            'genders' => $this->profiles->getGenders(),
             'statuses' => $this->users::getStatuses(),
             'roles' => $this->users::getRoles()
         ]);
@@ -127,22 +121,6 @@ class UserController extends AdminController
         try {
             $this->service->destroy($user);
             return redirect()->route('admin.users.index')->with('success', __('user.deleted_successfully'));
-        } catch (\Exception | \Throwable $e) {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
-    }
-
-    /**
-     * @param Profile $profile
-     * @return RedirectResponse
-     * @throws \Throwable
-     */
-    public function deleteProfilePhoto(Profile $profile): RedirectResponse
-    {
-        try {
-            $profile->deletePhoto();
-            return redirect()->back()
-                ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Profile photo']));
         } catch (\Exception | \Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

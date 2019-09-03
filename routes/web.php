@@ -39,40 +39,9 @@ Route::group([
 
             /** Users routes */
             Route::resource('users', 'UserController');
-            Route::group([
-                'as' => 'users.',
-                'prefix' => 'users',
-            ], function () {
-                Route::patch('{user}/verify', 'UserController@verify')->name('verify');
-                Route::group([
-                    'as' => 'profiles.',
-                    'prefix' => 'profiles',
-                ], function () {
-                    Route::delete('{profile}/photo/delete', 'UserController@deleteProfilePhoto')
-                        ->name('photo.delete');
-                });
-            });
 
             /** Languages routes */
             Route::resource('languages', 'LanguageController');
-
-            /** Countries routes */
-            Route::resource('countries', 'CountryController');
-            Route::group([
-                'as' => 'countries.',
-                'prefix' => 'countries',
-            ], function () {
-                Route::delete('{country}/photo/delete', 'CountryController@deletePhoto')->name('photo.delete');
-            });
-
-            /** Regions routes */
-            Route::resource('regions', 'RegionController')->except(['index']);
-            Route::group([
-                'as' => 'regions.',
-                'prefix' => 'regions'
-            ], function () {
-                Route::get('create/{country}/{region?}', 'RegionController@create')->name('create');
-            });
 
             /** Categories routes */
             Route::resource('categories', 'CategoryController');

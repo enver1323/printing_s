@@ -14,8 +14,6 @@ class UsersTableSeeder extends Seeder
             'password' => '$2y$10$FcNxV1IzIutwe0uL51yCOujF627DXi0pDiBZYkRlaO6B8Kie5dXUm', // cderfv34
             'remember_token' => Str::random(10),
             'role' => User::ROLE_ADMIN,
-            'verify_token' => Str::random(10),
-            'status' => User::STATUS_ACTIVE,
             'created_at' => time(),
             'updated_at' => time(),
         ]);
