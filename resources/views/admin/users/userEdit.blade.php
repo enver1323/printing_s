@@ -62,39 +62,11 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label" for="status">{{__('adminPanel.status')}}</label>
-                            <select name="status" type="text" id="status" required
-                                    class="form-control{{ $errors->has('status') ? ' is-invalid': '' }}">
-                                @foreach($statuses as $status)
-                                    <option value="{{$status}}" {{($status === $user->status) ? 'selected' : ''}}>
-                                        {{ucfirst($status)}}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('status'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('status') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">{{__('adminPanel.update')}}</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                @include('admin.profiles.profileEdit', ['profile' => $user->profile])
-            </div>
         </div>
     </form>
-@endsection
-
-@section('scripts')
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            var dateppicker = jQuery("#birthDate");
-            dateppicker = dateppicker.datepicker({dateFormat: "yy-mm-dd"});
-            dateppicker.datepicker('setDate', new Date(dateppicker.data_value))
-        });
-    </script>
 @endsection

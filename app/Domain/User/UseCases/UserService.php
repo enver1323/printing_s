@@ -91,4 +91,16 @@ class UserService
 
         return $user;
     }
+
+
+    /**
+     * @param int $id
+     * @return bool|null
+     * @throws Exception
+     */
+    public function destroy(int $id): ?bool
+    {
+        $user = $this->users->findOrFail($id);
+        return $user->delete();
+    }
 }

@@ -7,7 +7,7 @@ class APISelect {
     }
 
     initSelect() {
-        $(this.domElement).select2({
+        jQuery(this.domElement).select2({
             ajax: {
                 url: this.apiUrl,
                 dataType: 'json',
@@ -29,3 +29,6 @@ class APISelect {
         });
     }
 }
+export default APISelect;
+window.APISelect = new APISelect();
+global.APISelect = new APISelect();

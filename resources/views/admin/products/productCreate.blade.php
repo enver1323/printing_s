@@ -4,19 +4,10 @@
         @csrf
         <div class="row">
             <div class="col-lg-6">
-                @include('admin.translations.addEntriesSelect', [
-                    'translatableField' => 'name',
-                    'translatableFieldName' => __('adminPanel.name'),
-                    'languages' => $languages,
-                ])
+                @widget('translatable')
             </div>
             <div class="col-lg-6">
-                @include('admin.translations.addEntriesSelect', [
-                    'translatableField' => 'description',
-                    'translatableFieldName' => __('adminPanel.description'),
-                    'languages' => $languages,
-                    'inputType' => 'textarea'
-                ])
+                @widget('translatable', ['name' => 'description', 'input' => 'textarea'])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
@@ -85,9 +76,8 @@
         </div>
     </form>
 @endsection
-@section('scripts')
-    <script type="text/javascript" src="{{asset('js/admin/addEntries.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/admin/apiSelect.js')}}"></script>
+@push('scripts')
+    <script type="text/javascript" src="{{mix('js/apiSelect.js', 'build')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#category", "{{route('ajax.categories')}}");
@@ -95,4 +85,4 @@
             $("#icon").iconpicker();
         });
     </script>
-@endsection
+@endpush

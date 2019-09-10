@@ -19,15 +19,6 @@
                     <label for="email" class="sr-only">{{__('adminPanel.email')}}</label>
                     <input type="text" class="form-control" id="email" name="email" placeholder="email">
                 </div>
-                <div class="form-group mx-1 mb-1">
-                    <label for="status" class="sr-only">{{__('adminPanel.status')}}</label>
-                    <select class="custom-select" name="status" id="status">
-                        <option value="">All</option>
-                        @foreach($statuses as $k => $status)
-                            <option value="{{ $k }}">{{ $status }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <div class="mx-1 mb-1">
                     <label for="role" class="sr-only">{{__('adminPanel.role')}}</label>
                     <select class="custom-select" name="role" id="role">
@@ -51,7 +42,6 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Role</th>
                 </tr>
                 </thead>
@@ -64,18 +54,8 @@
                         </td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            @if($user->isActive())
-                                <span class="badge badge-primary">{{$user->status}}</span>
-                            @endif
-                            @if($user->isWait())
-                                <span class="badge badge-secondary">{{$user->status}}</span>
-                            @endif
-                        </td>
-                        <td>
                             @if($user->isAdmin())
-                                <span class="badge badge-danger">{{$user->role}}</span>
-                            @elseif($user->isVendor())
-                                <span class="badge badge-dark">{{$user->role}}</span>
+                                <span class="badge badge-success">{{$user->role}}</span>
                             @else
                                 <span class="badge badge-info">{{$user->role}}</span>
                             @endif

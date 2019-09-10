@@ -59,6 +59,12 @@
             <span>{{__('breadcrumbs.languages')}}</span>
         </a>
     </li>
+    <li class="nav-item {{request()->routeIs('admin.countries*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.countries.index') }}">
+            <i class="fas fa-globe"></i>
+            <span>{{__('breadcrumbs.countries')}}</span>
+        </a>
+    </li>
 
     <hr class="sidebar-divider">
     <div class="sidebar-heading">

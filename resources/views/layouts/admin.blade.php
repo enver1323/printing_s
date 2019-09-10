@@ -85,6 +85,6 @@
 </div>
 
 <script src="{{ mix('js/admin.js','build') }}" defer></script>
-@yield('scripts')
+@stack('scripts')
 </body>
 </html>

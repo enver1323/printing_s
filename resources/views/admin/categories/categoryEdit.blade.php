@@ -5,12 +5,7 @@
         @csrf
         <div class="row">
             <div class="col-lg-6">
-                @include('admin.translations.editEntriesList', [
-                    'item' => $category,
-                    'translatableField' => 'name',
-                    'translatableFieldName' => __('adminPanel.name'),
-                    'languages' => $languages
-                ])
+                @widget('translatable', ['entries' => $category->getTranslations('name')])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
@@ -40,12 +35,11 @@
         </div>
     </form>
 @endsection
-@section('scripts')
-    <script type="text/javascript" src="{{asset('js/admin/addEntries.js')}}"></script>
+@push('scripts')
     <script type="text/javascript" src="{{asset('js/admin/apiSelect.js')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#parent", "{{route('ajax.categories')}}");
         });
     </script>
-@endsection
+@endpush

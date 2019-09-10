@@ -5,20 +5,11 @@
         @method("PATCH")
         <div class="row">
             <div class="col-lg-6">
-                @include('admin.translations.editEntriesList', [
-                    'item' => $product,
-                    'translatableField' => 'name',
-                    'translatableFieldName' => __('adminPanel.name'),
-                    'languages' => $languages
-                ])
+                @widget('translatable', ['entries' => $product->getTranslations('name')])
             </div>
             <div class="col-lg-6">
-                @include('admin.translations.editEntriesList', [
-                    'item' => $product,
-                    'translatableField' => 'description',
-                    'translatableFieldName' => __('adminPanel.description'),
-                    'languages' => $languages,
-                    'inputType' => 'textarea'
+                @widget('translatable', ['name' => 'description', 'input' => 'textarea',
+                    'entries' => $product->getTranslations('description')
                 ])
             </div>
             <div class="col-lg-6">
@@ -64,17 +55,20 @@
                             <label class="col-form-label" for="category">{{__('adminPanel.category')}}</label>
                             <select name="category_id" id="category" required
                                     class="form-control{{ $errors->has('category_id') ? ' is-invalid': '' }}">
-                                <option value="{{$product->category_id}}" selected="selected">{{($product->category->name)}}</option>
+                                <option value="{{$product->category_id}}"
+                                        selected="selected">{{($product->category->name)}}</option>
                             </select>
                             @if($errors->has('category_id'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                                <span
+                                    class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="brand">{{__('adminPanel.brand')}}</label>
                             <select name="brand_id" id="brand" required
                                     class="form-control{{ $errors->has('category_id') ? ' is-invalid': '' }}">
-                                <option value="{{$product->brand_id}}" selected="selected">{{($product->brand->name)}}</option>
+                                <option value="{{$product->brand_id}}"
+                                        selected="selected">{{($product->brand->name)}}</option>
                             </select>
                             @if($errors->has('brand_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('brand_id') }}</strong></span>
@@ -87,8 +81,7 @@
         </div>
     </form>
 @endsection
-@section('scripts')
-    <script type="text/javascript" src="{{asset('js/admin/addEntries.js')}}"></script>
+@push('scripts')
     <script type="text/javascript" src="{{asset('js/admin/apiSelect.js')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
@@ -96,4 +89,4 @@
             new APISelect("#brand", "{{route('ajax.brands')}}");
         });
     </script>
-@endsection
+@endpush

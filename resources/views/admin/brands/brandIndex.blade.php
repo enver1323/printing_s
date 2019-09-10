@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="card shadow">
         <div class="card-header">

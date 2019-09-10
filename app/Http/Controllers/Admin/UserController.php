@@ -38,7 +38,6 @@ class UserController extends AdminController
 
         return $this->render('users.userIndex', [
             'users' => $users->appends($request->input()),
-            'statuses' => $this->users::getStatuses(),
             'roles' => $this->users::getRoles()
         ]);
     }
@@ -46,7 +45,6 @@ class UserController extends AdminController
     public function create()
     {
         return $this->render('users.userCreate', [
-            'statuses' => $this->users::getStatuses(),
             'roles' => $this->users::getRoles()
         ]);
     }
@@ -80,7 +78,6 @@ class UserController extends AdminController
     {
         return $this->render('users.userEdit', [
             'user' => $user,
-            'statuses' => $this->users::getStatuses(),
             'roles' => $this->users::getRoles()
         ]);
     }
@@ -104,22 +101,12 @@ class UserController extends AdminController
     /**
      * @param User $user
      * @return RedirectResponse
-     */
-    public function verify(User $user): RedirectResponse
-    {
-        $this->service->verify($user->id);
-        return redirect()->route('admin.users.show', $user)->with('success', __('user.verified_successfully'));
-    }
-
-    /**
-     * @param User $user
-     * @return RedirectResponse
      * @throws \Throwable
      */
     public function destroy(User $user): RedirectResponse
     {
         try {
-            $this->service->destroy($user);
+            $this->service->destroy($user->id);
             return redirect()->route('admin.users.index')->with('success', __('user.deleted_successfully'));
         } catch (\Exception | \Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());

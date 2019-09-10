@@ -75,12 +75,12 @@
     </div>
 
 @endsection
-@section('scripts')
-    <script type="text/javascript" src="{{asset('js/admin/apiSelect.js')}}"></script>
+@push('scripts')
+    <script type="text/javascript" src="{{mix('js/apiSelect.js', 'build')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#brand", "{{route('ajax.brands')}}");
             new APISelect("#category", "{{route('ajax.categories')}}");
         });
     </script>
-@endsection
+@endpush
