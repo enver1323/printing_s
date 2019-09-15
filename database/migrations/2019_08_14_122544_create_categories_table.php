@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->json('name');
             $table->json('meta')->nullable();
             $table->string('slug');
-            $table->nestedSet();
             $table->integer('created_at');
             $table->integer('updated_at');
         });

@@ -38,7 +38,9 @@ class ProductController extends AdminController
      */
     public function index(ProductSearchRequest $request): View
     {
-        $products = $this->service->search($request)->paginate(self::ITEMS_PER_PAGE);
+        $products = $this->service->search($request)
+            ->with('brand', 'category')
+            ->paginate(self::ITEMS_PER_PAGE);
 
         return $this->render('products.productIndex', [
             'products' => $products->appends($request->input()),

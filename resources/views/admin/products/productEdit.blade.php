@@ -12,31 +12,7 @@
                     'entries' => $product->getTranslations('description')
                 ])
             </div>
-            <div class="col-lg-6">
-                <div class="card shadow mb-4">
-                    <div class="card-header">
-                        <h4 class="text-primary">{{__('adminPanel.location')}}</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label class="col-form-label" for="lat">{{__('adminPanel.lat')}}</label>
-                            <input name="lat" class="form-control{{ $errors->has('lat') ? ' is-invalid': '' }}" id="lat"
-                                   value="{{ $product->lat }}" required>
-                            @if($errors->has('lat'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('lat') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label class="col-form-label" for="lng">{{__('adminPanel.lng')}}</label>
-                            <input name="lng" class="form-control{{ $errors->has('lng') ? ' is-invalid': '' }}" id="lng"
-                                   value="{{ $product->lng }}" required>
-                            @if($errors->has('lng'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('lng') }}</strong></span>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header">
@@ -74,6 +50,16 @@
                                 <span class="invalid-feedback"><strong>{{ $errors->first('brand_id') }}</strong></span>
                             @endif
                         </div>
+                        <div class="form-group">
+                            <label class="col-form-label" for="line">{{__('adminPanel.line')}}</label>
+                            <select name="line_id" id="line" required
+                                    class="form-control{{ $errors->has('line_id') ? ' is-invalid': '' }}">
+                                <option value="">{{__('adminPanel.choose')}}</option>
+                            </select>
+                            @if($errors->has('line_id'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('line_id') }}</strong></span>
+                            @endif
+                        </div>
                         <input type="submit" value="{{__('adminPanel.update')}}" class="btn btn-primary">
                     </div>
                 </div>
@@ -87,6 +73,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#category", "{{route('ajax.categories')}}");
             new APISelect("#brand", "{{route('ajax.brands')}}");
+            new APISelect("#line", "{{route('ajax.lines')}}");
         });
     </script>
 @endpush

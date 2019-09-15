@@ -7,6 +7,7 @@ namespace App\Domain\Product\Entities\Facilities;
 use App\Domain\_core\Entity;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
@@ -20,6 +21,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  *
  * Relations:
  * @property Product|ProductOption $owner
+ * @property DataKey $dataKey
  */
 class DataValue extends Entity
 {
@@ -31,5 +33,13 @@ class DataValue extends Entity
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function dataKey(): BelongsTo
+    {
+        return $this->belongsTo(DataKey::class, 'data_key', 'id');
     }
 }

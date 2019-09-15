@@ -1,4 +1,4 @@
-class APISelect {
+export default class APISelect {
     constructor(domElement, apiUrl) {
         this.domElement = domElement;
         this.apiUrl = apiUrl;
@@ -29,6 +29,3 @@ class APISelect {
         });
     }
 }
-export default APISelect;
-window.APISelect = new APISelect();
-global.APISelect = new APISelect();

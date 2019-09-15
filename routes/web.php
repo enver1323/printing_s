@@ -45,19 +45,9 @@ Route::group([
 
             /** Categories routes */
             Route::resource('categories', 'CategoryController');
-            Route::group([
-                'as' => 'categories.',
-                'prefix' => 'categories'
-            ], function () {
-                Route::get('create/{category?}', 'CategoryController@create')->name('create');
-                Route::group([
-                    'as' => 'move.',
-                    'prefix' => 'move/{category}'
-                ], function () {
-                    Route::get('up', 'CategoryController@moveUp')->name('up');
-                    Route::get('down', 'CategoryController@moveDown')->name('down');
-                });
-            });
+
+            /** Lines routes */
+            Route::resource('lines', 'LineController');
 
             /** Brands routes */
             Route::resource('brands', 'BrandController');

@@ -19,6 +19,8 @@ return [
     'region' => 'Region',
     'choose' => 'Choose option',
     'category' => 'Category',
+
+    'line' => 'Line',
     'brand' => 'Brand',
 
     'user' => 'User',
@@ -32,7 +34,6 @@ return [
     'gender' => 'Gender',
     'profile' => 'Profile',
     'surname' => 'Surname',
-    'country' => 'Country',
     'nickname' => 'Nickname',
     'birthDate' => 'Birth Date',
 
@@ -52,6 +53,7 @@ return [
     'addEntry' => 'Choose language to add entry',
 
     'userCreate' => 'Create user',
+    'lineCreate' => 'Create line',
     'brandCreate' => 'Create brand',
     'regionCreate' => 'Create region',
     'optionCreate' => 'Create product option',
@@ -75,9 +77,9 @@ return [
     ],
 
     'users' => 'Users',
+    'lines' => 'Lines',
     'systems' => 'Systems',
     'products' => 'Products',
     'languages' => 'Languages',
-    'countries' => 'Countries',
     'categories' => 'Categories',
 ];

@@ -76,7 +76,6 @@
 
 @endsection
 @push('scripts')
-    <script type="text/javascript" src="{{mix('js/apiSelect.js', 'build')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#brand", "{{route('ajax.brands')}}");

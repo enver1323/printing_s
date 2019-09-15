@@ -28,4 +28,5 @@ Route::group([
     Route::get('products', 'AjaxAdminController@getProducts')->name('products');
     Route::get('languages', 'AjaxAdminController@getLanguages')->name('languages');
     Route::get('categories', 'AjaxAdminController@getCategories')->name('categories');
+    Route::get('lines', 'AjaxAdminController@getLines')->name('lines');
 });

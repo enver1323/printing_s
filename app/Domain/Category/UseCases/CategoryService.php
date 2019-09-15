@@ -37,7 +37,7 @@ class CategoryService extends Service
     public function search(CategorySearchRequest $request): Builder
     {
         return $this->categoryReadRepo->getSearchQuery($request->id, $request->name)
-            ->orderBy('_lft');
+            ->orderByDesc('created_at');
     }
 
     /**
@@ -69,18 +69,5 @@ class CategoryService extends Service
     {
         $category = $this->categories->findOrfail($id);
         return $category->delete();
-    }
-
-    /**
-     * @param Category $category
-     * @param bool $up
-     */
-    public function move(Category $category, bool $up): void
-    {
-        $category->siblings();
-        if($up)
-            $category->up();
-        else
-            $category->down();
     }
 }

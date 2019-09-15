@@ -10,11 +10,14 @@ use App\Domain\_core\Traits\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Line\Entities\Line;
+use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Facilities\DataValue;
 use App\Domain\Translation\Traits\Translatable;
 use App\Domain\User\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -128,5 +131,26 @@ class Product extends Entity
     public function dataValues(): MorphMany
     {
         return $this->morphMany(DataValue::class, 'owner');
+    }
+
+    /**
+     * @return BelongsToMany
+     */
+    public function dataKeys(): BelongsToMany
+    {
+        return $this->belongsToMany(DataKey::class, 'data_values',
+            'product_id',
+            'data_key',
+            'id',
+            'id'
+        );
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function line(): BelongsTo
+    {
+        return $this->belongsTo(Line::class, 'line_id', 'id');
     }
 }

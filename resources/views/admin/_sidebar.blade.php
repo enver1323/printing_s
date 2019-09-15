@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Booking
+        Printing
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -76,6 +76,13 @@
         <a class="nav-link" href="{{ route('admin.brands.index') }}">
             <i class="fas fa-shield-alt"></i>
             <span>{{__('breadcrumbs.brands')}}</span>
+        </a>
+    </li>
+
+    <li class="nav-item {{request()->routeIs('admin.lines*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.lines.index') }}">
+            <i class="fas fa-line"></i>
+            <span>{{__('breadcrumbs.lines')}}</span>
         </a>
     </li>
 

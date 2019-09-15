@@ -20,17 +20,14 @@ use Throwable;
  * @package App\Http\Controllers\Admin
  *
  * @property CategoryService $service
- * @property Language $languages
  */
 class CategoryController extends AdminController
 {
     private $service;
-    private $languages;
 
-    public function __construct(CategoryService $service, Language $languages)
+    public function __construct(CategoryService $service)
     {
         $this->service = $service;
-        $this->languages = $languages;
     }
 
     /**
@@ -39,9 +36,7 @@ class CategoryController extends AdminController
      */
     public function index(CategorySearchRequest $request): View
     {
-        $categories = $this->service->search($request)
-            ->withDepth()
-            ->paginate(self::ITEMS_PER_PAGE);
+        $categories = $this->service->search($request)->paginate(self::ITEMS_PER_PAGE);
 
         return $this->render('categories.categoryIndex', [
             'categories' => $categories->appends($request->input()),
@@ -49,15 +44,11 @@ class CategoryController extends AdminController
     }
 
     /**
-     * @param Category|null $category
      * @return View
      */
-    public function create(Category $category = null): View
+    public function create(): View
     {
-        return $this->render('categories.categoryCreate', [
-            'category' => $category,
-            'languages' => $this->languages->all(),
-        ]);
+        return $this->render('categories.categoryCreate');
     }
 
     /**
@@ -81,11 +72,7 @@ class CategoryController extends AdminController
     public function show(Category $category): View
     {
         return $this->render('categories.categoryShow', [
-            'category' => $category,
-            'descendants' => $category
-                ->descendantsWithDepth()
-                ->orderBy('_lft')
-                ->get()
+            'category' => $category
         ]);
     }
 
@@ -97,7 +84,6 @@ class CategoryController extends AdminController
     {
         return $this->render('categories.categoryEdit', [
             'category' => $category,
-            'languages' => $this->languages->all(),
         ]);
     }
 
@@ -130,25 +116,5 @@ class CategoryController extends AdminController
         } catch (Throwable | Exception $e) {
             return redirect()->route('admin.categories.index')->with('error', $e->getMessage());
         }
-    }
-
-    /**
-     * @param Category $category
-     * @return RedirectResponse
-     */
-    public function moveUp(Category $category): RedirectResponse
-    {
-        $this->service->move($category, true);
-        return redirect()->back()->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Category']));
-    }
-
-    /**
-     * @param Category $category
-     * @return RedirectResponse
-     */
-    public function moveDown(Category $category): RedirectResponse
-    {
-        $this->service->move($category, false);
-        return redirect()->back()->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Category']));
     }
 }

@@ -26,11 +26,12 @@ class CreateProductsTable extends Migration
             $table->integer('brand_id')
                 ->unsigned()
                 ->nullable();
+            $table->integer('line_id')
+                ->unsigned()
+                ->nullable();
             $table->integer('created_by')
                 ->unsigned()
                 ->nullable();
-            $table->float('lat');
-            $table->float('lng');
             $table->integer('created_at')->unsigned();
             $table->integer('updated_at')->unsigned();
 
@@ -41,6 +42,10 @@ class CreateProductsTable extends Migration
                 ->onDelete('set null');
             $table->foreign('brand_id')
                 ->on('brands')
+                ->references('id')
+                ->onDelete('set null');
+            $table->foreign('line_id')
+                ->on('lines')
                 ->references('id')
                 ->onDelete('set null');
             $table->foreign('created_by')

@@ -9,3 +9,6 @@ require('startbootstrap-sb-admin-2/vendor/chart.js/Chart.min.js');
 import 'jquery-ui/ui/widgets/datepicker.js';
 import 'select2/dist/js/select2';
 import 'fontawesome-iconpicker/dist/js/fontawesome-iconpicker.min.js'
+import ApiSelect from './models/apiSelect';
+
+window.APISelect = ApiSelect;

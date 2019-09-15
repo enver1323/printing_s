@@ -17,7 +17,6 @@ mix
     .js('resources/js/app.js', 'js')
     .js('resources/js/admin.js', 'js')
     .js('resources/js/models/translatable.js', 'js')
-    .js('resources/js/models/apiSelect.js', 'js')
     .sass('resources/sass/app.scss', 'css')
     .sass('resources/sass/admin.scss', 'css')
     .version();

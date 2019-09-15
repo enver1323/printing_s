@@ -27,14 +27,13 @@ class BrandController extends AdminController
     private $service;
     private $languages;
 
-    public function __construct(BrandService $service, Language $languages)
+    public function __construct(BrandService $service)
     {
         $this->service = $service;
-        $this->languages = $languages;
     }
 
     /**
-     * @param brandSearchRequest $request
+     * @param BrandSearchRequest $request
      * @return View
      */
     public function index(BrandSearchRequest $request): View
@@ -91,8 +90,7 @@ class BrandController extends AdminController
     public function edit(Brand $brand): View
     {
         return $this->render('brands.brandEdit', [
-            'brand' => $brand,
-            'languages' => $this->languages->all(),
+            'brand' => $brand
         ]);
     }
 
@@ -120,10 +118,10 @@ class BrandController extends AdminController
     {
         try {
             $this->service->destroy($brand->id);
-            return redirect()->route('admin.categories.index')
+            return redirect()->route('admin.brands.index')
                 ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'brand']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.categories.index')->with('error', $e->getMessage());
+            return redirect()->route('admin.brands.index')->with('error', $e->getMessage());
         }
     }
 

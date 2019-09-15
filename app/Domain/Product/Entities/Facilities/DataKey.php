@@ -7,6 +7,7 @@ namespace App\Domain\Product\Entities\Facilities;
 use App\Domain\_core\Entity;
 use App\Domain\Category\Entities\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class DataKey
@@ -20,17 +21,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $type
  *
  * Relations:
- * @property Category $category
+ * @property DataValue $dataValues
  */
 class DataKey extends Entity
 {
     protected $table = 'data_keys';
 
     /**
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function category()
+    public function dataValues(): HasMany
     {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
+        return $this->hasMany(DataValue::class, 'data_key', 'id');
     }
 }

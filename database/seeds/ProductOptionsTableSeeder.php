@@ -8,11 +8,18 @@ class ProductOptionsTableSeeder extends Seeder
 {
     public function run()
     {
-        ProductOption::create([
-            'name->en' => 'S14 chassis',
-            'description->en' => 'Second generation',
-            'category_id' => 1,
+        ProductOption::firstOrCreate([
+            'name->en' => 'A4',
+            'description->en' => 'A4 size',
             'created_by' => 1,
+            'product_id' => 3
+        ]);
+
+        ProductOption::firstOrCreate([
+            'name->en' => 'A5',
+            'description->en' => 'A5 size',
+            'created_by' => 1,
+            'product_id' => 3
         ]);
     }
 }

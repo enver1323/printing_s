@@ -4,6 +4,7 @@ use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Country\Entities\Country;
 use App\Domain\Country\Entities\Region;
+use App\Domain\Line\Entities\Line;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
 use App\Domain\Translation\Entities\Language;
@@ -86,73 +87,21 @@ Breadcrumbs::for('admin.languages.edit', function (Crumbs $crumbs, Language $lan
     $crumbs->push(__('breadcrumbs.edit'), route('admin.languages.edit', $language));
 });
 
-/** Admin Country */
-Breadcrumbs::for('admin.countries.index', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.home');
-    $crumbs->push(__('breadcrumbs.countries'), route('admin.countries.index'));
-});
-
-Breadcrumbs::for('admin.countries.create', function (Crumbs $crumbs) {
-    $crumbs->parent('admin.countries.index');
-    $crumbs->push(__('breadcrumbs.create'), route('admin.countries.create'));
-});
-
-Breadcrumbs::for('admin.countries.show', function (Crumbs $crumbs, Country $country) {
-    $crumbs->parent('admin.countries.index');
-    $crumbs->push($country->name, route('admin.countries.show', $country));
-});
-
-Breadcrumbs::for('admin.countries.edit', function (Crumbs $crumbs, Country $country) {
-    $crumbs->parent('admin.countries.show', $country);
-    $crumbs->push(__('breadcrumbs.edit'), route('admin.countries.edit', $country));
-});
-
-/** Admin Regions */
-Breadcrumbs::for('admin.regions.create', function (Crumbs $crumbs, Country $country, Region $region = null) {
-    if (isset($region))
-        $crumbs->parent('admin.regions.show', $region);
-    else
-        $crumbs->parent('admin.countries.show', $country);
-
-    $crumbs->push(__('breadcrumbs.create'), route('admin.regions.create', [$country, $region]));
-});
-
-
-Breadcrumbs::for('admin.regions.show', function (Crumbs $crumbs, Region $region) {
-    if ($parent = $region->parent)
-        $crumbs->parent('admin.regions.show', $parent);
-    else
-        $crumbs->parent('admin.countries.show', $region->country);
-
-    $crumbs->push($region->name, route('admin.regions.show', $region));
-});
-
-Breadcrumbs::for('admin.regions.edit', function (Crumbs $crumbs, Region $region) {
-    $crumbs->parent('admin.regions.show', $region);
-
-    $crumbs->push(__('breadcrumbs.edit'), route('admin.regions.edit', $region));
-});
-
 /** Admin Categories */
 Breadcrumbs::for('admin.categories.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push(__('breadcrumbs.categories'), route('admin.categories.index'));
 });
 
-Breadcrumbs::for('admin.categories.create', function (Crumbs $crumbs, Category $category = null) {
-    if (isset($category))
-        $crumbs->parent('admin.categories.show', $category);
-    else
+Breadcrumbs::for('admin.categories.create', function (Crumbs $crumbs) {
         $crumbs->parent('admin.categories.index');
 
-    $crumbs->push(__('breadcrumbs.create'), route('admin.categories.create', $category));
+    $crumbs->push(__('breadcrumbs.create'), route('admin.categories.create'));
 });
 
 Breadcrumbs::for('admin.categories.show', function (Crumbs $crumbs, Category $category) {
     $crumbs->parent('admin.categories.index');
-
-    foreach ($category->ancestorsAndSelf($category->id) as $catItem)
-        $crumbs->push($catItem->name, route('admin.categories.show', $catItem));
+    $crumbs->push($category->name, route('admin.categories.show', $category));
 });
 
 Breadcrumbs::for('admin.categories.edit', function (Crumbs $crumbs, Category $category) {
@@ -160,7 +109,7 @@ Breadcrumbs::for('admin.categories.edit', function (Crumbs $crumbs, Category $ca
     $crumbs->push(__('breadcrumbs.edit'), route('admin.categories.edit', $category));
 });
 
-/** Admin Categories */
+/** Admin Brands */
 Breadcrumbs::for('admin.brands.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push(__('breadcrumbs.brands'), route('admin.brands.index'));
@@ -226,4 +175,25 @@ Breadcrumbs::for('admin.products.data.keys.create', function (Crumbs $crumbs, Ca
         $crumbs->parent('admin.products.index');
 
     $crumbs->push(__('breadcrumbs.create'), route('admin.products.data.keys.create', $category));
+});
+
+/** Admin Lines */
+Breadcrumbs::for('admin.lines.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.lines'), route('admin.lines.index'));
+});
+
+Breadcrumbs::for('admin.lines.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.lines.index');
+    $crumbs->push(__('breadcrumbs.create'), route('admin.lines.create'));
+});
+
+Breadcrumbs::for('admin.lines.show', function (Crumbs $crumbs, Line $line) {
+    $crumbs->parent('admin.lines.index');
+    $crumbs->push($line->name, route('admin.lines.show', $line));
+});
+
+Breadcrumbs::for('admin.lines.edit', function (Crumbs $crumbs, Line $line) {
+    $crumbs->parent('admin.lines.show', $line);
+    $crumbs->push(__('breadcrumbs.edit'), route('admin.lines.edit', $line));
 });
