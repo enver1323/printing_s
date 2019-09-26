@@ -39,17 +39,9 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255|email|unique:users',
+            'email' => 'required|string|max:255|email|unique:users,email',
             'role' => ['required', Rule::in(User::getRoles())],
-            'status' => ['required', Rule::in(User::getStatuses())],
             'password' => 'required|string|min:6|max:255|confirmed',
-
-            'profile' => 'required|array',
-            'profile.name' => 'required|string|max:255',
-            'profile.family_name' => 'nullable|string|max:255',
-            'profile.nickname' => 'nullable|string|max:255',
-            'profile.birth_date' => 'nullable|string|max:255|date_format:Y-m-d',
-            'profile.gender' => ['nullable', Rule::in(Profile::getGenders())]
         ];
     }
 }

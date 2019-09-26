@@ -22,10 +22,16 @@ Route::group([
     'as' => 'ajax.',
     'prefix' => 'ajax',
     'namespace' => 'API',
-    'middleware' => ['ajax']
+//    'middleware' => ['ajax']
 ], function () {
     Route::get('brands', 'AjaxAdminController@getBrands')->name('brands');
     Route::get('products', 'AjaxAdminController@getProducts')->name('products');
+    Route::group([
+        'as' => 'data.',
+        'prefix' => 'data'
+    ], function (){
+        Route::get('keys', 'AjaxAdminController@getDataKeys')->name('keys');
+    });
     Route::get('languages', 'AjaxAdminController@getLanguages')->name('languages');
     Route::get('categories', 'AjaxAdminController@getCategories')->name('categories');
     Route::get('lines', 'AjaxAdminController@getLines')->name('lines');

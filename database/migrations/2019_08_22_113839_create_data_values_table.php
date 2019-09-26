@@ -15,18 +15,15 @@ class CreateDataValuesTable extends Migration
     {
         Schema::create('data_values', function (Blueprint $table) {
             /** Columns */
+            $table->increments('id');
             $table->integer('data_key')->unsigned();
-            $table->integer('product_id')->unsigned();
-            $table->primary(['data_key', 'product_id']);
+            $table->integer('owner_id')->unsigned();
+            $table->string('owner_type');
             $table->json('value');
 
             /** Foreign keys */
             $table->foreign('data_key')
                 ->on('data_keys')
-                ->references('id')
-                ->onDelete('cascade');
-            $table->foreign('product_id')
-                ->on('products')
                 ->references('id')
                 ->onDelete('cascade');
         });

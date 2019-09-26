@@ -7,15 +7,18 @@ namespace App\Http\Controllers\API;
 use App\Domain\Brand\ReadRepositories\BrandReadRepository;
 use App\Domain\Category\ReadRepositories\CategoryReadRepository;
 use App\Domain\Line\ReadRepositories\LineReadRepository;
+use App\Domain\Product\Repositories\Facilities\ProductDataKeyReadRepository;
 use App\Domain\Product\Repositories\ProductReadRepository;
 use App\Http\Requests\Admin\Brand\BrandSearchRequest;
 use App\Http\Requests\Admin\Category\CategorySearchRequest;
 use App\Http\Requests\Admin\Line\LineSearchRequest;
 use App\Http\Requests\Admin\Product\ProductSearchRequest;
+use App\Http\Requests\Admin\ProductData\ProductDataKeySearchRequest;
 use App\Http\Resources\Admin\Brand\BrandResource;
 use App\Http\Resources\Admin\Category\CategoryResource;
 use App\Http\Resources\Admin\Line\LineResource;
 use App\Http\Resources\Admin\Product\ProductResource;
+use App\Http\Resources\Admin\ProductData\ProductDataKeyResource;
 
 class AjaxAdminController extends APIController
 {
@@ -71,5 +74,18 @@ class AjaxAdminController extends APIController
             ->get();
 
         return $this->render(LineResource::collection($products));
+    }
+
+    /**
+     * @param ProductDataKeySearchRequest $request
+     * @return mixed
+     */
+    public function getDataKeys(ProductDataKeySearchRequest $request)
+    {
+        $keys = ProductDataKeyReadRepository::getSearchQuery($request->id, $request->name)
+            ->take(self::ITEMS_PER_PAGE)
+            ->get();
+
+        return $this->render(ProductDataKeyResource::collection($keys));
     }
 }

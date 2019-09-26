@@ -16,24 +16,18 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class UserReadRepository extends ReadRepository
 {
-    private $users;
-
-    public function __construct(User $users)
-    {
-        $this->users = $users;
-    }
-
     /**
      * @param Builder|User $query
      * @param int|null $id
      * @param string|null $name
      * @param string|null $email
-     * @param string|null $status
      * @param string|null $role
      * @return Builder|User
      */
-    public function getSearchQuery($query, int $id = null, string $name = null, string $email = null, string $status = null, string $role = null)
+    public static function getSearchQuery(int $id = null, string $name = null, string $email = null, string $role = null, $query = null)
     {
+        $query = $query ?? new User();
+
         if (isset($id))
             $query = $query->whereKey('id');
 

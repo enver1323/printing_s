@@ -6,10 +6,12 @@ namespace App\Domain\Product\Entities;
 
 use App\Domain\_core\Entity;
 use App\Domain\Product\Entities\Facilities\DataValue;
+use App\Domain\Product\Entities\Facilities\HasFacilities;
 use App\Domain\Translation\Traits\Translatable;
 use App\Domain\User\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
 /**
@@ -29,7 +31,7 @@ use Illuminate\Support\Collection;
  * @property User $author
  * @property DataValue[]|Collection $dataValues
  */
-class ProductOption extends Entity
+class ProductOption extends Entity implements HasFacilities
 {
     use Translatable;
 
@@ -61,7 +63,10 @@ class ProductOption extends Entity
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
-    public function dataValues()
+    /**
+     * @return MorphMany
+     */
+    public function dataValues(): MorphMany
     {
         return $this->morphMany(DataValue::class, 'owner');
     }

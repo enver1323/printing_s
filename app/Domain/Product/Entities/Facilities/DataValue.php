@@ -7,6 +7,7 @@ namespace App\Domain\Product\Entities\Facilities;
 use App\Domain\_core\Entity;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
+use App\Domain\Translation\Traits\Translatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -25,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class DataValue extends Entity
 {
+    use Translatable;
+
     protected $table = 'data_values';
 
     /**
@@ -41,5 +44,13 @@ class DataValue extends Entity
     public function dataKey(): BelongsTo
     {
         return $this->belongsTo(DataKey::class, 'data_key', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getTranslatable(): array
+    {
+        return ['value'];
     }
 }

@@ -62,12 +62,12 @@
     </form>
 @endsection
 @push('scripts')
+    <script src="{{mix('js/apiSelect.js', 'build')}}" type="text/javascript"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#category", "{{route('ajax.categories')}}");
             new APISelect("#brand", "{{route('ajax.brands')}}");
             new APISelect("#line", "{{route('ajax.lines')}}");
-            $("#icon").iconpicker();
         });
     </script>
 @endpush

@@ -35,7 +35,6 @@ class BrandUpdateRequest extends FormRequest
         return [
             'name' => 'required|array|keysExist:languages,code',
             'name.*' => 'required|string|max:255',
-            'category_id' => 'required|numeric|exists:categories,id',
             'description' => 'required|array|keysExist:languages,code',
             'description.*' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'

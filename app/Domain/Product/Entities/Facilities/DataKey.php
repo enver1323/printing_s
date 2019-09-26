@@ -6,6 +6,7 @@ namespace App\Domain\Product\Entities\Facilities;
 
 use App\Domain\_core\Entity;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Translation\Traits\Translatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -25,6 +26,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class DataKey extends Entity
 {
+    use Translatable;
+
     protected $table = 'data_keys';
 
     /**
@@ -33,5 +36,13 @@ class DataKey extends Entity
     public function dataValues(): HasMany
     {
         return $this->hasMany(DataValue::class, 'data_key', 'id');
+    }
+
+    /**
+     * @return array
+     */
+    protected function getTranslatable(): array
+    {
+        return ['name'];
     }
 }

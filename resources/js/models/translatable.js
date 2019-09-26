@@ -1,6 +1,4 @@
-String.prototype.capitalize = function () {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-};
+import * as helper from'../helpers/mainHelper';
 
 class Translatable {
     constructor(name, parentId, languages, inputType = "input") {
@@ -23,14 +21,14 @@ class Translatable {
 
     initSelect() {
         let selectContainer = document.createElement('div');
-        this.setAttributes(selectContainer, {'class': 'form-group row d-flex align-items-end'});
+        helper.setAttributes(selectContainer, {'class': 'form-group row d-flex align-items-end'});
 
         let div = document.createElement('div');
-        this.setAttributes(div, {'class': 'col-lg-8'});
+        helper.setAttributes(div, {'class': 'col-lg-8'});
         selectContainer.appendChild(div);
 
         let label = document.createElement('label');
-        this.setAttributes(label, {
+        helper.setAttributes(label, {
             'for': `${this.name}Select`,
             'class': 'col-form-label'
         });
@@ -38,7 +36,7 @@ class Translatable {
         div.appendChild(label);
 
         this.select = document.createElement('select');
-        this.setAttributes(this.select, {
+        helper.setAttributes(this.select, {
             'class': 'form-control',
             'id': `${this.name}Select`,
         });
@@ -47,17 +45,17 @@ class Translatable {
         let option;
         for (let k in this.languages) {
             option = document.createElement('option');
-            this.setAttributes(option, {'value': this.languages[k].code});
+            helper.setAttributes(option, {'value': this.languages[k].code});
             option.innerHTML = this.languages[k].name;
             this.select.appendChild(option);
         }
 
         div = document.createElement('div');
-        this.setAttributes(div, {'class': 'col-lg-4'});
+        helper.setAttributes(div, {'class': 'col-lg-4'});
         selectContainer.appendChild(div);
 
         let addingBtn = document.createElement('button');
-        this.setAttributes(addingBtn, {
+        helper.setAttributes(addingBtn, {
             'class': 'btn btn-primary btn-block addingBtn',
             'id': `adding${this.name.capitalize()}Btn`,
             'type': 'button'
@@ -75,21 +73,11 @@ class Translatable {
 
     onclick(event) {
         let target = event.target;
-        if (this.buttonIs(target, 'addingBtn'))
+        if (helper.classIncludes(target, 'addingBtn'))
             this.addEntries(target);
 
-        if (this.buttonIs(target, 'deletingBtn'))
+        if (helper.classIncludes(target, 'deletingBtn'))
             this.removeEntryField(target);
-    }
-
-    buttonIs(target, className) {
-        return target.getAttribute('class').includes(className);
-    }
-
-    setAttributes(elem, attrs) {
-        for (let key in attrs) {
-            elem.setAttribute(key, attrs[key]);
-        }
     }
 
     addEntries(button) {
@@ -101,14 +89,14 @@ class Translatable {
 
     addEntryField(language, value = '') {
         let div = document.createElement('div');
-        this.setAttributes(div, {'class': 'form-group d-flex',});
+        helper.setAttributes(div, {'class': 'form-group d-flex',});
 
         let inputContainer = document.createElement('div');
-        this.setAttributes(inputContainer, {'class': 'flex-grow-1',});
+        helper.setAttributes(inputContainer, {'class': 'flex-grow-1',});
         div.appendChild(inputContainer);
 
         let label = document.createElement('label');
-        this.setAttributes(label, {
+        helper.setAttributes(label, {
             'for': `${language}${this.name.capitalize()}`,
             'class': 'col-form-label'
         });
@@ -116,7 +104,7 @@ class Translatable {
         inputContainer.appendChild(label);
 
         let input = document.createElement(this.inputType);
-        this.setAttributes(input, {
+        helper.setAttributes(input, {
             'class': 'form-control',
             'id': `${language}${this.name.capitalize()}`,
             'type': 'text',
@@ -129,7 +117,7 @@ class Translatable {
         inputContainer.appendChild(input);
 
         let deleteBtn = document.createElement('button');
-        this.setAttributes(deleteBtn, {
+        helper.setAttributes(deleteBtn, {
             'class': 'btn btn-danger ml-2 mt-auto deletingBtn',
             'id': `${language}${this.name.capitalize()}DeletingBtn`,
             'type': 'button'

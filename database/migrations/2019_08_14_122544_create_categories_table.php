@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->json('name');
             $table->json('meta')->nullable();
+            $table->string('photo')->nullable();
             $table->string('slug');
             $table->integer('created_at');
             $table->integer('updated_at');

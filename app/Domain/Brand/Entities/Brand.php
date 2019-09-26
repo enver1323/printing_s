@@ -10,7 +10,9 @@ use App\Domain\_core\Photo\Photo;
 use App\Domain\_core\Traits\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Product\Entities\Product;
 use App\Domain\Translation\Traits\Translatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Brand
@@ -54,11 +56,6 @@ class Brand extends Entity
         return ['name', 'description'];
     }
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class, 'category_id', 'id');
-    }
-
     /**
      * @return string
      */
@@ -72,5 +69,13 @@ class Brand extends Entity
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class, 'brand_id', 'id');
     }
 }

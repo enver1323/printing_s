@@ -45,12 +45,15 @@ return [
     'update' => 'Update',
     'search' => 'Search',
 
+    'media' => 'Media',
     'author' => 'Author',
     'option' => 'Option',
     'product' => 'Product',
     'dataKey' => 'Data key',
+    'dataValue' => 'Data value',
 
     'addEntry' => 'Choose language to add entry',
+    'addDataKey' => 'Did not find data key? Use Button to add one',
 
     'userCreate' => 'Create user',
     'lineCreate' => 'Create line',
@@ -63,6 +66,7 @@ return [
     'productCreate' => 'Create Product',
     'languageCreate' => 'Create language',
     'categoryCreate' => 'Create category',
+    'productMediaCreate' => 'Create new media',
 
     'percentFill' => 'Filled Percentage',
 

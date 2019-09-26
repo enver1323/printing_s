@@ -27,7 +27,7 @@ class ProductReadRepository extends ReadRepository
             $query = $query->whereKey($id);
 
         if (isset($name))
-            $query = $query->whereEntry('name', '=', "%$name%");
+            $query = $query->whereEntry('name', 'LIKE', "%$name%");
 
         if (isset($categoryId))
             $query = $query->where('category_id', '=', $categoryId);

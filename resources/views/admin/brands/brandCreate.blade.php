@@ -16,18 +16,6 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label class="col-form-label" for="category">{{__('adminPanel.category')}}</label>
-                            <select name="category_id" id="category" required
-                                    class="form-control{{ $errors->has('category_id') ? ' is-invalid': '' }}">
-                                <option value="">{{__('adminPanel.choose')}}</option>
-                            </select>
-                            @if($errors->has('category_id'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('category_id') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                        <div class="form-group">
                             <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
                             <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"
                                    class="form-control-file{{ $errors->has('photo') ? ' is-invalid': '' }}">

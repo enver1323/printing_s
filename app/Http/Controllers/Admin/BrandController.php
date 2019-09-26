@@ -20,12 +20,10 @@ use Throwable;
  * @package App\Http\Controllers\Admin
  *
  * @property BrandService $service
- * @property Language $language
  */
 class BrandController extends AdminController
 {
     private $service;
-    private $languages;
 
     public function __construct(BrandService $service)
     {
@@ -54,7 +52,6 @@ class BrandController extends AdminController
     {
         return $this->render('brands.brandCreate', [
             'brand' => $brand,
-            'languages' => $this->languages->all(),
         ]);
     }
 

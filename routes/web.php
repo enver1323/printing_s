@@ -8,7 +8,6 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
-    Route::get('/', 'HomeController@index')->name('home');
     Auth::routes();
     Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
@@ -24,9 +23,7 @@ Route::group([
         }
     );
 
-    /**
-     * Admin routes
-     */
+    /** Admin routes */
     Route::group(
         [
             'prefix' => 'admin',
@@ -69,18 +66,28 @@ Route::group([
                     ->name('photo.delete');
 
                 Route::group([
+                    'as' => 'media.',
+                    'prefix' => '{product}/media'
+                ], function() {
+                    Route::get('show', 'ProductController@mediaShow')->name('show');
+                    Route::patch('update', 'ProductController@mediaUpdate')->name('update');
+                });
+
+                Route::group([
                     'as' => 'data.',
                     'prefix' => 'data',
                 ], function () {
-                    /** ProductDataKeys routes */
-                    Route::resource('keys', 'ProductDataController');
+                    /** ProductDataValues routes */
                     Route::group([
-                        'as' => 'keys.',
-                        'prefix' => 'keys',
+                        'as' => 'values.',
+                        'prefix' => '{product}/values',
                     ], function () {
-                        Route::get('{category?}/create', 'ProductDataController@create')->name('create');
+                        Route::get('/', 'ProductController@showValues')->name('show');
+                        Route::post('/update', 'ProductController@updateValues')->name('update');
                     });
 
+                    /** ProductDataKeys routes */
+                    Route::resource('keys', 'ProductDataKeyController');
                 });
 
                 /** ProductOptions routes */
@@ -90,8 +97,36 @@ Route::group([
                     'prefix' => 'options',
                 ], function () {
                     Route::get('{product}/create', 'ProductOptionController@create')->name('create');
+                    Route::group([
+                        'as' => 'data.',
+                        'prefix' => 'data',
+                    ], function () {
+                        /** ProductDataValues routes */
+                        Route::group([
+                            'as' => 'values.',
+                            'prefix' => '{option}/values',
+                        ], function () {
+                            Route::get('/', 'ProductOptionController@showValues')->name('show');
+                            Route::post('/update', 'ProductOptionController@updateValues')->name('update');
+                        });
+                    });
                 });
             });
         }
     );
+
+    /** Frontend routes */
+    Route::group([
+        'namespace' => 'Web'
+    ], function () {
+        Route::get('/', 'IndexController@index')->name('main');
+
+        /** Products Routes */
+        Route::group([
+            'as' => 'products.',
+            'prefix' => 'products'
+        ], function(){
+            Route::get('brands/{brand?}', 'ProductController@brandList')->name('brand');
+        });
+    });
 });

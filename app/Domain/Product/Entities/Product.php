@@ -13,12 +13,14 @@ use App\Domain\Category\Entities\Category;
 use App\Domain\Line\Entities\Line;
 use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Facilities\DataValue;
+use App\Domain\Product\Entities\Facilities\HasFacilities;
 use App\Domain\Translation\Traits\Translatable;
 use App\Domain\User\Entities\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 
@@ -44,8 +46,10 @@ use Illuminate\Support\Collection;
  * @property Brand $brand
  * @property ProductOption[]|Collection $options
  * @property DataValue[]|Collection $dataValues
+ * @property ProductImage[]|Collection $images
+ * @property ProductImage $mainImage
  */
-class Product extends Entity
+class Product extends Entity implements HasFacilities
 {
     use Translatable, Sluggable, HasPhoto, HasMeta;
 
@@ -152,5 +156,21 @@ class Product extends Entity
     public function line(): BelongsTo
     {
         return $this->belongsTo(Line::class, 'line_id', 'id');
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function mainImage(): HasOne
+    {
+        return $this->hasOne(ProductImage::class, 'product_id', 'id')->where('order', 1);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function images(): HasMany
+    {
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 }

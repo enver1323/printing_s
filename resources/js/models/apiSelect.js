@@ -1,4 +1,7 @@
-export default class APISelect {
+import $ from 'jquery';
+import 'select2';
+
+class APISelect {
     constructor(domElement, apiUrl) {
         this.domElement = domElement;
         this.apiUrl = apiUrl;
@@ -7,7 +10,7 @@ export default class APISelect {
     }
 
     initSelect() {
-        jQuery(this.domElement).select2({
+        $(this.domElement).select2({
             ajax: {
                 url: this.apiUrl,
                 dataType: 'json',
@@ -29,3 +32,6 @@ export default class APISelect {
         });
     }
 }
+
+export default APISelect;
+window.APISelect = APISelect;

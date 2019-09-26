@@ -4,11 +4,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Domain\Product\Entities\Product;
+use App\Domain\Product\UseCases\ProductDataService;
 use App\Domain\Product\UseCases\ProductService;
 use App\Domain\Translation\Entities\Language;
+use App\Http\Requests\Admin\Product\ProductMediaUpdateRequest;
 use App\Http\Requests\Admin\Product\ProductSearchRequest;
 use App\Http\Requests\Admin\Product\ProductStoreRequest;
 use App\Http\Requests\Admin\Product\ProductUpdateRequest;
+use App\Http\Requests\Admin\ProductData\ProductDataValueUpdateRequest;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -20,16 +23,19 @@ use Throwable;
  *
  * @property ProductService $service
  * @property Language $languages
+ * @property ProductDataService $dataService
  */
 class ProductController extends AdminController
 {
     private $service;
     private $languages;
+    private $dataService;
 
-    public function __construct(ProductService $service, Language $languages)
+    public function __construct(ProductService $service, ProductDataService $dataService, Language $languages)
     {
         $this->service = $service;
         $this->languages = $languages;
+        $this->dataService = $dataService;
     }
 
     /**
@@ -52,9 +58,7 @@ class ProductController extends AdminController
      */
     public function create(): View
     {
-        return $this->render('products.productCreate',[
-            'languages' => $this->languages->all()
-        ]);
+        return $this->render('products.productCreate');
     }
 
     /**
@@ -90,10 +94,7 @@ class ProductController extends AdminController
      */
     public function edit(Product $product): View
     {
-        return $this->render('products.productEdit', [
-            'product' => $product,
-            'languages' => $this->languages->all()
-        ]);
+        return $this->render('products.productEdit', ['product' => $product]);
     }
 
     /**
@@ -137,6 +138,63 @@ class ProductController extends AdminController
             $product->deletePhoto();
             return redirect()->back()
                 ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Item photo']));
+        } catch (Exception | Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * @param ProductDataValueUpdateRequest $request
+     * @param Product $product
+     * @return RedirectResponse
+     */
+    public function updateValues(ProductDataValueUpdateRequest $request, Product $product): RedirectResponse
+    {
+        try {
+            $this->dataService->updateValues($request, $product);
+            return redirect()->route('admin.products.data.values.show', $product)
+                ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => __('adminPanel.dataValue')]));
+        } catch (Exception | Throwable $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        }
+    }
+
+    /**
+     * @param Product $product
+     * @return View
+     */
+    public function showValues(Product $product): View
+    {
+        $values = $product->dataValues()
+            ->with('dataKey')->get()
+            ->map(function($value){
+                $value->dataKey->name;
+                return $value;
+            });
+        return $this->render('products.data.values.productDataValueShow', [
+            'item' => $product,
+            'values' => $values,
+            'languages' => $this->languages->all()
+        ]);
+    }
+
+    /**
+     * @param Product $product
+     * @return View
+     */
+    public function mediaShow(Product $product): View
+    {
+        return $this->render('products.productMedia', [
+            'product' => $product
+        ]);
+    }
+
+    public function mediaUpdate(ProductMediaUpdateRequest $request, Product $product): RedirectResponse
+    {
+        try {
+            $this->service->updateMedia($request, $product);
+            return redirect()->route('admin.products.media.show', $product)
+            ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => __('adminPanel.media')]));
         } catch (Exception | Throwable $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }

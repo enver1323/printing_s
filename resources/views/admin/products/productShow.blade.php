@@ -10,6 +10,12 @@
                             <a href="{{ route('admin.products.options.create', $product) }}" class="btn btn-success mr-1">
                                 {{__('adminPanel.new') .' '. __('adminPanel.option')}}
                             </a>
+                            <a href="{{ route('admin.products.data.values.show', $product) }}" class="btn btn-secondary mr-1">
+                                {{__('adminPanel.dataValue')}}
+                            </a>
+                            <a href="{{route('admin.products.media.show', $product)}}" class="btn btn-secondary mr-1">
+                                {{__('adminPanel.media')}}
+                            </a>
                             <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-primary mr-1">
                                 {{__('adminPanel.edit')}}
                             </a>
@@ -76,22 +82,6 @@
                         <hr>
                         <div class="row mb-4">
                             <div class="col">
-                                <strong>{{__('adminPanel.location')}}: </strong>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <span>{{__('adminPanel.lat')}}: {{$product->lat}}</span>
-                            </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <span>{{__('adminPanel.lng')}}: {{$product->lng}}</span>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mb-4">
-                            <div class="col">
                                 <strong>{{__('adminPanel.brand')}}:</strong>
                                 <a href="{{route('admin.brands.show', $product->brand)}}"> {{$product->brand->name}}</a>
                             </div>
@@ -100,6 +90,12 @@
                             <div class="col">
                                 <strong>{{__('adminPanel.category')}}:</strong>
                                 <a href="{{route('admin.categories.show', $product->category)}}"> {{$product->category->name}}</a>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col">
+                                <strong>{{__('adminPanel.line')}}:</strong>
+                                <a href="{{route('admin.lines.show', $product->line)}}"> {{$product->line->name}}</a>
                             </div>
                         </div>
                         <div class="row mb-4">

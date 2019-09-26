@@ -6,7 +6,9 @@ namespace App\Domain\Product\UseCases;
 
 use App\Domain\_core\Service;
 use App\Domain\Product\Entities\Product;
+use App\Domain\Product\Entities\ProductImage;
 use App\Domain\Product\Repositories\ProductReadRepository;
+use App\Http\Requests\Admin\Product\ProductMediaUpdateRequest;
 use App\Http\Requests\Admin\Product\ProductSearchRequest;
 use App\Http\Requests\Admin\Product\ProductStoreRequest;
 use App\Http\Requests\Admin\Product\ProductUpdateRequest;
@@ -40,9 +42,7 @@ class ProductService extends Service
      */
     public function search(ProductSearchRequest $request)
     {
-        $query = $this->productReadRepo->getSearchQuery($request->id, $request->name, $request->category_id, $request->brand_id);
-
-        return $query;
+        return $this->productReadRepo->getSearchQuery($request->id, $request->name, $request->category_id, $request->brand_id);
     }
 
     /**
@@ -52,11 +52,9 @@ class ProductService extends Service
      */
     public function store(ProductStoreRequest $request): Product
     {
-        $product = $this->products->create(array_merge($request->except(['photos']), [
+        $product = $this->products->create(array_merge($request->validated(), [
             'created_by' => $request->user()->id
         ]));
-
-//        $product->updatePhoto($request->file('photo'));
 
         return $product;
     }
@@ -69,12 +67,7 @@ class ProductService extends Service
      */
     public function update(ProductUpdateRequest $request, Product $product): Product
     {
-        $product->update($request->except(['photos']));
-
-//        $image = $request->file('photo');
-//        if (isset($image))
-//            $product->updatePhoto($image);
-
+        $product->update($request->validated());
         return $product;
     }
 
@@ -88,5 +81,27 @@ class ProductService extends Service
         $product = $this->products->find($id);
 
         return $product->delete();
+    }
+
+    /**
+     * @param ProductMediaUpdateRequest $request
+     * @param Product $product
+     */
+    public function updateMedia(ProductMediaUpdateRequest $request, Product $product)
+    {
+        $order = 1;
+        $images = collect();
+
+        $photos = collect()->wrap($request->photos)->map(function ($value, $key) use (&$images, &$order) {
+            $images->push(['order' => $order++]);
+            return $value;
+        });
+
+        /** @var ProductImage $images */
+        $images = $product->images()->createMany($images->toArray());
+
+        foreach ($photos as $i => $photo) {
+            $images[$i]->updatePhoto($photo);
+        }
     }
 }

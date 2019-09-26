@@ -7,6 +7,7 @@ namespace App\Http\Resources\Admin\Brand;
 use App\Domain\Brand\Entities\Brand;
 use App\Http\Resources\Admin\Category\CategoryResource;
 use App\Http\Resources\BaseJsonResource;
+use Illuminate\Http\Request;
 
 /**
  * Class CategoryResource
@@ -17,7 +18,7 @@ use App\Http\Resources\BaseJsonResource;
 class BrandResource extends BaseJsonResource
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return array|void
      */
     public function toArray($request)
@@ -28,7 +29,7 @@ class BrandResource extends BaseJsonResource
             self::SLUG => $this->slug,
             self::DESCRIPTION => $this->description,
             self::CATEGORY => new CategoryResource($this->whenLoaded('category')),
-            self::IMAGE => $this->photo->getUrl(),
+            self::IMAGE => isset($this->photo) ? $this->photo->getUrl() : null,
         ];
     }
 }

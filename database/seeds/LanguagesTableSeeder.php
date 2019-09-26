@@ -1,4 +1,4 @@
-0<?php
+<?php
 
 use App\Domain\Translation\Entities\Language;
 use Illuminate\Database\Seeder;

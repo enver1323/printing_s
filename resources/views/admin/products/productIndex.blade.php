@@ -3,6 +3,9 @@
     <div class="card shadow">
         <div class="card-header">
             <a href="{{route('admin.products.create')}}" class="btn btn-primary mr-1">{{__('adminPanel.create')}}</a>
+            <a href="{{route('admin.products.data.keys.index')}}" class="btn btn-secondary mr-1">
+                {{Str::plural(__('adminPanel.dataKey'))}}
+            </a>
         </div>
 
         <div class="card-body">
@@ -14,12 +17,14 @@
                 </div>
                 <div class="form-group mx-1 mb-1">
                     <label for="name" class="sr-only">{{__('adminPanel.name')}}</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="{{__('adminPanel.name')}}"
+                    <input type="text" class="form-control" id="name" name="name"
+                           placeholder="{{__('adminPanel.name')}}"
                            value="{{request('name')}}">
                 </div>
                 <div class="form-group mx-1 mb-1">
                     <label for="slug" class="sr-only">{{__('adminPanel.slug')}}</label>
-                    <input type="text" class="form-control" id="slug" name="slug" placeholder="{{__('adminPanel.slug')}}"
+                    <input type="text" class="form-control" id="slug" name="slug"
+                           placeholder="{{__('adminPanel.slug')}}"
                            value="{{request('slug')}}">
                 </div>
                 <div class="form-group mx-1 mb-1">
@@ -35,7 +40,8 @@
                     </select>
                 </div>
                 <div class="mx-1 mb-1">
-                    <button class="btn btn-secondary" type="submit"><i class="fa fa-search"></i> {{__('adminPanel.search')}}</button>
+                    <button class="btn btn-secondary" type="submit"><i
+                            class="fa fa-search"></i> {{__('adminPanel.search')}}</button>
                 </div>
 
             </form>
@@ -76,6 +82,7 @@
 
 @endsection
 @push('scripts')
+    <script type="text/javascript" src="{{mix('js/apiSelect.js', 'build')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#brand", "{{route('ajax.brands')}}");

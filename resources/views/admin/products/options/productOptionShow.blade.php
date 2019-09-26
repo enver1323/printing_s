@@ -6,6 +6,9 @@
                 <a href="{{ route('admin.products.options.edit', $option) }}" class="btn btn-primary mr-1">
                     {{__('adminPanel.edit')}}
                 </a>
+                <a href="{{ route('admin.products.options.data.values.show', $option) }}" class="btn btn-secondary mr-1">
+                    {{__('adminPanel.dataValue')}}
+                </a>
                 <form action="{{route('admin.products.options.destroy', $option)}}" method="POST" class="mr-1">
                     @csrf
                     @method('DELETE')

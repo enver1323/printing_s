@@ -4,10 +4,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 @import '~font-awesome/scss/font-awesome';
+@import "frontend/main";
 
 .navbar {
   background-color: $primary;
-  padding: 0.35rem 1rem;
 }
 
 body {

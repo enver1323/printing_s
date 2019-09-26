@@ -40,7 +40,7 @@ class UserService
      */
     public function search(UserSearchRequest $request): Builder
     {
-        $query = $this->userReadRepo->getSearchQuery($this->users, $request->id);
+        $query = $this->userReadRepo->getSearchQuery($request->id, $request->name, $request->email, $request->role);
 
         return $query->orderBy('id', 'desc');
     }

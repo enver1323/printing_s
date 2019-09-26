@@ -43,20 +43,27 @@ class CategoryService extends Service
     /**
      * @param CategoryStoreRequest $request
      * @return Category
+     * @throws \Throwable
      */
     public function create(CategoryStoreRequest $request): Category
     {
-        return $this->categories->create($request->validated());
+        $category = $this->categories->create($request->except('photo'));
+        $category->updatePhoto($request->file('photo'));
+
+        return $category;
     }
 
     /**
      * @param CategoryUpdateRequest $request
      * @param Category $category
      * @return Category
+     * @throws \Throwable
      */
     public function update(CategoryUpdateRequest $request, Category $category): Category
     {
-        $category->update($request->validated());
+        $category->update($request->except('photo'));
+        $category->updatePhoto($request->file('photo'));
+
         return $category;
     }
 
