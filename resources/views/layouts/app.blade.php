@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ env('APP_NAME') }}</title>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css','build') }}" rel="stylesheet">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>{{env('APP_NAME')}}</title>
+
+    <link rel="stylesheet" href="{{mix('css/app.css', 'build')}}">
+    @yield('links')
 </head>
-<body id="app">
+<body>
 <header>
     @include('frontend._nav')
+    @yield('header')
 </header>
-<main class="app-content">
-    {{--        @section('breadcrumbs',Breadcrumbs::render())--}}
-    {{--        @yield('breadcrumbs')--}}
-    @include('layouts.partials.flash')
+
+<main>
     @yield('content')
 </main>
+
 @include('frontend.footer')
-<script src="{{ mix('js/app.js','build') }}" defer></script>
 </body>
+<script src="{{mix('js/app.js', 'build')}}"></script>
+@stack('scripts')
 </html>

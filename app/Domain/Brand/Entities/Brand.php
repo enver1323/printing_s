@@ -11,6 +11,7 @@ use App\Domain\_core\Traits\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Product\Entities\Product;
+use App\Domain\Product\Entities\ProductGroup;
 use App\Domain\Translation\Traits\Translatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -27,7 +28,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *
  * @property Category $category
  */
-class Brand extends Entity
+class Brand extends Entity implements ProductGroup
 {
     use Translatable, HasPhoto, Sluggable, HasMeta;
     public $timestamps = true;

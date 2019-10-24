@@ -8,8 +8,11 @@ use App\Domain\_core\Entity;
 use App\Domain\_core\Photo\HasPhoto;
 use App\Domain\_core\Traits\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
+use App\Domain\Product\Entities\Product;
+use App\Domain\Product\Entities\ProductGroup;
 use App\Domain\Translation\Traits\Translatable;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Category
@@ -23,7 +26,7 @@ use Carbon\Carbon;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
-class Category extends Entity
+class Category extends Entity implements ProductGroup
 {
     use Translatable, Sluggable, HasMeta, HasPhoto;
 
@@ -71,5 +74,13 @@ class Category extends Entity
     protected function getPhotoDirectoryPath(): string
     {
         return "categories";
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class, 'category_id', 'id');
     }
 }

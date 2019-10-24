@@ -7,7 +7,6 @@ use App\Domain\Product\Entities\Product;
 use App\Domain\Product\UseCases\ProductDataService;
 use App\Domain\Product\UseCases\ProductService;
 use App\Domain\Translation\Entities\Language;
-use App\Http\Requests\Admin\Product\ProductMediaUpdateRequest;
 use App\Http\Requests\Admin\Product\ProductSearchRequest;
 use App\Http\Requests\Admin\Product\ProductStoreRequest;
 use App\Http\Requests\Admin\Product\ProductUpdateRequest;
@@ -176,27 +175,5 @@ class ProductController extends AdminController
             'values' => $values,
             'languages' => $this->languages->all()
         ]);
-    }
-
-    /**
-     * @param Product $product
-     * @return View
-     */
-    public function mediaShow(Product $product): View
-    {
-        return $this->render('products.productMedia', [
-            'product' => $product
-        ]);
-    }
-
-    public function mediaUpdate(ProductMediaUpdateRequest $request, Product $product): RedirectResponse
-    {
-        try {
-            $this->service->updateMedia($request, $product);
-            return redirect()->route('admin.products.media.show', $product)
-            ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => __('adminPanel.media')]));
-        } catch (Exception | Throwable $e) {
-            return redirect()->back()->with('error', $e->getMessage());
-        }
     }
 }

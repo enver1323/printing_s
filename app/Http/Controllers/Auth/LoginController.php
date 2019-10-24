@@ -46,9 +46,8 @@ class LoginController extends Controller
         if($authenticate){
             $request->session()->regenerate();
             $this->clearLoginAttempts($request);
-            $user = Auth::user();
 
-            return redirect()->intended(route('cabinet.home'));
+            return redirect()->intended(route('main'));
         }
         $this->incrementLoginAttempts($request);
         throw ValidationException::withMessages(['email' => [trans('auth.failed')]]);
@@ -63,7 +62,7 @@ class LoginController extends Controller
     {
         Auth::guard()->logout();
         $request->session()->invalidate();
-        return redirect()->route('home');
+        return redirect()->route('main');
     }
 
     protected function username()

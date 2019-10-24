@@ -39,8 +39,8 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <p>&copy <a target="_blank" href="https://extravel.com">extravel.com</a> 2019 | All Rights Reserved.</p>
-                    <span>Powered by <a target="_blank" href="https://madetec.uz">Madetec Solution</a></span>
+                    <p>&copy <a target="_blank" href="https://extravel.com">printing.com</a> {{date('Y')}} | All Rights Reserved.</p>
+                    <span>Powered by <a target="_blank" href="https://madetec.uz">Enver Menadjiev</a></span>
                 </div>
             </div>
         </footer>

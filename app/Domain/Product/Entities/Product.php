@@ -171,6 +171,6 @@ class Product extends Entity implements HasFacilities
      */
     public function images(): HasMany
     {
-        return $this->hasMany(ProductImage::class, 'product_id', 'id');
+        return $this->hasMany(ProductImage::class, 'product_id', 'id')->orderBy('order');
     }
 }

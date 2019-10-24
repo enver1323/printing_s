@@ -37,8 +37,21 @@ Route::group([
             /** Users routes */
             Route::resource('users', 'UserController');
 
+            /** Articles routes */
+            Route::resource('articles', 'ArticleController');
+
             /** Languages routes */
             Route::resource('languages', 'LanguageController');
+
+            /** Slides routes */
+            Route::resource('slides', 'SlideController');
+            Route::group([
+                'as' => 'slides.',
+                'prefix' => 'slides/{slide}',
+            ], function () {
+                Route::get('left', 'SlideController@imageLeft')->name('left');
+                Route::get('right', 'SlideController@imageRight')->name('right');
+            });
 
             /** Categories routes */
             Route::resource('categories', 'CategoryController');
@@ -52,8 +65,7 @@ Route::group([
                 'as' => 'brands.',
                 'prefix' => 'brands',
             ], function () {
-                Route::delete('{brand}/photo/delete', 'BrandController@deletePhoto')
-                    ->name('photo.delete');
+                Route::delete('{brand}/photo/delete', 'BrandController@deletePhoto')->name('photo.delete');
             });
 
             /** Products routes */
@@ -62,15 +74,23 @@ Route::group([
                 'as' => 'products.',
                 'prefix' => 'products',
             ], function () {
-                Route::delete('{product}/photo/delete', 'ProductController@deletePhoto')
-                    ->name('photo.delete');
-
+                /** ProductMedia Routes */
                 Route::group([
                     'as' => 'media.',
                     'prefix' => '{product}/media'
-                ], function() {
-                    Route::get('show', 'ProductController@mediaShow')->name('show');
-                    Route::patch('update', 'ProductController@mediaUpdate')->name('update');
+                ], function () {
+                    Route::get('show', 'ProductMediaController@mediaShow')->name('show');
+                    Route::patch('update', 'ProductMediaController@mediaUpdate')->name('update');
+
+                    /** ProductImages Routes */
+                    Route::group([
+                        'as' => 'image.',
+                        'prefix' => 'image/{image}'
+                    ], function () {
+                        Route::get('left', 'ProductMediaController@imageLeft')->name('toLeft');
+                        Route::get('right', 'ProductMediaController@imageRight')->name('toRight');
+                        Route::get('delete', 'ProductMediaController@imageDelete')->name('delete');
+                    });
                 });
 
                 Route::group([
@@ -119,14 +139,27 @@ Route::group([
     Route::group([
         'namespace' => 'Web'
     ], function () {
+        /** Index Routes */
         Route::get('/', 'IndexController@index')->name('main');
+        Route::get('/contacts', 'IndexController@contacts')->name('contacts');
 
         /** Products Routes */
         Route::group([
             'as' => 'products.',
             'prefix' => 'products'
-        ], function(){
+        ], function () {
+            Route::get('categories/{category?}', 'ProductController@categoryList')->name('category');
             Route::get('brands/{brand?}', 'ProductController@brandList')->name('brand');
+            Route::get('{product}', 'ProductController@show')->name('show');
+        });
+
+        /** Articles Routes */
+        Route::group([
+            'as' => 'articles.',
+            'prefix' => 'articles'
+        ], function() {
+            Route::get('', 'ArticleController@index')->name('index');
+            Route::get('{article}', 'ArticleController@show')->name('show');
         });
     });
 });

@@ -1,13 +1,13 @@
 <?php
 
+use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
-use App\Domain\Country\Entities\Country;
-use App\Domain\Country\Entities\Region;
 use App\Domain\Line\Entities\Line;
 use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
+use App\Domain\Slide\Entities\Slide;
 use App\Domain\Translation\Entities\Language;
 use App\Domain\User\Entities\User;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
@@ -95,7 +95,7 @@ Breadcrumbs::for('admin.categories.index', function (Crumbs $crumbs) {
 });
 
 Breadcrumbs::for('admin.categories.create', function (Crumbs $crumbs) {
-        $crumbs->parent('admin.categories.index');
+    $crumbs->parent('admin.categories.index');
 
     $crumbs->push(__('breadcrumbs.create'), route('admin.categories.create'));
 });
@@ -173,7 +173,7 @@ Breadcrumbs::for('admin.products.edit', function (Crumbs $crumbs, Product $produ
     $crumbs->push(__('breadcrumbs.edit'), route('admin.products.edit', $product));
 });
 
-Breadcrumbs::for('admin.products.media.show', function(Crumbs $crumbs, Product $product){
+Breadcrumbs::for('admin.products.media.show', function (Crumbs $crumbs, Product $product) {
     $crumbs->parent('admin.products.show', $product);
     $crumbs->push(__('breadcrumbs.media'), route('admin.products.media.show', $product));
 });
@@ -206,7 +206,7 @@ Breadcrumbs::for('admin.products.options.data.values.show', function (Crumbs $cr
 });
 
 /** Admin ProductDataKeys */
-Breadcrumbs::for('admin.products.data.keys.index', function(Crumbs $crumbs){
+Breadcrumbs::for('admin.products.data.keys.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.products.index');
     $crumbs->push(__('breadcrumbs.dataKeys'), route('admin.products.data.keys.index'));
 });
@@ -224,4 +224,46 @@ Breadcrumbs::for('admin.products.data.keys.create', function (Crumbs $crumbs) {
 Breadcrumbs::for('admin.products.data.keys.edit', function (Crumbs $crumbs, DataKey $key) {
     $crumbs->parent('admin.products.data.keys.show', $key);
     $crumbs->push(__('breadcrumbs.edit'), route('admin.products.data.keys.edit', $key));
+});
+
+/** Admin Slides */
+Breadcrumbs::for('admin.slides.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.slides'), route('admin.slides.index'));
+});
+
+Breadcrumbs::for('admin.slides.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.slides.index');
+    $crumbs->push(__('breadcrumbs.create'), route('admin.slides.create'));
+});
+
+Breadcrumbs::for('admin.slides.show', function (Crumbs $crumbs, Slide $slide) {
+    $crumbs->parent('admin.slides.index');
+    $crumbs->push($slide->order, route('admin.slides.show', $slide));
+});
+
+Breadcrumbs::for('admin.slides.edit', function (Crumbs $crumbs, Slide $slide) {
+    $crumbs->parent('admin.slides.show', $slide);
+    $crumbs->push(__('breadcrumbs.edit'), route('admin.slides.edit', $slide));
+});
+
+/** Admin Slides */
+Breadcrumbs::for('admin.articles.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.articles'), route('admin.articles.index'));
+});
+
+Breadcrumbs::for('admin.articles.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.articles.index');
+    $crumbs->push(__('breadcrumbs.create'), route('admin.articles.create'));
+});
+
+Breadcrumbs::for('admin.articles.show', function (Crumbs $crumbs, Article $article) {
+    $crumbs->parent('admin.articles.index');
+    $crumbs->push($article->name, route('admin.articles.show', $article));
+});
+
+Breadcrumbs::for('admin.articles.edit', function (Crumbs $crumbs, Article $article) {
+    $crumbs->parent('admin.articles.show', $article);
+    $crumbs->push(__('breadcrumbs.edit'), route('admin.articles.edit', $article));
 });

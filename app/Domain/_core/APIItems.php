@@ -14,12 +14,13 @@ interface APIItems
     const ID = 'id';
     const NAME = 'name';
     const SLUG = 'slug';
+    const ROLE = 'role';
+    const EMAIL = 'email';
     const IMAGE = 'image';
     const BRAND = 'brand';
     const DEPTH = 'depth';
     const PARENT = 'parent';
     const OPTIONS = 'options';
-    const COUNTRY = 'country';
     const CATEGORY = 'category';
     const CHILDREN = 'children';
     const DESCRIPTION = 'description';

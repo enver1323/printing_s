@@ -22,8 +22,9 @@ Route::group([
     'as' => 'ajax.',
     'prefix' => 'ajax',
     'namespace' => 'API',
-//    'middleware' => ['ajax']
+    'middleware' => ['ajax']
 ], function () {
+    Route::get('users', 'AjaxAdminController@getUsers')->name('users');
     Route::get('brands', 'AjaxAdminController@getBrands')->name('brands');
     Route::get('products', 'AjaxAdminController@getProducts')->name('products');
     Route::group([

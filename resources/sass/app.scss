@@ -1,25 +1,6 @@
-// Variables
-@import 'variables';
+@import "~jquery-ui/themes/base/all.css";
+@import "~bootstrap/scss/bootstrap";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import '~font-awesome/scss/font-awesome';
+@import "frontend/fonts";
+@import "frontend/mdb.min.css";
 @import "frontend/main";
-
-.navbar {
-  background-color: $primary;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.app-content {
-  flex: 1;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  color: $white;
-}

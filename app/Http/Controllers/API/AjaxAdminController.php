@@ -9,16 +9,19 @@ use App\Domain\Category\ReadRepositories\CategoryReadRepository;
 use App\Domain\Line\ReadRepositories\LineReadRepository;
 use App\Domain\Product\Repositories\Facilities\ProductDataKeyReadRepository;
 use App\Domain\Product\Repositories\ProductReadRepository;
+use App\Domain\User\Repositories\UserReadRepository;
 use App\Http\Requests\Admin\Brand\BrandSearchRequest;
 use App\Http\Requests\Admin\Category\CategorySearchRequest;
 use App\Http\Requests\Admin\Line\LineSearchRequest;
 use App\Http\Requests\Admin\Product\ProductSearchRequest;
 use App\Http\Requests\Admin\ProductData\ProductDataKeySearchRequest;
+use App\Http\Requests\Admin\User\UserSearchRequest;
 use App\Http\Resources\Admin\Brand\BrandResource;
 use App\Http\Resources\Admin\Category\CategoryResource;
 use App\Http\Resources\Admin\Line\LineResource;
 use App\Http\Resources\Admin\Product\ProductResource;
 use App\Http\Resources\Admin\ProductData\ProductDataKeyResource;
+use App\Http\Resources\Admin\User\UserResource;
 
 class AjaxAdminController extends APIController
 {
@@ -87,5 +90,18 @@ class AjaxAdminController extends APIController
             ->get();
 
         return $this->render(ProductDataKeyResource::collection($keys));
+    }
+
+    /**
+     * @param UserSearchRequest $request
+     * @return mixed
+     */
+    public function getUsers(UserSearchRequest $request)
+    {
+        $users = UserReadRepository::getSearchQuery($request->id, $request->name)
+            ->take(self::ITEMS_PER_PAGE)
+            ->get();
+
+        return $this->render(UserResource::collection($users));
     }
 }

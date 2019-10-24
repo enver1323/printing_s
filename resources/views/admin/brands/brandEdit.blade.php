@@ -13,7 +13,7 @@
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header">
-                        <h4 class="text-primary">{{__('adminPanel.countryCreate')}}</h4>
+                        <h4 class="text-primary">{{__('adminPanel.brandCreate')}}</h4>
                     </div>
                     <div class="card-body">
                         <div class="form-group">

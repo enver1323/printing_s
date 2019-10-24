@@ -15,10 +15,10 @@ return [
     'description' => 'Description',
 
     'new' => 'New',
+    'link' => 'Link',
     'order' => 'Order',
-    'region' => 'Region',
-    'choose' => 'Choose option',
     'category' => 'Category',
+    'choose' => 'Choose option',
 
     'line' => 'Line',
     'brand' => 'Brand',
@@ -31,6 +31,7 @@ return [
     'passwordConfirm' => 'Password confirmation',
 
     'photo' => 'Photo',
+    'manual' => 'Manual',
     'gender' => 'Gender',
     'profile' => 'Profile',
     'surname' => 'Surname',
@@ -58,8 +59,10 @@ return [
     'userCreate' => 'Create user',
     'lineCreate' => 'Create line',
     'brandCreate' => 'Create brand',
+    'slideCreate' => 'Create slide',
     'regionCreate' => 'Create region',
     'optionCreate' => 'Create product option',
+    'articleCreate' => 'Create Article',
     'dataKeyCreate' => 'Create Data Key',
     'countryCreate' => 'Create country',
     'profileCreate' => 'Create profile',

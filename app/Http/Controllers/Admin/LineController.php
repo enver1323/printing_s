@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Line\Entities\Line;
 use App\Domain\Line\UseCases\LineService;
-use App\Domain\Translation\Entities\Language;
 use App\Http\Requests\Admin\Line\LineSearchRequest;
 use App\Http\Requests\Admin\Line\LineStoreRequest;
 use App\Http\Requests\Admin\Line\LineUpdateRequest;
@@ -118,21 +117,6 @@ class LineController extends AdminController
                 ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Line']));
         } catch (Throwable | Exception $e) {
             return redirect()->route('admin.lines.index')->with('error', $e->getMessage());
-        }
-    }
-
-    /**
-     * @param Line $Line
-     * @return RedirectResponse
-     */
-    public function deletePhoto(Line $Line)
-    {
-        try {
-            $Line->deletePhoto();
-            return redirect()->back()
-                ->with('success', __('adminPanel.messages.adminAction.success.delete', ['name' => 'Line photo']));
-        } catch (\Exception | \Throwable $e) {
-            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

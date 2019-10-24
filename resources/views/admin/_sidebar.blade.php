@@ -46,6 +46,18 @@
             <span>{{__('breadcrumbs.languages')}}</span>
         </a>
     </li>
+    <li class="nav-item {{request()->routeIs('admin.slides*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.slides.index') }}">
+            <i class="fas fa-image"></i>
+            <span>{{__('breadcrumbs.slides')}}</span>
+        </a>
+    </li>
+    <li class="nav-item {{request()->routeIs('admin.articles*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.articles.index') }}">
+            <i class="fas fa-newspaper"></i>
+            <span>{{__('breadcrumbs.articles')}}</span>
+        </a>
+    </li>
 
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
@@ -68,7 +80,7 @@
 
     <li class="nav-item {{request()->routeIs('admin.lines*') ? 'active' : ''}}">
         <a class="nav-link" href="{{ route('admin.lines.index') }}">
-            <i class="fas fa-line"></i>
+            <i class="fas fa-align-justify"></i>
             <span>{{__('breadcrumbs.lines')}}</span>
         </a>
     </li>

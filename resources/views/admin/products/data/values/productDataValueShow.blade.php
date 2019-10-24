@@ -1,3 +1,11 @@
+<?
+
+use App\Domain\Product\Entities\Product;
+use App\Domain\Product\Entities\ProductOption;
+
+/** @var  Product|ProductOption $item */
+$route = is_a($item, Product::class) ? route('admin.products.data.values.update', $item) : route('admin.products.options.data.values.update', $item)
+?>
 @extends('layouts.admin')
 @section('content')
     <div class="card shadow mb-4">
@@ -5,7 +13,7 @@
             <h4 class="text-primary">{{ucfirst($item->name)}}</h4>
         </div>
         <div class="card-body">
-            <form action="{{route('admin.products.options.data.values.update', $item)}}" method="post">
+            <form action="{{$route}}" method="post">
                 @csrf
                 <div id="container">
                 </div>

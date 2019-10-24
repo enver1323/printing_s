@@ -144,6 +144,7 @@ class ProductOptionController extends AdminController
     public function updateValues(ProductDataValueUpdateRequest $request, ProductOption $option): RedirectResponse
     {
         $this->dataService->updateValues($request, $option);
-        return redirect()->route('admin.products.options.data.values.show', $option);
+        return redirect()->route('admin.products.options.data.values.show', $option)
+            ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Option']));
     }
 }

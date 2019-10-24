@@ -40,7 +40,7 @@ class ProductImage extends Entity
      */
     protected function getPhotoDirectoryPath(): string
     {
-        return 'products';
+        return "products/$this->product_id";
     }
 
     /**

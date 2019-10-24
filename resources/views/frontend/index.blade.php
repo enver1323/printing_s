@@ -1,55 +1,164 @@
 @extends('layouts.app')
-@section('content')
-    <section id="main-slider">
-        <div class="container">
-            <div class="main-slider">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img src="storage/slider/slider_photo_1.jpg" width="450" height="350"/>
-                    </div>
-                    <div class="col-md-6">
-                        <h1>
-                            Company<br/>
-                            <p class="tab">Brand new<br/></p>
-                            <p class="double-tab">Product</p>
-                            <br/>
-                        </h1>
-                        <h2>.!. Laser jet .!. Paper formate</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="Categories">
-        <div class="container">
-            <div class="box box-first center">
-                <h2>Categories</h2>
-                <div class="row">
-                    @foreach($categories as $category)
-                        <div class="col-md-3 col-6 p-0 img-button cat-item">
-                            <img src="{{$category->photo ? $category->photo->getUrl(): ''}}"/>
-                            <div class="cat-item-mask">
-                                <h5>{{$category->name}}</h5>
+@section('links')
+    <link rel="stylesheet" href="{{mix('css/owlCarousel.css', 'build')}}">
+@endsection
+@section('header')
+    <!-- Poster -->
+    <div class="owl-carousel owl-theme" id="owl">
+        @foreach($slides as $slide)
+            <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <h1><strong>{!! $slide->description !!}</strong></h1>
                             </div>
                         </div>
-                    @endforeach
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+@endsection
+@section('content')
+
+    <section class="categories-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title section-title-blue">
+                        <div>
+                            <h2>
+                                {{strtoupper(__('frontend.browseCategories'))}}!
+                            </h2>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row categories">
+                @foreach($categories as $category)
+                    <div class="col-xl col-lg-6 col-md-6 col-12">
+                        <div class="item-category">
+                            <!-- Card -->
+                            <div class="card">
+                                <div class="text-white text-center card-content">
+                                    <h6 class="card-title">
+                                        <strong><a href="#">{{$category->name}}</a></strong>
+                                    </h6>
+                                    <p>(
+                                        {{sprintf('%s %s', $category->products_count, Str::plural(__('frontend.product')))}}
+                                        )
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Card -->
+                        </div>
+                    </div>
+                @endforeach
+                <div class="col-xl col-lg-12 col-md-12 col-12">
+                    <div class="item-category">
+                        <!-- Card -->
+                        <div class="card">
+                            <div class="text-white text-center card-content-all gradient-blue">
+                                <div class="dashed-bordered">
+                                    <h6 class="card-title">
+                                        <strong>
+                                            <a href="{{route('products.category')}}">
+                                                {{sprintf('%s %s',__('frontend.all'), __('frontend.categories'))}}
+                                            </a>
+                                        </strong>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="Top_products">
+
+    <section class="jobs-wrapper">
         <div class="container">
-            <div class="box even center">
-                <h2>Top Products</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title section-title-blue">
+                        <div>
+                            <a href="{{route('articles.index')}}">
+                                <h2>
+                                    {{strtoupper(__('frontend.articles'))}}
+                                </h2>
+                            </a>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach($articles as $article)
+                    <div class="col-lg-6 col-md-6 job">
+                        <div class="card">
+                            <div class="row">
+                                <!-- Card image -->
+                                <div class="col-4 card-image-wrapper">
+                                    <div class="card-image">
+                                        <img src="{{$article->photo->getUrl()}}" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                                <!--Card image -->
+                                <div class="col-8">
+                                    <!-- Card content -->
+                                    <div class="card-body">
+                                        <!-- Category & Title -->
+                                        <h5 class="card-title">
+                                            <strong>
+                                                <a href="{{route('articles.show', $article)}}">
+                                                    {{$article->name}}
+                                                </a>
+                                            </strong>
+                                        </h5>
+                                        <!-- /Category & Title -->
+                                        <p>
+                                            {!! $article->description !!}
+                                        </p>
+                                    </div>
+                                    <!-- /Card content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Card -->
+                @endforeach
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="employers-wrapper">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title section-title-white">
+                            <div>
+                                <h2>
+                                    {{__('frontend.topProducts')}}
+                                </h2>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     @foreach($products as $product)
-                        <div class="col-md-2 col-6 p-0">
-                            <figure>
-                                <img src="{{isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl(): ''}}"/>
-                                <figcaption>{{$product->name}}</figcaption>
-                            </figure>
+                        <div class="col-12 col-md-4 d-flex align-items-stretch">
+                            @include('frontend.products.productListCard', $product)
                         </div>
                     @endforeach
                 </div>
@@ -57,74 +166,60 @@
         </div>
     </section>
 
-    <section id="Brands">
+
+    <section class="instructions-wrapper">
         <div class="container">
-            <div class="box">
-                <div class="center">
-                    <h2>Brands</h2>
-                </div>
-                <div class="row">
-                    @foreach($brands as $brand)
-                        <div class="col-md-2 col-6 p-0 img-button">
-                            <img src="{{$brand->photo ? $brand->photo->getUrl() : 'test'}}"/>
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title section-title-blue">
+                        <div>
+                            <h2>
+                                {{__('frontend.brands')}}
+                            </h2>
+                            <hr>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
+            </div>
+
+            <div class="row">
+                @foreach($brands as $brand)
+                    <div class="col-xl-3 col-lg-3 col-md-12">
+                        <div class="instruction">
+
+                            <div class="item-category">
+                                <!-- Card -->
+                                <div class="card">
+                                    <div class="text-white text-center card-content">
+                                        <h6 class="card-title">
+                                            <strong><a href="#">{{$brand->name}}</a></strong>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <!-- Card -->
+                            </div>
+                            <hr>
+                            <p class="instruction-desc">
+                                {{$brand->description}}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section id="Contact_us">
-        <div class="container">
-            <div class="box even">
-                <div class="center">
-                    <h2>Contact_us</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="center">
-                            <a href="" title="Our Telegram public channel">
-                                <img
-                                    class="button"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png"
-                                    width="30%"
-                                />
-                            </a>
-                        </div>
-                    </div>
-                    <div class="contact-form col-md-6">
-                        <form>
-                            <div class="form-group">
-                                <input
-                                    type="text"
-                                    class="form-control form-control-lg w-1000"
-                                    placeholder="Name"
-                                    name=""
-                                />
-                            </div>
-                            <div class="form-group">
-                                <input
-                                    type="email"
-                                    class="form-control form-control-lg w-1000"
-                                    placeholder="E-mail"
-                                    name="email"
-                                />
-                            </div>
-                            <div class="form-group">
-                  <textarea
-                      class="form-control form-control-lg w-1000"
-                  ></textarea>
-                            </div>
-                            <input
-                                type="submit"
-                                class="btn btn-secondary btn-block"
-                                value="Submit"
-                                name=""
-                            />
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection
+@push('scripts')
+    <script type="text/javascript" src="{{mix('js/owlCarousel.js', 'build')}}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#owl').owlCarousel({
+                loop: true,
+                margin: 10,
+                items: 1,
+                responsiveClass: true,
+            })
+        });
+    </script>
+@endpush

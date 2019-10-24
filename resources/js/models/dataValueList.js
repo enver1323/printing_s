@@ -17,6 +17,7 @@ export default class DataValueList {
     }
 
     setEntries(entries) {
+        console.log(entries);
         for (let k in entries){
             let values = JSON.parse(entries[k]['value']);
             let currentLanguage = window.location.pathname.split('/')[1];

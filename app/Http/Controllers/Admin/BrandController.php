@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Brand\UseCases\BrandService;
-use App\Domain\Translation\Entities\Language;
 use App\Http\Requests\Admin\Brand\BrandSearchRequest;
 use App\Http\Requests\Admin\Brand\BrandStoreRequest;
 use App\Http\Requests\Admin\Brand\BrandUpdateRequest;
