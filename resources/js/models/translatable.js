@@ -104,9 +104,10 @@ class Translatable {
         inputContainer.appendChild(label);
 
         let input = document.createElement(this.inputType);
+        let inputId = `${language}${this.name.capitalize()}`;
         helper.setAttributes(input, {
             'class': 'form-control',
-            'id': `${language}${this.name.capitalize()}`,
+            'id': inputId,
             'type': 'text',
             'value' : value,
             'name': `${this.name}[${language}]`,
@@ -128,6 +129,9 @@ class Translatable {
 
         this.container.appendChild(div);
         this.container.insertBefore(div, this.select.parentNode.parentNode);
+
+        if(this.inputType === 'textarea')
+            CKEDITOR.replace(inputId);
     }
 
     removeEntryField(entry) {

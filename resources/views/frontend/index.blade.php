@@ -46,9 +46,12 @@
                             <div class="card">
                                 <div class="text-white text-center card-content">
                                     <h6 class="card-title">
-                                        <strong><a href="#">{{$category->name}}</a></strong>
+                                        <strong>
+                                            <a href="{{route('products.category', $category)}}">{{$category->name}}</a>
+                                        </strong>
                                     </h6>
-                                    <p>(
+                                    <p>
+                                        (
                                         {{sprintf('%s %s', $category->products_count, Str::plural(__('frontend.product')))}}
                                         )
                                     </p>
@@ -192,7 +195,9 @@
                                 <div class="card">
                                     <div class="text-white text-center card-content">
                                         <h6 class="card-title">
-                                            <strong><a href="#">{{$brand->name}}</a></strong>
+                                            <strong>
+                                                <a href="{{route('products.brand', $brand)}}">{{$brand->name}}</a>
+                                            </strong>
                                         </h6>
                                     </div>
                                 </div>

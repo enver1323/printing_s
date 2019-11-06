@@ -92,7 +92,7 @@ class ProductController extends WebController
      */
     public function show(Product $product): View
     {
-        $product->load('dataValues.dataKey', 'dataValues', 'images');
+        $product->load('dataValues.dataKey', 'images', 'options', 'options.dataValues.dataKey');
 
         return $this->render('products.product', [
             'product' => $product

@@ -20,10 +20,9 @@ mix
     .js('resources/js/models/apiSelect.js', 'js')
     .js('resources/js/models/dataValueList.js', 'js')
     .js('resources/js/models/owlCarousel.js', 'js')
+    .js('resources/js/models/productListSidebar.js', 'js')
     .sass('resources/sass/app.scss', 'css')
     .sass('resources/sass/frontend/owlCarousel.scss', 'css')
     .sass('resources/sass/admin.scss', 'css')
-    .copy([
-        'resources/images',
-    ], 'public/images')
+    .copy('resources/images', 'public/images')
     .version();

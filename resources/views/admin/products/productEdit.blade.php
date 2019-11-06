@@ -54,7 +54,8 @@
                             <label class="col-form-label" for="line">{{__('adminPanel.line')}}</label>
                             <select name="line_id" id="line" required
                                     class="form-control{{ $errors->has('line_id') ? ' is-invalid': '' }}">
-                                <option value="">{{__('adminPanel.choose')}}</option>
+                                <option value="{{$product->line_id}}"
+                                        selected="selected">{{($product->line->name)}}</option>
                             </select>
                             @if($errors->has('line_id'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('line_id') }}</strong></span>
@@ -69,6 +70,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{mix('js/apiSelect.js', 'build')}}"></script>
+    <script type="text/javascript" src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#category", "{{route('ajax.categories')}}");

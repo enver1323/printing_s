@@ -23,6 +23,11 @@
             <hr>
             @if($category->getTranslations('name')->count())
                 <div class="row ml-1">
+                    @isset($category->photo)
+                        <div class="image-resizable-container mr-3">
+                            <img src="{{$category->photo->getUrl()}}" class="img-thumbnail" alt="">
+                        </div>
+                    @endisset
                     <div class="">
                         <div class="mb-4">
                             <strong>{{__('adminPanel.names')}}: </strong>

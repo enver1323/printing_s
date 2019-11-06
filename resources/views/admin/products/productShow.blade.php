@@ -36,9 +36,9 @@
                         <hr>
                         @if($product->getTranslations('name')->count())
                             <div class="row ml-1">
-                                @isset($product->photo)
+                                @isset($product->mainPhoto->photo)
                                     <div class="image-resizable-container mr-3">
-                                        <img src="{{$product->photo->getUrl()}}" class="img-thumbnail" alt="">
+                                        <img src="{{$product->mainPhoto->photo->getUrl()}}" class="img-thumbnail" alt="">
                                         <form action="{{route('admin.products.photo.delete', $product)}}"
                                               method="POST">
                                             @method('DELETE')

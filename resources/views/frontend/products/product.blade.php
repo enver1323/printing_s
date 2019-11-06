@@ -80,6 +80,18 @@
                     <!-- Panel 3 -->
                     <div class="tab-pane fade" id="gallery" role="tabpanel">
                         <div class="row">
+                            <div class="col-12">
+                                <div class="section-title section-title-blue">
+                                    <div>
+                                        <h2>
+                                            {{strtoupper(__('frontend.gallery'))}}
+                                        </h2>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <div id="mdb-lightbox-ui"></div>
                                 <div class="mdb-lightbox">
@@ -98,6 +110,63 @@
                             </div>
                         </div>
                     </div>
+                    <div class="tab-pane fade" id="related" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="section-title section-title-blue">
+                                    <div>
+                                        <h2>
+                                            {{strtoupper(__('frontend.related'))}}
+                                        </h2>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                @foreach($product->options as $option)
+                                    <div class="col-12 job d-flex align-items-stretch mb-3">
+                                        <div class="card w-100">
+                                            <div class="card-body p-2 justify-content-between d-flex"
+                                                 data-id="{{$option->id}}">
+                                                <h5 class="card-title m-0 float-left my-auto">
+                                                    <strong>
+                                                        {{$option->name}}
+                                                    </strong>
+                                                </h5>
+                                                <button data-id="{{$option->id}}"
+                                                        class="btn btn-primary float-right job-detail-button">
+                                                    <i class="fa fa-search" data-id="{{$option->id}}"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-none">
+                                        <div id="product-{{$option->id}}-description">
+                                            {!! $option->description !!}
+                                            <hr>
+                                            <table class="table table-striped">
+                                                @foreach($option->dataValues  as $value)
+                                                    <tr>
+                                                        <td>
+                                                            {{$value->dataKey->name}}
+                                                        </td>
+                                                        <td>
+                                                            {{$value->value}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="col-md-6 sidebar-details" id="sidebar" style="display: none">
+                                <div id="product-description"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--Main listing-->
@@ -109,7 +178,7 @@
                         <hr/>
                         <div class="employer-logo">
                             <img
-                                src="{{$product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"
+                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"
                                 alt=""
                                 class="img-fluid"/>
                         </div>
@@ -145,4 +214,5 @@
     </div>
 @endsection
 @push('scripts')
+    <script type="text/javascript" src="{{mix('js/productListSidebar.js', 'build')}}"></script>
 @endpush

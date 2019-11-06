@@ -14,6 +14,8 @@ return [
     'product' => 'Product',
     'article' => 'Article',
 
+    'name' => 'Name',
+
     'browseCategories' => 'Browse Featured Categories',
 
     'related' => 'Related',
