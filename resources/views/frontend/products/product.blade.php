@@ -14,7 +14,46 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row flex-lg-row-reverse">
+            <!--Sidebar-->
+            <div class="col-lg-4 col-12">
+                <div class="job-sidebar">
+                    <div class="sidebar-details">
+                        <hr/>
+                        <div class="employer-logo">
+                            <img
+                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"
+                                alt=""
+                                class="img-fluid"/>
+                        </div>
+                        <hr/>
+                        <ul class="nav md-pills pills-primary flex-column" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#overView" role="tab">
+                                    {{__('frontend.overview')}}<i class="fa fa-info ml-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#techData" role="tab">
+                                    {{__('frontend.techData')}}<i class="fa fa-list ml-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">
+                                    {{__('frontend.gallery')}}<i class="fa fa-image ml-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#related" role="tab">
+                                    {{__('frontend.related')}}<i class="fa fa-share-alt ml-2"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+            <!--Sidebar-->
             <!--Main listing-->
             <div class="col-lg-8 col-12">
                 <div class="job-detail-content tab-content vertical">
@@ -170,46 +209,6 @@
                 </div>
             </div>
             <!--Main listing-->
-
-            <!--Sidebar-->
-            <div class="col-lg-4 col-12">
-                <div class="job-sidebar">
-                    <div class="sidebar-details">
-                        <hr/>
-                        <div class="employer-logo">
-                            <img
-                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"
-                                alt=""
-                                class="img-fluid"/>
-                        </div>
-                        <hr/>
-                        <ul class="nav md-pills pills-primary flex-column" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#overView" role="tab">
-                                    {{__('frontend.overview')}}<i class="fa fa-info ml-2"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#techData" role="tab">
-                                    {{__('frontend.techData')}}<i class="fa fa-list ml-2"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">
-                                    {{__('frontend.gallery')}}<i class="fa fa-image ml-2"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#related" role="tab">
-                                    {{__('frontend.related')}}<i class="fa fa-share-alt ml-2"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <hr/>
-                    </div>
-                </div>
-            </div>
-            <!--Sidebar-->
         </div>
     </div>
 @endsection

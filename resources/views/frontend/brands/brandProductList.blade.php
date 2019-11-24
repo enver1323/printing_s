@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-6 col-md-9">
+                <div class="col-12 col-sm-12 col-md-9">
                     <div class="row">
                         @foreach($lines as $line)
                             <div class="col-md-4">
@@ -53,7 +53,11 @@
                                     @foreach($line->products as $product)
                                         <div class="col-12 job d-flex align-items-stretch mb-3">
                                             <div class="card w-100">
-                                                <div class="card-body p-2 d-flex justify-content-between"
+                                                <a href="{{route('products.show', $product)}}" class="d-block d-md-none">
+                                                    <img class="card-img-top" alt="{{$product->name}}" id="product-{{$product->id}}-image"
+                                                         src="{{isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : ''}}">
+                                                </a>
+                                                <div class="card-body p-2 d-flex flex-column flex-md-row justify-content-between"
                                                      data-id="{{$product->id}}">
                                                     <h5 class="card-title m-0 float-left my-auto">
                                                         <strong>
@@ -62,19 +66,14 @@
                                                             </a>
                                                         </strong>
                                                     </h5>
+                                                    <p class="card-text d-block d-md-none" id="product-{{$product->id}}-description">
+                                                        {!! $product->description !!}
+                                                    </p>
                                                     <button data-id="{{$product->id}}"
-                                                            class="btn btn-primary float-right job-detail-button">
+                                                            class="btn btn-primary float-right job-detail-button d-none d-md-block">
                                                         <i class="fa fa-search" data-id="{{$product->id}}"></i>
                                                     </button>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-none">
-                                            @php $image = $product->mainImage; @endphp
-                                            <img src="{{$image && $image->photo? $image->photo->getUrl() : ''}}"
-                                                 alt="" id="product-{{$product->id}}-image">
-                                            <div id="product-{{$product->id}}-description">
-                                                {!! $product->description !!}
                                             </div>
                                         </div>
                                     @endforeach
@@ -83,7 +82,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="col-6 col-md-3">
+                <div class="col-12 col-sm-6 col-md-3 d-none d-sm-block">
                     <div class="job-sidebar" id="sidebar" style="display: none">
                         <div class="sidebar-details">
                             <hr/>
