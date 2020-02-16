@@ -116,8 +116,9 @@ footer.page-footer {
 /* Poster */
 .poster-index {
     background-image: url("../../img/bg_index_dark.jpg");
-    height: 100vh;
-
+    min-height: 600px;
+    display: flex;
+    align-items: center;
 }
 
 .poster-full {
@@ -1573,4 +1574,3 @@ footer img {
     position: absolute;
 }
 
-/* /MAP SEARCH */

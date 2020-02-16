@@ -5,6 +5,7 @@ return [
     'articles' => 'Новости',
     'contacts' => 'Контакты',
     'readMore' => 'Подробнее',
+    'createdAt' => 'Дата создания',
     'categories' => 'Категории',
     'description' => 'Описание',
     'topProducts' => 'Топ Товары',

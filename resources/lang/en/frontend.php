@@ -5,6 +5,7 @@ return [
     'articles' => 'Articles',
     'contacts' => 'Contacts',
     'readMore' => 'Read More',
+    'createdAt' => 'Created at',
     'categories' => 'Categories',
     'description' => 'Description',
     'topProducts' => 'Top Products',

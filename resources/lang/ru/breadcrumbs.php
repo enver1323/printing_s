@@ -2,7 +2,6 @@
 return [
     'home' => 'Главная',
     'login' => 'Войти',
-    'reset_password' => 'Сброс пароля',
     'change' => 'Изменить пароль',
     'register' => 'Регистрация',
     'cabinet' => 'Кабинет',
@@ -12,4 +11,14 @@ return [
     'edit' => 'Редактировать',
     'languages' => 'Языки',
     'countries' => 'Страны',
+    'lines' => 'Линейки',
+    'media' => 'Медиа',
+    'slides' => 'Слайды',
+    'brands' => 'Бренды',
+    'values' => 'Значения',
+    'products' => 'Товары',
+    'articles' => 'Новости',
+    'dataKeys' => 'Ключи данных',
+    'categories' => 'Категории',
+    'reset_password' => 'Сброс пароля',
 ];

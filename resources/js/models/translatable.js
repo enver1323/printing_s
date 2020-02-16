@@ -1,4 +1,4 @@
-import * as helper from'../helpers/mainHelper';
+import * as helper from '../helpers/mainHelper';
 
 class Translatable {
     constructor(name, parentId, languages, inputType = "input") {
@@ -88,6 +88,8 @@ class Translatable {
     }
 
     addEntryField(language, value = '') {
+        this.removeSelectOption(language);
+
         let div = document.createElement('div');
         helper.setAttributes(div, {'class': 'form-group d-flex',});
 
@@ -109,7 +111,7 @@ class Translatable {
             'class': 'form-control',
             'id': inputId,
             'type': 'text',
-            'value' : value,
+            'value': value,
             'name': `${this.name}[${language}]`,
             'required': ''
         });
@@ -130,13 +132,15 @@ class Translatable {
         this.container.appendChild(div);
         this.container.insertBefore(div, this.select.parentNode.parentNode);
 
-        if(this.inputType === 'textarea')
+        if (this.inputType === 'textarea')
             CKEDITOR.replace(inputId);
     }
 
     removeEntryField(entry) {
         let lang = entry.id.substr(0, 2);
         delete this.entries[lang];
+
+        this.addSelectOption(lang);
 
         let group = entry.parentNode;
         group.parentNode.removeChild(group);
@@ -147,6 +151,26 @@ class Translatable {
             return false;
 
         return this.entries[option.value] === undefined;
+    }
+
+    removeSelectOption(code) {
+        for (let i = 0; i < this.select.length; i++) {
+            if (this.select.options[i].value === code)
+                this.select.remove(i);
+        }
+    }
+
+    addSelectOption(code) {
+        let language;
+
+        for(let k in this.languages)
+            if (this.languages[k].code === code)
+                language = this.languages[k];
+
+        let option = document.createElement('option');
+        helper.setAttributes(option, {'value': language.code});
+        option.innerHTML = language.name;
+        this.select.appendChild(option);
     }
 }
 
