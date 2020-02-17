@@ -63,7 +63,7 @@ class LineController extends AdminController
             return redirect()->route('admin.lines.show', $this->service->create($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'line']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.lines.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -100,7 +100,7 @@ class LineController extends AdminController
             return redirect()->route('admin.lines.show', $this->service->update($request, $line))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Line']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.lines.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 

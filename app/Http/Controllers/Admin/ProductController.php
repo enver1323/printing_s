@@ -72,7 +72,7 @@ class ProductController extends AdminController
             ]))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Item']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.products.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -107,7 +107,7 @@ class ProductController extends AdminController
             return redirect()->route('admin.products.show', $this->service->update($request, $product))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Item']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.products.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

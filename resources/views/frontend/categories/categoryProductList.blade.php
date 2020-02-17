@@ -17,25 +17,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="card row">
-                        <div class="col-md-8 tabs-container mb-4">
-                            <ul class="nav md-tabs nav-justified custom-tabs">
-                                @foreach($categories as $categoryItem)
-                                    <li class="nav-item">
-                                        <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
-                                           href="{{route('products.category', $categoryItem)}}">
-                                            {{$categoryItem->name}}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-md-12">
-                            <img src="{{$category->photo ? $category->photo->getUrl() : ''}}" alt=""
-                                 class=" float-left mb-3 mr-3 w-25">
-
-                            {{$category->description}}
-                        </div>
+                    <div class="tabs-container mb-4">
+                        <ul class="nav md-tabs nav-justified custom-tabs">
+                            @foreach($categories as $categoryItem)
+                                <li class="nav-item">
+                                    <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
+                                       href="{{route('products.category', $categoryItem)}}">
+                                        {{$categoryItem->name}}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>

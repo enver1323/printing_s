@@ -61,7 +61,7 @@ class CategoryController extends AdminController
             return redirect()->route('admin.categories.show', $this->service->create($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Category']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.categories.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -98,7 +98,7 @@ class CategoryController extends AdminController
             return redirect()->route('admin.categories.show', $this->service->update($request, $category))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Category']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.categories.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

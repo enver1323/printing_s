@@ -59,7 +59,7 @@ class ProductOptionController extends AdminController
             return redirect()->route('admin.products.options.show', $this->service->store($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Option']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.products.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -97,7 +97,7 @@ class ProductOptionController extends AdminController
             return redirect()->route('admin.products.options.show', $this->service->update($request, $option))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Option']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.products.options.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

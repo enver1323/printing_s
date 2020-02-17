@@ -65,7 +65,7 @@ class SlideController extends AdminController
             return redirect()->route('admin.slides.show', $this->service->create($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Slide']));
         } catch (Throwable | Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -102,7 +102,7 @@ class SlideController extends AdminController
             return redirect()->route('admin.slides.show', $this->service->update($request, $slide))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Slide']));
         } catch (Throwable | Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

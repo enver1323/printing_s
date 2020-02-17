@@ -64,7 +64,7 @@ class BrandController extends AdminController
             return redirect()->route('admin.brands.show', $this->service->create($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Brand']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.brands.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -101,7 +101,7 @@ class BrandController extends AdminController
             return redirect()->route('admin.brands.show', $this->service->update($request, $brand))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Brand']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.brands.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

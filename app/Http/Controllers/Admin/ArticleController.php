@@ -62,7 +62,7 @@ class ArticleController extends AdminController
             return redirect()->route('admin.articles.show', $this->service->create($request))
                 ->with('success', __('adminPanel.messages.adminAction.success.create', ['name' => 'Article']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.articles.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 
@@ -99,7 +99,7 @@ class ArticleController extends AdminController
             return redirect()->route('admin.articles.show', $this->service->update($request, $article))
                 ->with('success', __('adminPanel.messages.adminAction.success.update', ['name' => 'Article']));
         } catch (Throwable | Exception $e) {
-            return redirect()->route('admin.articles.index')->with('error', $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage())->withInput();
         }
     }
 

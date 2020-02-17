@@ -8,8 +8,9 @@
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
         let {{$name}}Entries = new Translatable("{{$name}}", "{{$name}}Container", @json($languages, JSON_UNESCAPED_UNICODE), "{{$input}}");
+        @php $entries = old($name) ?? $entries  @endphp
         @if(isset($entries) && !empty($entries))
-            {{$name}}Entries.setEntries(@json($entries, JSON_UNESCAPED_UNICODE));
+        {{$name}}Entries.setEntries(@json($entries, JSON_UNESCAPED_UNICODE));
         @endif
     });
 </script>
