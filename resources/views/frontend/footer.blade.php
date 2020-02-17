@@ -7,7 +7,7 @@
                 <div class="footer-col">
                     <h5 class="title">ABOUT {{env('APP_NAME')}}</h5>
                     <div>
-                        <img src="{{asset('images/logo.svg')}}" alt="{{env('APP_NAME')}}"/>
+                        <img src="{{asset('images/logo.png')}}" alt="{{env('APP_NAME')}}"/>
                     </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                         Quibusdam assumenda sequi ducimus temporibus dolore, libero inventore dolorum error illo.
@@ -22,10 +22,10 @@
                 <div class="footer-col">
                     <h5>Project by</h5>
                     <p>Enver Menadjiev</p>
-                    <p>
-                        <i class="fas fa-phone pr-3 mb-2 blue-text"></i>
-                        +998 90 326 84 03
-                    </p>
+{{--                    <p>--}}
+{{--                        <i class="fas fa-phone pr-3 mb-2 blue-text"></i>--}}
+{{--                        +998 90 326 84 03--}}
+{{--                    </p>--}}
                 </div>
             </div>
             <!-- /Done by -->

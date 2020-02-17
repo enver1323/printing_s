@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-sm poster-jobs-listing">
+    <div class="poster poster-jobs-listing">
         <div class="container">
             <div class="row page-title">
                 <h1>
@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card row">
                         <div class="col-md-8 tabs-container mb-4">
-                            <ul class="nav md-tabs nav-justified gradient-blue">
+                            <ul class="nav md-tabs nav-justified custom-tabs">
                                 @foreach($categories as $categoryItem)
                                     <li class="nav-item">
                                         <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
@@ -54,12 +54,15 @@
                                     @foreach($line->products as $product)
                                         <div class="col-12 job d-flex align-items-stretch mb-3">
                                             <div class="card w-100">
-                                                <a href="{{route('products.show', $product)}}" class="d-block d-md-none">
-                                                    <img class="card-img-top" alt="{{$product->name}}" id="product-{{$product->id}}-image"
+                                                <a href="{{route('products.show', $product)}}"
+                                                   class="d-block d-md-none">
+                                                    <img class="card-img-top" alt="{{$product->name}}"
+                                                         id="product-{{$product->id}}-image"
                                                          src="{{isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : ''}}">
                                                 </a>
-                                                <div class="card-body p-2 d-flex flex-column flex-md-row justify-content-between"
-                                                     data-id="{{$product->id}}">
+                                                <div
+                                                    class="card-body p-2 d-flex flex-column flex-md-row justify-content-between"
+                                                    data-id="{{$product->id}}">
                                                     <h5 class="card-title m-0 float-left my-auto">
                                                         <strong>
                                                             <a href="{{route('products.show', $product)}}">
@@ -67,7 +70,8 @@
                                                             </a>
                                                         </strong>
                                                     </h5>
-                                                    <p class="card-text d-block d-md-none" id="product-{{$product->id}}-description">
+                                                    <p class="card-text d-block d-md-none"
+                                                       id="product-{{$product->id}}-description">
                                                         {!! $product->description !!}
                                                     </p>
                                                     <button data-id="{{$product->id}}"
@@ -95,6 +99,13 @@
 
                             </span>
                             <hr/>
+                            <h6 class="mb-2 mr-2 d-flex justify-content-center">
+                                <a href="#" id="readMoreLink"
+                                   class="green-text font-weight-bold font-small">
+                                    {{__("frontend.readMore")}}
+                                    <i class="fa fa-arrow-circle-right green-text ml-2"></i>
+                                </a>
+                            </h6>
                         </div>
                     </div>
 

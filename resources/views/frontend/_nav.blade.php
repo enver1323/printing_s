@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-xl navbar-dark scrolling-navbar fixed-top">
 
     <a class="navbar-brand" href="{{route('main')}}">
-        <img src="{{asset('images/logo.svg')}}" alt="{{env('APP_NAME')}}"/>
+        <img src="{{asset('images/logo.png')}}" alt="{{env('APP_NAME')}}"/>
     </a>
 
     <!-- Collapse button -->

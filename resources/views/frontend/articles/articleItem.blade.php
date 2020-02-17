@@ -12,7 +12,6 @@
                 <!--Card image -->
 
                 <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8">
-                    <!-- Card content -->
                     <div class="card-body">
 
                         <h5 class="card-title">
@@ -34,7 +33,6 @@
                         </h6>
 
                     </div>
-                    <!-- /Card content -->
                 </div>
             </div>
         </div>

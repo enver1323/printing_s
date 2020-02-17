@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-sm poster-jobs-listing">
+    <div class="poster poster-jobs-listing">
         <div class="container">
             <div class="row page-title">
                 <h1>
@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card row">
                         <div class="col-md-8 tabs-container mb-4">
-                            <ul class="nav md-tabs nav-justified gradient-blue">
+                            <ul class="nav md-tabs nav-justified custom-tabs">
                                 @foreach($brands as $brandItem)
                                     <li class="nav-item">
                                         <a class="nav-link {{$brandItem->id === $brand->id ? 'active' : ''}}"

@@ -686,11 +686,11 @@ footer img {
 /* /Footer */
 
 /* Switch */
-.switch label input[type="checkbox"]:checked+.lever {
+.switch label input[type="checkbox"]:checked + .lever {
     background-color: #b4ffff !important;
 }
 
-.switch label input[type="checkbox"]:checked+.lever:after {
+.switch label input[type="checkbox"]:checked + .lever:after {
     background-color: #4285f4 !important;
 }
 
@@ -1067,6 +1067,7 @@ footer img {
 /* Candidate Details */
 .poster-candidate-details {
     background-image: url("../../img/bg_candidate_details.jpg");
+    min-height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -1464,113 +1465,15 @@ footer img {
 
 /* /Employer Details */
 
-/* MAP SEARCH */
-.search-map .search-map-left {
-    padding: 30px;
-    background: white;
-    min-height: 100vh;
-}
+/* Custom tabs */
+.nav.custom-tabs {
+    background: #fff;
+    .nav-item .nav-link{
+        color: #000;
 
-.search-map .search-map-left .form-wrapper {
-    margin-top: 78px;
-    margin-bottom: 32px;
-    padding: 0;
-}
-
-.search-map .search-map-right {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-}
-
-@media (max-width: 768px) {
-    .search-map .search-map-left .form-wrapper {
-        margin-top: 60vh !important;
-    }
-
-    .search-map .search-map-right {
-        height: 60vh !important;
+        &.active{
+            color: #fff;
+            background: #0056b3;
+        }
     }
 }
-
-.search-map .search-map-left .form-wrapper .card {
-    background-color: #34495e !important;
-}
-
-.search-map .search-map-left .form-distance-range {
-    margin-top: 16px;
-}
-
-.search-map .search-map-left .label-distance {
-    padding: 0 16px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.search-map .search-map-left .label-distance .label-distance-left,
-.search-map .search-map-left .label-distance .label-distance-right {
-    border-radius: 4px;
-    background: #485b6e;
-    padding: 5px 25px;
-    color: #ffffff;
-    font-size: 14px;
-}
-
-.search-map .md-form.form-input label {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.search-map .md-form.form-input input {
-    color: white;
-}
-
-.search-map .select-wrapper input.select-dropdown {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.search-map .btn-search.btn {
-    padding: 10px 15px;
-    border-radius: 4px;
-}
-
-.search-map .found-job-card .card-body {
-    padding: 8px 8px 8px 0 !important;
-}
-
-.search-map .found-job-card .card-body .card-title {
-    font-size: 18px;
-}
-
-.search-map .found-job-card .card-body p {
-    font-size: 14px;
-}
-
-.found-job-card {
-    transition: all 0.5s cubic-bezier(0.15, 0.8, 0.15, 1);
-}
-
-.found-job-card:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    transform: scale(1.01);
-}
-
-.search-map .search-map-right {
-    padding: 0;
-}
-
-.map-container {
-    overflow: hidden;
-    position: relative;
-    height: 0;
-}
-
-.map-container iframe {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-

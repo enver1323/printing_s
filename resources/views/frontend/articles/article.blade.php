@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-md poster-candidate-details">
+    <div class="poster poster-candidate-details">
         <div class="container">
             <div class="info-top">
                 <div class="candidate-logo">

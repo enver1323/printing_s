@@ -22,7 +22,6 @@
 
 @endsection
 @section('content')
-
     <section class="categories-wrapper">
         <div class="container">
             <div class="row categories">
@@ -63,6 +62,11 @@
                                                 {{sprintf('%s %s',__('frontend.all'), __('frontend.categories'))}}
                                             </strong>
                                         </h6>
+                                        @if($catCount)
+                                            <small class="text-capitalize mt-4">
+                                                ({{$catCount}}) {{__('adminPanel.categories')}}
+                                            </small>
+                                        @endif
                                     </div>
                                 </div>
                             </a>
@@ -88,8 +92,8 @@
                                             <img src="{{$article->photo->getUrl()}}" class="img-fluid" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-8">
-                                        <div class="card-body">
+                                    <div class="col-8 d-flex flex-column">
+                                        <div class="card-body flex-grow-1">
                                             <h5 class="card-title">
                                                 <strong>
                                                     <a href="{{route('articles.show', $article)}}">
@@ -101,6 +105,12 @@
                                                 {!! $article->description !!}
                                             </p>
                                         </div>
+                                        <h6 class="mb-2 mr-2 d-flex justify-content-end">
+                                            <a href="{{route('articles.show', $article)}}"
+                                               class="green-text font-weight-bold font-small">
+                                                {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
+                                            </a>
+                                        </h6>
                                     </div>
                                 </div>
                             </div>
@@ -196,7 +206,11 @@
                 items: 1,
                 responsiveClass: true,
                 autoplay: true,
-                autoplayTimeout: 3000
+                autoplayTimeout: 6000,
+                autoplayHoverPause: true,
+                autoplaySpeed: 3000,
+                dotsSpeed: 1500,
+                dragEndSpeed: 2000,
             };
             $('#owl').owlCarousel(options);
             $('#articles').owlCarousel(options);

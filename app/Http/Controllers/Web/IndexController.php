@@ -51,7 +51,7 @@ class IndexController extends WebController
      */
     public function index(): View
     {
-        $categories = $this->categories->withCount('products')->take(4)->get();
+        $categories = $this->categories->withCount('products')->orderByDesc('id')->take(4)->get();
         $articles = $this->articles->take(4)->get();
         $products = $this->products->take(6)->with('mainImage')->get();
         $brands = $this->brands->take(12)->get();
@@ -59,6 +59,7 @@ class IndexController extends WebController
 
         return $this->render('index', [
             'categories' => $categories,
+            'catCount' => $this->categories->whereNotIn('id', $categories)->count(),
             'articles' => $articles,
             'products' => $products,
             'brands' => $brands,
