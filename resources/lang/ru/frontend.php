@@ -2,6 +2,7 @@
 return [
     'home' => 'Главная',
     'brands' => 'Бренды',
+    'search' => 'Поиск',
     'articles' => 'Новости',
     'contacts' => 'Контакты',
     'readMore' => 'Подробнее',
@@ -12,8 +13,9 @@ return [
 
     'all' => 'Все',
     'author' => 'Автор',
-    'product' => 'Товар',
     'article' => 'Новость',
+    'product' => 'Товар',
+    'products' => 'Товары',
 
     'name' => 'Имя',
 

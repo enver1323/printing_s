@@ -39,13 +39,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-9">
+                <div class="col-12 col-md-9">
                     <div class="row">
                         @foreach($lines as $line)
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="section-title section-title-blue">
-                                        <h2>{{$line->name}}</h2>
+                                        <h4>{{$line->name}}</h4>
                                         <hr>
                                     </div>
                                 </div>
@@ -53,12 +53,15 @@
                                     @foreach($line->products as $product)
                                         <div class="col-12 job d-flex align-items-stretch mb-3">
                                             <div class="card w-100">
-                                                <a href="{{route('products.show', $product)}}" class="d-block d-md-none">
-                                                    <img class="card-img-top" alt="{{$product->name}}" id="product-{{$product->id}}-image"
+                                                <a href="{{route('products.show', $product)}}"
+                                                   class="d-block d-md-none">
+                                                    <img class="card-img-top" alt="{{$product->name}}"
+                                                         id="product-{{$product->id}}-image"
                                                          src="{{isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : ''}}">
                                                 </a>
-                                                <div class="card-body p-2 d-flex flex-column flex-md-row justify-content-between"
-                                                     data-id="{{$product->id}}">
+                                                <div
+                                                    class="card-body p-2 d-flex flex-column flex-md-row justify-content-between"
+                                                    data-id="{{$product->id}}">
                                                     <h5 class="card-title m-0 float-left my-auto">
                                                         <strong>
                                                             <a href="{{route('products.show', $product)}}">
@@ -66,13 +69,10 @@
                                                             </a>
                                                         </strong>
                                                     </h5>
-                                                    <p class="card-text d-block d-md-none" id="product-{{$product->id}}-description">
+                                                    <p class="card-text d-block d-md-none"
+                                                       id="product-{{$product->id}}-description">
                                                         {!! $product->description !!}
                                                     </p>
-                                                    <button data-id="{{$product->id}}"
-                                                            class="btn btn-primary float-right job-detail-button d-none d-md-block">
-                                                        <i class="fa fa-search" data-id="{{$product->id}}"></i>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,6 +94,9 @@
 
                             </span>
                             <hr/>
+                            <a href="" id="product-link" class="green-text font-weight-bold font-small">
+                                {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -101,7 +104,9 @@
             </div>
         </div>
         <!-- /Panel Recent Jobs -->
-        {{$lines->links()}}
+        <div class="d-flex justify-content-center">
+            {{$lines->links()}}
+        </div>
     </section>
 @endsection
 @push('scripts')

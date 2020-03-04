@@ -4,6 +4,8 @@
 namespace App\Http\Controllers\Web;
 
 
+use App\Domain\Brand\Entities\Brand;
+use App\Domain\Category\Entities\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
 
@@ -17,8 +19,6 @@ class WebController extends Controller
     const ROOT_VIEW_DIR = 'frontend';
 
     const ITEMS_PER_PAGE = 15;
-
-    private $viewParams = [];
 
     /**
      * @param string $view
@@ -34,7 +34,7 @@ class WebController extends Controller
      * @param string $view
      * @return string
      */
-    private function modifyView(string $view)
+    protected function modifyView(string $view)
     {
         return sprintf("%s.%s", self::ROOT_VIEW_DIR, $view);
     }
@@ -43,8 +43,13 @@ class WebController extends Controller
      * @param $params
      * @return array
      */
-    private function modifyParams($params)
+    protected function modifyParams($params)
     {
-        return array_merge($this->viewParams, $params);
+        $reserved = [
+            'categories' => Category::all(),
+            'brands' => Brand::all()
+        ];
+
+        return array_merge($reserved, $params);
     }
 }

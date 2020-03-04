@@ -6,17 +6,19 @@
     <!-- Poster -->
     <div class="owl-carousel owl-theme" id="owl">
         @foreach($slides as $slide)
-            <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <div class="text-center">
-                                <h1><strong>{!! $slide->description !!}</strong></h1>
+            <a href="{{$slide->link}}">
+                <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h1><strong>{!! $slide->description !!}</strong></h1>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 
@@ -31,7 +33,10 @@
                             <!-- Card -->
                             <div class="card">
                                 <a href="{{route('products.category', $category)}}">
-                                    <div class="text-white text-center card-content">
+                                    <div class="text-white text-center card-content"
+                                         @isset($category->photo)
+                                         style="background-image: url({{$category->photo->getUrl()}})"
+                                        @endisset>
                                         <h6 class="card-title">
                                             <strong>
                                                 {{$category->name}}
@@ -78,123 +83,55 @@
         </div>
     </section>
 
-
     <section class="jobs-wrapper">
         <div class="container">
             <div class="row">
-                <div class="owl-carousel owl-theme" id="articles">
-                    @foreach($articles as $article)
-                        <div class="col-lg-12 col-md-12 job item">
-                            <div class="card">
+                <div class="col-lg-12 col-md-12 candidate">
+                    <div class="card">
+                        <div class="owl-carousel owl-theme" id="articles">
+                            @foreach($articles as $article)
                                 <div class="row">
-                                    <div class="col-4 card-image-wrapper">
-                                        <div class="card-image text-center">
-                                            <img src="{{$article->photo->getUrl()}}" class="img-fluid" alt="">
+                                    <!-- Card image -->
+                                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 card-image-wrapper">
+                                        <div class="card-image">
+                                            <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}"
+                                                 class="img-fluid" alt="">
                                         </div>
                                     </div>
-                                    <div class="col-8 d-flex flex-column">
-                                        <div class="card-body flex-grow-1">
+                                    <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8">
+                                        <div class="card-body">
+
                                             <h5 class="card-title">
                                                 <strong>
-                                                    <a href="{{route('articles.show', $article)}}">
-                                                        {{$article->name}}
-                                                    </a>
+                                                    <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>
                                                 </strong>
                                             </h5>
+                                            <h6 class="card-subtitle">{{date("d-m-Y", $article->created_at->timestamp)}}</h6>
                                             <p>
                                                 {!! $article->description !!}
                                             </p>
+                                            <h6 class="mb-2 mr-2 d-flex justify-content-between">
+                                                <a href="{{route('articles.index')}}"
+                                                   class="font-small pink-text">
+                                                    {{mb_strtolower(sprintf("%s %s", __("frontend.all"), __("frontend.articles")))}}
+                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                                                </a>
+                                                <a href="{{route('articles.show', $article)}}"
+                                                   class="pink-text font-small">
+                                                    {{mb_strtolower(__("frontend.readMore"))}}
+                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                                                </a>
+                                            </h6>
                                         </div>
-                                        <h6 class="mb-2 mr-2 d-flex justify-content-end">
-                                            <a href="{{route('articles.show', $article)}}"
-                                               class="green-text font-weight-bold font-small">
-                                                {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
-                                            </a>
-                                        </h6>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
-
-
-    {{--    <section class="employers-wrapper">--}}
-    {{--        <div class="container-fluid d-flex justify-content-center">--}}
-    {{--            <div class="container">--}}
-    {{--                <div class="row">--}}
-    {{--                    <div class="col-12">--}}
-    {{--                        <div class="section-title section-title-white">--}}
-    {{--                            <div>--}}
-    {{--                                <h2>--}}
-    {{--                                    {{__('frontend.topProducts')}}--}}
-    {{--                                </h2>--}}
-    {{--                                <hr>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-
-    {{--                <div class="row">--}}
-    {{--                    @foreach($products as $product)--}}
-    {{--                        <div class="col-12 col-md-4 d-flex align-items-stretch">--}}
-    {{--                            @include('frontend.products.productListCard', $product)--}}
-    {{--                        </div>--}}
-    {{--                    @endforeach--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
-
-    {{--    <section class="instructions-wrapper">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-12">--}}
-    {{--                    <div class="section-title section-title-blue">--}}
-    {{--                        <div>--}}
-    {{--                            <h2>--}}
-    {{--                                {{__('frontend.brands')}}--}}
-    {{--                            </h2>--}}
-    {{--                            <hr>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-
-    {{--            <div class="row">--}}
-    {{--                @foreach($brands as $brand)--}}
-    {{--                    <div class="col-xl-3 col-lg-3 col-md-12">--}}
-    {{--                        <div class="instruction">--}}
-
-    {{--                            <div class="item-category">--}}
-    {{--                                <!-- Card -->--}}
-    {{--                                <div class="card">--}}
-    {{--                                    <div class="text-white text-center card-content">--}}
-    {{--                                        <h6 class="card-title">--}}
-    {{--                                            <strong>--}}
-    {{--                                                <a href="{{route('products.brand', $brand)}}">{{$brand->name}}</a>--}}
-    {{--                                            </strong>--}}
-    {{--                                        </h6>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <!-- Card -->--}}
-    {{--                            </div>--}}
-    {{--                            <hr>--}}
-    {{--                            <p class="instruction-desc">--}}
-    {{--                                {{$brand->description}}--}}
-    {{--                            </p>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                @endforeach--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{mix('js/owlCarousel.js', 'build')}}"></script>

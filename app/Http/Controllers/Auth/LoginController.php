@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Domain\User\Entities\User;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\WebController;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class LoginController extends WebController
 {
     use ThrottlesLogins;
 
@@ -21,7 +20,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        return view('auth.login', $this->modifyParams([]));
     }
 
     /**

@@ -11,18 +11,6 @@ Route::group([
     Auth::routes();
     Route::get('/verify/{token}', 'Auth\RegisterController@verify')->name('register.verify');
 
-    Route::group(
-        [
-            'prefix' => 'cabinet',
-            'as' => 'cabinet.',
-            'namespace' => 'Cabinet',
-            'middleware' => ['auth'],
-        ],
-        function () {
-            Route::get('/', 'HomeController@index')->name('home');
-        }
-    );
-
     /** Admin routes */
     Route::group(
         [
@@ -140,8 +128,9 @@ Route::group([
         'namespace' => 'Web'
     ], function () {
         /** Index Routes */
-        Route::get('/', 'IndexController@index')->name('main');
-        Route::get('/contacts', 'IndexController@contacts')->name('contacts');
+        Route::get('', 'IndexController@index')->name('main');
+        Route::get('contacts', 'IndexController@contacts')->name('contacts');
+        Route::get('results', 'IndexController@search')->name('results');
 
         /** Products Routes */
         Route::group([

@@ -29,12 +29,12 @@ function setImage(id) {
 }
 
 function setReadMoreLink(id) {
-    let link = document.getElementById(`product-${id}-image`).parentNode;
+    let readMore = document.getElementById('product-link');
+    let link = document.getElementById(`product-${id}-image`);
     if(link)
-        document.getElementById('readMoreLink').href = link.href;
+        readMore.href = link.parentNode.href;
 }
 
 for (let i = 0; i < jobItems.length; i++) {
     jobItems[i].addEventListener('mouseover', showJobDetails, false);
-    jobItemButtons[i].addEventListener('click', showJobDetails, false);
 }

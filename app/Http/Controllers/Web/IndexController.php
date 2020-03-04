@@ -7,8 +7,10 @@ namespace App\Http\Controllers\Web;
 use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Line\Entities\Line;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Slide\Entities\Slide;
+use App\Http\Requests\Frontend\Index\SearchRequest;
 use Illuminate\View\View;
 
 /**
@@ -20,9 +22,11 @@ use Illuminate\View\View;
  * @property Article $articles
  * @property Brand $brands
  * @property Slide $slides
+ * @property Line $lines
  */
 class IndexController extends WebController
 {
+    private $lines;
     private $slides;
     private $brands;
     private $articles;
@@ -34,16 +38,18 @@ class IndexController extends WebController
      * @param Category $categories
      * @param Brand $brands
      * @param Product $products
+     * @param Line $lines
      * @param Slide $slides
      * @param Article $articles
      */
-    public function __construct(Category $categories, Brand $brands, Product $products, Slide $slides, Article $articles)
+    public function __construct(Category $categories, Brand $brands, Product $products, Line $lines, Slide $slides, Article $articles)
     {
         $this->categories = $categories;
         $this->products = $products;
         $this->articles = $articles;
         $this->brands = $brands;
         $this->slides = $slides;
+        $this->lines = $lines;
     }
 
     /**
@@ -59,11 +65,43 @@ class IndexController extends WebController
 
         return $this->render('index', [
             'categories' => $categories,
-            'catCount' => $this->categories->whereNotIn('id', $categories)->count(),
+            'catCount' => $this->categories->whereNotIn('id', $categories->pluck('id'))->count(),
             'articles' => $articles,
             'products' => $products,
             'brands' => $brands,
             'slides' => $slides
+        ]);
+    }
+
+    public function search(SearchRequest $request)
+    {
+        $productsPaginator = $this->products
+            ->whereEntry('name', 'LIKE', "%$request->search%")
+            ->orWhereEntry('description', 'LIKE', "%$request->search%")
+            ->with('mainImage')
+            ->paginate(self::ITEMS_PER_PAGE)
+            ->appends($request->except('page'));
+
+        $articles = $this->articles
+            ->whereEntry('name', 'LIKE', "%$request->search%")
+            ->orWhereEntry('description', 'LIKE', "%$request->search%")
+            ->paginate(self::ITEMS_PER_PAGE)
+            ->appends($request->except('page'));
+
+        $products = $productsPaginator->getCollection()->mapToGroups(function ($item) {
+            return [$item->line_id => $item];
+        });
+
+        $lines = $this->lines->find($products->keys())->map(function($value) use($products){
+            $value->products = $products[$value->id];
+            return $value;
+        });
+
+        $productsPaginator->setCollection($lines);
+
+        return $this->render('_search', [
+            'lines' => $productsPaginator,
+            'articles' => $articles
         ]);
     }
 

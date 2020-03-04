@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Domain\User\Entities\User;
 use App\Domain\User\UseCases\UserService;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Web\WebController;
 use App\Http\Requests\Auth\RegisterRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @package App\Http\Controllers\Auth
  * @property UserService $service
  */
-class RegisterController extends Controller
+class RegisterController extends WebController
 {
     private $service;
 
@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        return view('auth.register', $this->modifyParams([]));
     }
 
     public function register(RegisterRequest $request)

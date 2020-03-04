@@ -71,7 +71,7 @@ class ProductController extends WebController
     protected function productList(ProductGroup $item): LengthAwarePaginator
     {
         /** @var LengthAwarePaginator|Collection $paginator */
-        $paginator = $item->products()->with('mainImage')->paginate();
+        $paginator = $item->products()->with('mainImage')->paginate(self::ITEMS_PER_PAGE);
         $products = $paginator->getCollection()->mapToGroups(function ($item) {
             return [$item->line_id => $item];
         });

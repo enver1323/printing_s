@@ -17,28 +17,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="tabs-container mb-4">
-                        <ul class="nav md-tabs nav-justified custom-tabs">
-                            @foreach($categories as $categoryItem)
-                                <li class="nav-item">
-                                    <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
-                                       href="{{route('products.category', $categoryItem)}}">
-                                        {{$categoryItem->name}}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
+                    <div class="card row">
+                        <div class="col-md-8 tabs-container mb-4">
+                            <ul class="nav md-tabs nav-justified custom-tabs">
+                                @foreach($categories as $categoryItem)
+                                    <li class="nav-item">
+                                        <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
+                                           href="{{route('products.category', $categoryItem)}}">
+                                            {{$categoryItem->name}}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <img src="{{$category->photo ? $category->photo->getUrl() : ''}}" alt=""
+                                 class="float-left mb-3 mr-3 w-25">
+                            {{$category->description}}
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-9">
+                <div class="col-12 col-md-9">
                     <div class="row">
                         @foreach($lines as $line)
                             <div class="col-md-4">
                                 <div class="row">
                                     <div class="section-title section-title-blue">
-                                        <h2>{{$line->name}}</h2>
+                                        <h4>{{$line->name}}</h4>
                                         <hr>
                                     </div>
                                 </div>
@@ -66,10 +73,6 @@
                                                        id="product-{{$product->id}}-description">
                                                         {!! $product->description !!}
                                                     </p>
-                                                    <button data-id="{{$product->id}}"
-                                                            class="btn btn-primary float-right job-detail-button d-none d-md-block">
-                                                        <i class="fa fa-search" data-id="{{$product->id}}"></i>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,13 +94,9 @@
 
                             </span>
                             <hr/>
-                            <h6 class="mb-2 mr-2 d-flex justify-content-center">
-                                <a href="#" id="readMoreLink"
-                                   class="green-text font-weight-bold font-small">
-                                    {{__("frontend.readMore")}}
-                                    <i class="fa fa-arrow-circle-right green-text ml-2"></i>
-                                </a>
-                            </h6>
+                            <a href="" id="product-link" class="green-text font-weight-bold font-small">
+                                {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -105,7 +104,9 @@
             </div>
         </div>
         <!-- /Panel Recent Jobs -->
-        {{$lines->links()}}
+        <div class="d-flex justify-content-center">
+            {{$lines->links()}}
+        </div>
     </section>
 @endsection
 @push('scripts')

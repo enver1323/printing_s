@@ -2,6 +2,7 @@
 return [
     'home' => 'Home',
     'brands' => 'Brands',
+    'search' => 'Search',
     'articles' => 'Articles',
     'contacts' => 'Contacts',
     'readMore' => 'Read More',
@@ -12,8 +13,9 @@ return [
 
     'all' => 'All',
     'author' => 'Author',
-    'product' => 'Product',
     'article' => 'Article',
+    'product' => 'Product',
+    'products' => 'Products',
 
     'name' => 'Name',
 
