@@ -1,4 +1,4 @@
-<?
+<?php
 
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
