@@ -4,6 +4,7 @@ use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Line\Entities\Line;
+use App\Domain\Page\Entities\Page;
 use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductOption;
@@ -266,4 +267,25 @@ Breadcrumbs::for('admin.articles.show', function (Crumbs $crumbs, Article $artic
 Breadcrumbs::for('admin.articles.edit', function (Crumbs $crumbs, Article $article) {
     $crumbs->parent('admin.articles.show', $article);
     $crumbs->push(__('breadcrumbs.edit'), route('admin.articles.edit', $article));
+});
+
+/** Admin Pages */
+Breadcrumbs::for('admin.pages.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.pages'), route('admin.pages.index'));
+});
+
+Breadcrumbs::for('admin.pages.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.pages.index');
+    $crumbs->push(__('breadcrumbs.create'), route('admin.pages.create'));
+});
+
+Breadcrumbs::for('admin.pages.show', function (Crumbs $crumbs, Page $page) {
+    $crumbs->parent('admin.pages.index');
+    $crumbs->push($page->name, route('admin.pages.show', $page));
+});
+
+Breadcrumbs::for('admin.pages.edit', function (Crumbs $crumbs, Page $page) {
+    $crumbs->parent('admin.pages.show', $page);
+    $crumbs->push(__('breadcrumbs.edit'), route('admin.pages.edit', $page));
 });

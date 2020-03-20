@@ -9,6 +9,7 @@ use App\Domain\Product\Entities\Product;
 use App\Domain\Product\Entities\ProductImage;
 use App\Http\Requests\Admin\Product\ProductMediaUpdateRequest;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ProductMediaService extends Service
 {
@@ -19,8 +20,19 @@ class ProductMediaService extends Service
      */
     public function updateMedia(ProductMediaUpdateRequest $request, Product $product)
     {
-        if ($request->photos)
-            $this->setPhotos(collect()->wrap($request->photos), $product);
+        try {
+            DB::beginTransaction();
+
+            if ($request->photos)
+                $this->setPhotos(collect()->wrap($request->photos), $product);
+
+            if($request->manual)
+                $product->updateManual($request->manual);
+
+            DB::commit();
+        }catch (\Exception $exception){
+            DB::rollBack();
+        }
     }
 
     /**

@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Article extends Entity
 {
-    use Translatable, HasPhoto, HasMeta, Sluggable;
+    use Translatable, HasPhoto, Sluggable;
 
     protected $table = 'articles';
 

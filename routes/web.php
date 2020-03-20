@@ -47,6 +47,15 @@ Route::group([
             /** Lines routes */
             Route::resource('lines', 'LineController');
 
+            /** Pages routes */
+            Route::resource('pages', 'PageController');
+            Route::group([
+                'as' => 'pages.',
+                'prefix' => 'pages',
+            ], function () {
+                Route::delete('{document}/photo/delete', 'PageController@deleteDocument')->name('document.delete');
+            });
+
             /** Brands routes */
             Route::resource('brands', 'BrandController');
             Route::group([
@@ -150,5 +159,7 @@ Route::group([
             Route::get('', 'ArticleController@index')->name('index');
             Route::get('{article}', 'ArticleController@show')->name('show');
         });
+
+        Route::get('about/{page}', 'PageController@show')->name('about.page');
     });
 });

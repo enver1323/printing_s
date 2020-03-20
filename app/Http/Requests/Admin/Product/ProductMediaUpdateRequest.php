@@ -5,12 +5,14 @@ namespace App\Http\Requests\Admin\Product;
 
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 
 /**
  * Class ProductMediaUpdateRequest
  * @package App\Http\Requests\Admin\Product
  *
  * @property array $photos
+ * @property UploadedFile $manual
  */
 class ProductMediaUpdateRequest extends FormRequest
 {
@@ -29,7 +31,8 @@ class ProductMediaUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'
+            'photos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'manual' => 'nullable|mimes:pdf'
         ];
     }
 }

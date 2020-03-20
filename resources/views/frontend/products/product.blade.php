@@ -48,6 +48,13 @@
                                     {{__('frontend.related')}}<i class="fa fa-share-alt ml-2"></i>
                                 </a>
                             </li>
+                            @isset($product->manual)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{$product->manual->getUrl()}}">
+                                        {{__('frontend.manual')}}<i class="fa fa-paperclip ml-2"></i>
+                                    </a>
+                                </li>
+                            @endisset
                         </ul>
                         <hr/>
                     </div>
@@ -174,10 +181,6 @@
                                                         {{$option->name}}
                                                     </strong>
                                                 </h5>
-                                                <button data-id="{{$option->id}}"
-                                                        class="btn btn-primary float-right job-detail-button">
-                                                    <i class="fa fa-search" data-id="{{$option->id}}"></i>
-                                                </button>
                                             </div>
                                         </div>
                                     </div>

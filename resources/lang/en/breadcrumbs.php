@@ -2,6 +2,7 @@
 return [
     'edit' => 'Edit',
     'home' => 'Home',
+    'pages' => 'Pages',
     'lines' => 'Lines',
     'login' => 'Login',
     'media' => 'Media',

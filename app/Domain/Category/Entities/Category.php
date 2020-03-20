@@ -28,7 +28,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Entity implements ProductGroup
 {
-    use Translatable, Sluggable, HasMeta, HasPhoto;
+    use Translatable, Sluggable, HasPhoto;
 
     protected $table = 'categories';
 

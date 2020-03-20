@@ -3,6 +3,7 @@ return [
     'home' => 'Главная',
     'brands' => 'Бренды',
     'search' => 'Поиск',
+    'about_us' => 'О нас',
     'articles' => 'Новости',
     'contacts' => 'Контакты',
     'readMore' => 'Подробнее',
@@ -21,6 +22,7 @@ return [
 
     'browseCategories' => 'Browse Featured Categories',
 
+    'manual' => 'Инструкция',
     'related' => 'Опции',
     'gallery' => 'Галерея',
     'location' => 'Местоположение',

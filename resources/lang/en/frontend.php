@@ -3,6 +3,7 @@ return [
     'home' => 'Home',
     'brands' => 'Brands',
     'search' => 'Search',
+    'about_us' => 'About us',
     'articles' => 'Articles',
     'contacts' => 'Contacts',
     'readMore' => 'Read More',
@@ -21,6 +22,7 @@ return [
 
     'browseCategories' => 'Browse Featured Categories',
 
+    'manual' => 'Manual',
     'related' => 'Related',
     'gallery' => 'Gallery',
     'location' => 'Location',

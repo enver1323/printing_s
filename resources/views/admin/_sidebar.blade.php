@@ -59,6 +59,13 @@
         </a>
     </li>
 
+    <li class="nav-item {{request()->routeIs('admin.pages*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.pages.index') }}">
+            <i class="fas fa-file-word"></i>
+            <span>{{__('breadcrumbs.pages')}}</span>
+        </a>
+    </li>
+
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
         {{__('adminPanel.products')}}

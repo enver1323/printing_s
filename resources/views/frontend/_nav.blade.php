@@ -47,11 +47,22 @@
 
             <!-- Links -->
             <ul class="navbar-nav ml-auto d-flex">
-                <li class="nav-item my-auto">
-                    <a class="nav-link" href="{{route('main')}}">{{__('frontend.home')}}
-                        <span class="sr-only">(current)</span>
+                @if(!$pages->isEmpty())
+                <li class="nav-item dropdown my-auto">
+                    <a class="nav-link dropdown-toggle" id="navbarAboutLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        {{__('frontend.about_us')}}
                     </a>
+                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarAboutLink">
+                        @foreach($pages as $page)
+                            <a class="dropdown-item text-center"
+                               href="{{route('about.page', $page)}}">
+                                {{ $page->name }}
+                            </a>
+                        @endforeach
+                    </div>
                 </li>
+                @endif
                 <li class="nav-item dropdown my-auto">
                     <a class="nav-link dropdown-toggle" id="navbarBrandsLink" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">

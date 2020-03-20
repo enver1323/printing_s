@@ -5,8 +5,9 @@ namespace App\Domain\Product\Entities;
 
 
 use App\Domain\_core\Entity;
+use App\Domain\_core\Manual\HasManual;
 use App\Domain\_core\Photo\HasPhoto;
-use App\Domain\_core\Traits\HasMeta;
+use App\Domain\_core\Meta\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
@@ -51,7 +52,7 @@ use Illuminate\Support\Collection;
  */
 class Product extends Entity implements HasFacilities
 {
-    use Translatable, Sluggable, HasPhoto, HasMeta;
+    use Translatable, Sluggable, HasPhoto, HasManual;
 
     protected $table = 'products';
     public $timestamps = true;
@@ -172,5 +173,13 @@ class Product extends Entity implements HasFacilities
     public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class, 'product_id', 'id')->orderBy('order');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getManualDirectoryPath(): string
+    {
+        return 'products';
     }
 }

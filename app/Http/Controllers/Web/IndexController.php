@@ -8,6 +8,7 @@ use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Line\Entities\Line;
+use App\Domain\Page\Entities\Page;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Slide\Entities\Slide;
 use App\Http\Requests\Frontend\Index\SearchRequest;

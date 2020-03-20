@@ -35,6 +35,7 @@ return [
     'profile' => 'Profile',
     'surname' => 'Surname',
     'nickname' => 'Nickname',
+    'documents' => 'Documents',
     'birthDate' => 'Birth Date',
 
     'add' => 'Add',
@@ -56,6 +57,7 @@ return [
     'addDataKey' => 'Did not find data key? Use Button to add one',
 
     'userCreate' => 'Create user',
+    'pageCreate' => 'Create page',
     'lineCreate' => 'Create line',
     'brandCreate' => 'Create brand',
     'slideCreate' => 'Create slide',

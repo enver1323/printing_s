@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Brand extends Entity implements ProductGroup
 {
-    use Translatable, HasPhoto, Sluggable, HasMeta;
+    use Translatable, HasPhoto, Sluggable;
     public $timestamps = true;
 
     /**

@@ -62,6 +62,7 @@
     </form>
 @endsection
 @push('scripts')
+    <script src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
     <script src="{{mix('js/apiSelect.js', 'build')}}" type="text/javascript"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {

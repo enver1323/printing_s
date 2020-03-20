@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->json('description');
             $table->json('meta')->nullable();
             $table->string('slug');
+            $table->string('manual')->nullable();
             $table->integer('category_id')
                 ->unsigned()
                 ->nullable();

@@ -35,6 +35,7 @@ return [
     'profile' => 'Профиль',
     'surname' => 'Фамилия',
     'nickname' => 'Никнейм',
+    'documents' => 'Документы',
     'birthDate' => 'Birth Date',
 
     'add' => 'Добавить',
@@ -56,6 +57,7 @@ return [
     'addDataKey' => 'Не нашли характеристику? Добавьте новую',
 
     'userCreate' => 'Создать пользователя',
+    'pageCreate' => 'Создать страницу',
     'lineCreate' => 'Создать линейку',
     'brandCreate' => 'Создать бренд',
     'slideCreate' => 'Создать слайд',
