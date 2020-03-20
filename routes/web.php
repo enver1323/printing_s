@@ -22,6 +22,13 @@ Route::group([
         function () {
             Route::get('/', 'HomeController@index')->name('home');
 
+            Route::group([
+                'as' => 'comments.',
+                'prefix' => 'comments'
+            ], function(){
+                Route::get('', 'CommentController@index')->name('index');
+            });
+
             /** Users routes */
             Route::resource('users', 'UserController');
 
@@ -138,8 +145,9 @@ Route::group([
     ], function () {
         /** Index Routes */
         Route::get('', 'IndexController@index')->name('main');
-        Route::get('contacts', 'IndexController@contacts')->name('contacts');
         Route::get('results', 'IndexController@search')->name('results');
+        Route::get('contacts', 'IndexController@contacts')->name('contacts');
+        Route::post('comment', 'IndexController@createComment')->name('comment.create');
 
         /** Products Routes */
         Route::group([

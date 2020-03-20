@@ -7,11 +7,14 @@ namespace App\Http\Controllers\Web;
 use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Comment\Entities\Comment;
 use App\Domain\Line\Entities\Line;
 use App\Domain\Page\Entities\Page;
 use App\Domain\Product\Entities\Product;
 use App\Domain\Slide\Entities\Slide;
+use App\Http\Requests\Admin\Comment\CommentCreateRequest;
 use App\Http\Requests\Frontend\Index\SearchRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
 /**
@@ -21,6 +24,7 @@ use Illuminate\View\View;
  * @property Category $categories
  * @property Product $products
  * @property Article $articles
+ * @property Comment $comments
  * @property Brand $brands
  * @property Slide $slides
  * @property Line $lines
@@ -30,6 +34,7 @@ class IndexController extends WebController
     private $lines;
     private $slides;
     private $brands;
+    private $comments;
     private $articles;
     private $products;
     private $categories;
@@ -43,11 +48,12 @@ class IndexController extends WebController
      * @param Slide $slides
      * @param Article $articles
      */
-    public function __construct(Category $categories, Brand $brands, Product $products, Line $lines, Slide $slides, Article $articles)
+    public function __construct(Category $categories, Brand $brands, Product $products, Line $lines, Slide $slides, Article $articles, Comment $comments)
     {
         $this->categories = $categories;
         $this->products = $products;
         $this->articles = $articles;
+        $this->comments = $comments;
         $this->brands = $brands;
         $this->slides = $slides;
         $this->lines = $lines;
@@ -109,5 +115,15 @@ class IndexController extends WebController
     public function contacts(): View
     {
         return $this->render('contacts.contacts');
+    }
+
+    /**
+     * @param CommentCreateRequest $request
+     * @return RedirectResponse
+     */
+    public function createComment(CommentCreateRequest $request): RedirectResponse
+    {
+        $this->comments->create($request->validated());
+        return redirect()->back();
     }
 }

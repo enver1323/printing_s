@@ -289,3 +289,9 @@ Breadcrumbs::for('admin.pages.edit', function (Crumbs $crumbs, Page $page) {
     $crumbs->parent('admin.pages.show', $page);
     $crumbs->push(__('breadcrumbs.edit'), route('admin.pages.edit', $page));
 });
+
+/** Comment Pages */
+Breadcrumbs::for('admin.comments.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.comments'), route('admin.comments.index'));
+});

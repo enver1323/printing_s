@@ -1,46 +1,121 @@
-<!--Footer-->
-<footer>
+<footer class="page-footer rgba-stylish-strong text-center text-md-left mt-0 pt-4">
+
+    <!--Footer Links-->
     <div class="container">
-        <div class="row">
-            <!-- About -->
-            <div class="col-lg-6 col-md-12">
-                <div class="footer-col">
-                    <h5 class="title">ABOUT {{env('APP_NAME')}}</h5>
-                    <div>
-                        <img src="{{asset('images/logo.png')}}" alt="{{env('APP_NAME')}}"/>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Quibusdam assumenda sequi ducimus temporibus dolore, libero inventore dolorum error illo.
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!--First column-->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.about_us')}}</h6>
+                @foreach($pages as $page)
+                    <p>
+                        <a href="{{route('about.page', $page)}}">{{ $page->name }}</a>
                     </p>
-
-                </div>
+                @endforeach
             </div>
-            <!--/About -->
+            <!--/.First column-->
 
-            <!-- Done by -->
-            <div class="col-lg-6 col-md-12">
-                <div class="footer-col">
-                    <h5>Project by</h5>
-                    <p>Enver Menadjiev</p>
-{{--                    <p>--}}
-{{--                        <i class="fas fa-phone pr-3 mb-2 blue-text"></i>--}}
-{{--                        +998 90 326 84 03--}}
-{{--                    </p>--}}
-                </div>
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.categories')}}</h6>
+                @foreach($categories as $category)
+                <p>
+                    <a href="{{route('products.category', $category)}}">{{ $category->name }}</a>
+                </p>
+                    @endforeach
             </div>
-            <!-- /Done by -->
-        </div>
-    </div>
+            <!--/.Second column-->
 
-    <!--Copyright-->
-    <div class="copyright">
-        <div class="container-fluid">
-            <p>
-                © {{date("Y")}} Copyright: <a href="{{route('main')}}" target="_blank"> {{env('APP_NAME')}} </a>
-            </p>
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.brands')}}</h6>
+                @foreach($brands as $brand)
+                <p>
+                    <a href="{{route('products.brand')}}">{{$brand->name}}</a>
+                </p>
+                @endforeach
+            </div>
+            <!--/.Third column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.contacts')}}</h6>
+                <p>
+                    <i class="fa fa-envelope mr-3"></i>
+                    support@intach.di
+                </p>
+                <p>
+                    <i class="fa fa-phone mr-3"></i>
+                    +998909791130
+                </p>
+                <p>
+                    <i class="fa fa-print mr-3"></i>
+                    +998909791130
+                </p>
+            </div>
+            <!--/.Fourth column-->
+
         </div>
+        <!-- Footer links -->
+
+        <hr>
+        <div class="row py-3 d-flex align-items-center">
+
+            <!--Grid column-->
+            <div class="col-md-7 col-lg-8">
+
+                <!--Copyright-->
+                <p class="text-center text-md-left grey-text">
+                    © {{date('Y')}} Copyright: <a href="{{route('main')}}" target="_blank"> {{getenv('app')}} </a>
+                </p>
+                <!--/.Copyright-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+
+                <!--Social buttons-->
+                <div class="social-section text-center text-md-left">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item mx-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                                <i class="fa fa-2x fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                                <i class="fa fa-2x fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                                <i class="fa fa-2x fa-google"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item mx-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                                <i class="fa fa-2x fa-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.Social buttons-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+
     </div>
-    <!--/Copyright-->
 
 </footer>
-<!--/Footer-->

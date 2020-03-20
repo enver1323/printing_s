@@ -13,6 +13,7 @@ return [
     'change' => 'Change',
     'create' => 'Create',
     'cabinet' => 'Cabinet',
+    'comments' => 'Comments',
     'articles' => 'Articles',
     'products' => 'Products',
     'register' => 'Register',
