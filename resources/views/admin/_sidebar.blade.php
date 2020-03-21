@@ -34,6 +34,12 @@
             <span>{{__('breadcrumbs.users')}}</span>
         </a>
     </li>
+    <li class="nav-item {{request()->routeIs('admin.comments*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.comments.index') }}">
+            <i class="fas fa-envelope"></i>
+            <span>{{__('adminPanel.comments')}}</span>
+        </a>
+    </li>
 
     <hr class="sidebar-divider">
     <div class="sidebar-heading">

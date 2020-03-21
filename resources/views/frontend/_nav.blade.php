@@ -9,12 +9,6 @@
                 <i class="fa fa-envelope white-text"> </i>
                 support@intach.di
             </a>
-            <a href="https://www.instagram.com/uzbekjewellery/" target="_blank">
-                <i class="fa fa-instagram white-text"> </i>
-            </a>
-            <a href="https://www.instagram.com/uzbekjewellery/" target="_blank">
-                <i class="fa fa-facebook white-text"> </i>
-            </a>
         </div>
         <div class="d-flex align-content-center">
             <button class="btn btn-sm btn-outline-white my-0 ml-sm-2 bvi-open" type="button">

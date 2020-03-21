@@ -86,6 +86,7 @@ return [
     'lines' => 'Lines',
     'systems' => 'Systems',
     'products' => 'Products',
+    'comments' => 'Comments',
     'languages' => 'Languages',
     'categories' => 'Categories',
 ];
