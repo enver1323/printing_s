@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:443"
     links:
-      - php-fpm
+      - php-cli
   php-fpm:
     build:
       context: ./
@@ -28,7 +28,7 @@ services:
   php-cli:
     build:
       context: ./
-      dockerfile: docker/php-fpm.docker
+      dockerfile: docker/php-cli.docker
     volumes:
       - ./:/var/www
     links:
@@ -45,9 +45,9 @@ services:
       - ./storage/docker/mysql:/var/lib/mysql
     environment:
       - "MYSQL_ROOT_PASSWORD=root"
-      - "MYSQL_USER=laravel"
+      - "MYSQL_USER=printing"
       - "MYSQL_PASSWORD=root"
-      - "MYSQL_DATABASE=laravel"
+      - "MYSQL_DATABASE=printing"
     ports:
       - "33061:3306"
   redis:

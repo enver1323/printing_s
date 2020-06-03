@@ -15,6 +15,7 @@ class Translatable extends AbstractWidget
     protected $config = [
         'name' => 'name',
         'input' => 'input',
+        'translation' => 'translation',
         'entries' => [],
     ];
 
@@ -28,6 +29,7 @@ class Translatable extends AbstractWidget
             'name' => $this->config['name'],
             'input' => $this->config['input'],
             'entries' => $this->config['entries'],
+            'translation' => $this->config['translation'],
             'languages' => Language::all(),
         ]);
     }

@@ -5,11 +5,11 @@
         @method("PATCH")
         <div class="row">
             <div class="col-lg-6">
-                @widget('translatable', ['entries' => $product->getTranslations('name')])
+                @widget('translatable', ['entries' => $product->getTranslations('name'), 'translation' => __('adminPanel.name')])
             </div>
             <div class="col-lg-6">
                 @widget('translatable', ['name' => 'description', 'input' => 'textarea',
-                    'entries' => $product->getTranslations('description')
+                    'entries' => $product->getTranslations('description'), 'translation' => __('adminPanel.description')
                 ])
             </div>
 

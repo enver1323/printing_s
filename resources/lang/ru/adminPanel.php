@@ -9,6 +9,7 @@ return [
     'name' => 'Название',
     'names' => 'Названия',
     'parent' => 'Parent',
+    'content' => 'Содержание',
     'language' => 'Язык',
     'location' => 'Местоположение',
     'description' => 'Описание',

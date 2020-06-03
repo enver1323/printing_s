@@ -5,7 +5,7 @@
         @csrf
         <div class="row">
             <div class="col-md-6">
-                @widget('translatable', ['entries' => $category->getTranslations('name')])
+                @widget('translatable', ['entries' => $category->getTranslations('name'), 'translation' => __('adminPanel.name')])
             </div>
             <div class="col-md-6">
                 <div class="card shadow mb-4">

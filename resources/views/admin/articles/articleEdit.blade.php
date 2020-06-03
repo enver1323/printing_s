@@ -5,10 +5,10 @@
         @csrf
         <div class="row">
             <div class="col-lg-6">
-                @widget('translatable', ['entries' => $article->getTranslations('name')])
+                @widget('translatable', ['entries' => $article->getTranslations('name'), 'translation' => __('adminPanel.name')])
             </div>
             <div class="col-lg-6">
-                @widget('translatable', ['name' => 'description', 'input' => 'textarea', 'entries' => $article->getTranslations('description')])
+                @widget('translatable', ['name' => 'description', 'input' => 'textarea', 'entries' => $article->getTranslations('description'), 'translation' => __('adminPanel.description')])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">

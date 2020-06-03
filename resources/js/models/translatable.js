@@ -1,5 +1,13 @@
 import * as helper from '../helpers/mainHelper';
 
+try{
+    const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
+    require('@ckeditor/ckeditor5-build-classic/build/translations/ru');
+
+    global.ClassicEditor = ClassicEditor;
+    window.ClassicEditor = ClassicEditor;
+}catch (e) {}
+
 class Translatable {
     constructor(name, parentId, languages, inputType = "input") {
         this.setVars(name, parentId, languages, inputType);
@@ -7,11 +15,20 @@ class Translatable {
     }
 
     setVars(name, parentId, languages, inputType) {
-        this.name = name;
+        this.setName(name);
         this.inputType = inputType;
         this.container = document.getElementById(parentId);
         this.languages = languages;
         this.entries = {};
+    }
+
+    setName(name){
+        if(typeof name === 'object'){
+            this.name = name.field;
+            this.translation = name.translation;
+        }else if(typeof name === 'string'){
+            this.name = this.translation = name;
+        }
     }
 
     setEntries(entries) {
@@ -32,7 +49,7 @@ class Translatable {
             'for': `${this.name}Select`,
             'class': 'col-form-label'
         });
-        label.innerHTML = `Choose language to add ${this.name} entry`;
+        label.innerHTML = `Выберите язык, для добавления поля "${this.translation}"`;
         div.appendChild(label);
 
         this.select = document.createElement('select');
@@ -45,8 +62,8 @@ class Translatable {
         let option;
         for (let k in this.languages) {
             option = document.createElement('option');
-            helper.setAttributes(option, {'value': this.languages[k].code});
-            option.innerHTML = this.languages[k].name;
+            helper.setAttributes(option, {'value': k});
+            option.innerHTML = this.languages[k].native;
             this.select.appendChild(option);
         }
 
@@ -60,7 +77,7 @@ class Translatable {
             'id': `adding${this.name.capitalize()}Btn`,
             'type': 'button'
         });
-        addingBtn.innerHTML = 'Add translations';
+        addingBtn.innerHTML = 'Добавить переводы';
         addingBtn.addEventListener('click', this);
         div.appendChild(addingBtn);
 
@@ -102,7 +119,8 @@ class Translatable {
             'for': `${language}${this.name.capitalize()}`,
             'class': 'col-form-label'
         });
-        label.innerHTML = language.capitalize() + " language " + this.name;
+
+        label.innerHTML = `Поле "${this.translation}" на языке "${this.languages[language].native.capitalize()}"`;
         inputContainer.appendChild(label);
 
         let input = document.createElement(this.inputType);
@@ -132,13 +150,28 @@ class Translatable {
         this.container.appendChild(div);
         this.container.insertBefore(div, this.select.parentNode.parentNode);
 
-        if (this.inputType === 'textarea')
-            CKEDITOR.replace(inputId);
+        if (this.inputType === 'textarea') {
+            ClassicEditor.create(document.getElementById(inputId), {
+                language: 'ru'
+            });
+            input.required = false;
+        }
+
+        if(this.select.options.length === 0)
+            this.select.parentNode.parentNode.remove();
     }
 
     removeEntryField(entry) {
-        let lang = entry.id.substr(0, 2);
+        const id = entry.id;
+        const langLength = (`${this.name}DeletingBtn`.length);
+        let lang = id.substr(0, id.length - langLength);
+
         delete this.entries[lang];
+
+        if(document.getElementById(this.select.id) === null){
+            this.initSelect();
+            this.select.innerHTML = "";
+        }
 
         this.addSelectOption(lang);
 
@@ -164,12 +197,12 @@ class Translatable {
         let language;
 
         for(let k in this.languages)
-            if (this.languages[k].code === code)
+            if (k === code)
                 language = this.languages[k];
 
         let option = document.createElement('option');
-        helper.setAttributes(option, {'value': language.code});
-        option.innerHTML = language.name;
+        helper.setAttributes(option, {'value': code});
+        option.innerHTML = language.native;
         this.select.appendChild(option);
     }
 }

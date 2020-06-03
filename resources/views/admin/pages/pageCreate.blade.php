@@ -4,10 +4,10 @@
         @csrf
         <div class="row">
             <div class="col-lg-6">
-                @widget('translatable')
+                @widget('translatable', ['name' => 'name', 'translation' => __('adminPanel.name')])
             </div>
             <div class="col-lg-6">
-                @widget('translatable', ['name' => 'content', 'input' => 'textarea'])
+                @widget('translatable', ['name' => 'content', 'input' => 'textarea', 'translation' => __('adminPanel.content')])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">

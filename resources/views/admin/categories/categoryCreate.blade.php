@@ -4,7 +4,7 @@
         @csrf
         <div class="row">
             <div class="col-md-6">
-                @widget('translatable')
+                @widget('translatable', ['translation' => __('adminPanel.name')])
             </div>
             <div class="col-md-6">
                 <div class="card shadow mb-4">
