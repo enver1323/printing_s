@@ -4,14 +4,14 @@
         <div class="card">
             <div class="row">
                 <!-- Card image -->
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 card-image-wrapper">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 card-image-wrapper">
                     <div class="card-image">
                         <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}" class="img-fluid" alt="">
                     </div>
                 </div>
                 <!--Card image -->
 
-                <div class="col-xl-10 col-lg-10 col-md-9 col-sm-8">
+                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-7">
                     <div class="card-body">
 
                         <h5 class="card-title">

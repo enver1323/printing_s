@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <div class="logo"></div>
         </div>
-        <div class="sidebar-brand-text mx-1">{{ env('APP_NAME') }}</div>
+        <div class="sidebar-brand-text mx-1">{{ config('app.name') }}</div>
     </a>
 
     <!-- Divider -->

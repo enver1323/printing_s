@@ -1,13 +1,13 @@
 <div class="fixed-top">
     <div class="top-bar">
         <div class="top-bar-socials">
-            <a href="https://www.instagram.com/uzbekjewellery/" target="_blank">
+            <a href="tel:998712565354" target="_blank">
                 <i class="fa fa-phone white-text"> </i>
-                +998909791130
+                +998 71 2565354
             </a>
-            <a href="https://www.instagram.com/uzbekjewellery/" target="_blank">
+            <a href="mailto:info@intach-di.com" target="_blank">
                 <i class="fa fa-envelope white-text"> </i>
-                support@intach.di
+                info@intach-di.com
             </a>
         </div>
         <div class="d-flex align-content-center">
@@ -26,7 +26,7 @@
     </div>
     <nav class="navbar navbar-expand-xl navbar-dark scrolling-navbar ">
         <a class="navbar-brand" href="{{route('main')}}">
-            <img src="{{asset('images/logo.png')}}" alt="{{env('APP_NAME')}}"/>
+            <img src="{{asset('images/logo.png')}}" alt="{{config('app.name')}}"/>
         </a>
 
         <!-- Collapse button -->

@@ -50,15 +50,15 @@
                 <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.contacts')}}</h6>
                 <p>
                     <i class="fa fa-envelope mr-3"></i>
-                    support@intach.di
+                    info@intach-di.com
                 </p>
                 <p>
                     <i class="fa fa-phone mr-3"></i>
-                    +998909791130
+                    +998712565354
                 </p>
                 <p>
                     <i class="fa fa-print mr-3"></i>
-                    +998909791130
+                    +998712565354
                 </p>
             </div>
             <!--/.Fourth column-->
@@ -74,7 +74,7 @@
 
                 <!--Copyright-->
                 <p class="text-center text-md-left grey-text">
-                    © {{date('Y')}} Copyright: <a href="{{route('main')}}" target="_blank"> {{getenv('app')}} </a>
+                    © {{date('Y')}} Copyright: <a href="{{route('main')}}" target="_blank"> {{config('app.name')}} </a>
                 </p>
                 <!--/.Copyright-->
 
