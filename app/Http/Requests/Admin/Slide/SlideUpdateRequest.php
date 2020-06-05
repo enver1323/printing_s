@@ -34,7 +34,7 @@ class SlideUpdateRequest extends FormRequest
     {
         return [
             'order' => 'required|numeric',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required|array|keysExist:languages,code',
             'description.*' => 'required|string',
             'link' => 'required|string',
