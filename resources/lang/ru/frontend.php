@@ -8,7 +8,7 @@ return [
     'contacts' => 'Контакты',
     'readMore' => 'Подробнее',
     'createdAt' => 'Дата создания',
-    'categories' => 'Категории',
+    'categories' => 'Услуги и продукты',
     'description' => 'Описание',
     'topProducts' => 'Топ Товары',
 

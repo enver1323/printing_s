@@ -25,7 +25,7 @@
         </div>
     </div>
     <nav class="navbar navbar-expand-xl navbar-dark scrolling-navbar ">
-        <a class="navbar-brand" href="{{route('main')}}">
+        <a class="navbar-brand m-0 p-0" href="{{route('main')}}">
             <img src="{{asset('images/logo.png')}}" alt="{{config('app.name')}}"/>
         </a>
 

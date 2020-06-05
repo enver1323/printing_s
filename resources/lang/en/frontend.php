@@ -8,7 +8,7 @@ return [
     'contacts' => 'Contacts',
     'readMore' => 'Read More',
     'createdAt' => 'Created at',
-    'categories' => 'Categories',
+    'categories' => 'Products and Services',
     'description' => 'Description',
     'topProducts' => 'Top Products',
 
