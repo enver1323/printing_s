@@ -64,10 +64,14 @@
                             <a href="{{route('admin.products.show', $product)}}">{{ $product->name }}</a>
                         </td>
                         <td>
-                            <a href="{{route('admin.brands.show', $product->brand)}}">{{ $product->brand->name }}</a>
+                            @if($product->brand)
+                                <a href="{{route('admin.brands.show', $product->brand)}}">{{ $product->brand->name }}</a>
+                            @endif
                         </td>
                         <td>
-                            <a href="{{route('admin.categories.show', $product->category)}}">{{ $product->category->name }}</a>
+                            @if($product->category)
+                                <a href="{{route('admin.categories.show', $product->category)}}">{{ $product->category->name }}</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

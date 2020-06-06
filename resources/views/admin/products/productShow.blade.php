@@ -7,10 +7,12 @@
                 <div class="card shadow">
                     <div class="card-header">
                         <div class="d-flex flex-row mb-4">
-                            <a href="{{ route('admin.products.options.create', $product) }}" class="btn btn-success mr-1">
+                            <a href="{{ route('admin.products.options.create', $product) }}"
+                               class="btn btn-success mr-1">
                                 {{__('adminPanel.new') .' '. __('adminPanel.option')}}
                             </a>
-                            <a href="{{ route('admin.products.data.values.show', $product) }}" class="btn btn-secondary mr-1">
+                            <a href="{{ route('admin.products.data.values.show', $product) }}"
+                               class="btn btn-secondary mr-1">
                                 {{__('adminPanel.dataValue')}}
                             </a>
                             <a href="{{route('admin.products.media.show', $product)}}" class="btn btn-secondary mr-1">
@@ -38,7 +40,8 @@
                             <div class="row ml-1">
                                 @isset($product->mainPhoto->photo)
                                     <div class="image-resizable-container mr-3">
-                                        <img src="{{$product->mainPhoto->photo->getUrl()}}" class="img-thumbnail" alt="">
+                                        <img src="{{$product->mainPhoto->photo->getUrl()}}" class="img-thumbnail"
+                                             alt="">
                                         <form action="{{route('admin.products.photo.delete', $product)}}"
                                               method="POST">
                                             @method('DELETE')
@@ -80,24 +83,31 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <strong>{{__('adminPanel.brand')}}:</strong>
-                                <a href="{{route('admin.brands.show', $product->brand)}}"> {{$product->brand->name}}</a>
+                        @if($product->brand)
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <strong>{{__('adminPanel.brand')}}:</strong>
+                                    <a href="{{route('admin.brands.show', $product->brand)}}"> {{$product->brand->name}}</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <strong>{{__('adminPanel.category')}}:</strong>
-                                <a href="{{route('admin.categories.show', $product->category)}}"> {{$product->category->name}}</a>
+                        @endif
+                        @if($product->category)
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <strong>{{__('adminPanel.category')}}:</strong>
+                                    <a href="{{route('admin.categories.show', $product->category)}}"> {{$product->category->name}}</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mb-4">
-                            <div class="col">
-                                <strong>{{__('adminPanel.line')}}:</strong>
-                                <a href="{{route('admin.lines.show', $product->line)}}"> {{$product->line->name}}</a>
+                        @endif
+                        @if($product->line)
+
+                            <div class="row mb-4">
+                                <div class="col">
+                                    <strong>{{__('adminPanel.line')}}:</strong>
+                                    <a href="{{route('admin.lines.show', $product->line)}}"> {{$product->line->name}}</a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="row mb-4">
                             <div class="col">
                                 <strong>{{__('adminPanel.author')}}:</strong>
