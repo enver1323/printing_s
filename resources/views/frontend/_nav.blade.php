@@ -1,5 +1,5 @@
 <div class="fixed-top">
-    <div class="top-bar">
+    <div class="top-bar d-none d-md-flex">
         <div class="top-bar-socials">
             <a href="tel:998712565354" target="_blank">
                 <i class="fa fa-phone white-text"> </i>
@@ -42,20 +42,20 @@
             <!-- Links -->
             <ul class="navbar-nav ml-auto d-flex">
                 @if(!$pages->isEmpty())
-                <li class="nav-item dropdown my-auto">
-                    <a class="nav-link dropdown-toggle" id="navbarAboutLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        {{__('frontend.about_us')}}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarAboutLink">
-                        @foreach($pages as $page)
-                            <a class="dropdown-item text-center"
-                               href="{{route('about.page', $page)}}">
-                                {{ $page->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                </li>
+                    <li class="nav-item dropdown my-auto">
+                        <a class="nav-link dropdown-toggle" id="navbarAboutLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            {{__('frontend.about_us')}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarAboutLink">
+                            @foreach($pages as $page)
+                                <a class="dropdown-item text-center"
+                                   href="{{route('about.page', $page)}}">
+                                    {{ $page->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
                 @endif
                 <li class="nav-item dropdown my-auto">
                     <a class="nav-link dropdown-toggle" id="navbarBrandsLink" data-toggle="dropdown"
@@ -96,6 +96,32 @@
                     <a class="nav-link" href="{{route('contacts')}}">{{__('frontend.contacts')}}
                         <span class="sr-only">(current)</span>
                     </a>
+                </li>
+                <li class="nav-item my-auto d-block d-md-none">
+                    <a href="tel:998712565354" target="_blank" class="nav-link">
+                        <i class="fa fa-phone white-text"> </i>
+                        +998 71 2565354
+                    </a>
+                </li>
+                <li class="nav-item my-auto d-block d-md-none">
+                    <a href="mailto:info@intach-di.com" target="_blank" class="nav-link">
+                        <i class="fa fa-envelope white-text"> </i>
+                        info@intach-di.com
+                    </a>
+                </li>
+                <li class="nav-item my-auto d-flex d-md-none">
+                    <button class="btn btn-sm btn-outline-white my-0 ml-sm-2 bvi-open h-auto" type="button">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                    <form class="ml-auto d-flex" action="{{route('results')}}">
+                        <div class="md-form form-sm my-0">
+                            <input class="text-white w-100" type="text" placeholder="Search" aria-label="Search"
+                                   name="search">
+                        </div>
+                        <button class="btn btn-sm btn-outline-white my-0 ml-sm-2" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
                 </li>
 
                 <li class="nav-item dropdown my-auto">
