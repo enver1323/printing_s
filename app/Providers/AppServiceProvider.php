@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        ValidatorExtender::extend();
         CollectionExtender::extend();
         RelationExtender::extend();
     }

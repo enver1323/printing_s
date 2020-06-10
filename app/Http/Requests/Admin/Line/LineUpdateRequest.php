@@ -33,7 +33,7 @@ class LineUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|array|keysExist:languages,code',
+            'name' => 'required|array',
             'name.*' => 'required|string|max:255',
         ];
     }

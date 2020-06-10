@@ -1,5 +1,5 @@
 <div class="fixed-top">
-    <div class="top-bar d-none d-md-flex">
+    <div class="top-bar d--flex">
         <div class="top-bar-socials">
             <a href="tel:998712565354" target="_blank">
                 <i class="fa fa-phone white-text"> </i>
@@ -10,7 +10,7 @@
                 info@intach-di.com
             </a>
         </div>
-        <div class="d-flex align-content-center">
+        <div class="align-content-center d-none d-md-flex">
             <button class="btn btn-sm btn-outline-white my-0 ml-sm-2 bvi-open" type="button">
                 <i class="fa fa-eye"></i>
             </button>
@@ -41,7 +41,7 @@
 
             <!-- Links -->
             <ul class="navbar-nav ml-auto d-flex">
-                @if(!$pages->isEmpty())
+                @if(count($pages))
                     <li class="nav-item dropdown my-auto">
                         <a class="nav-link dropdown-toggle" id="navbarAboutLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -57,34 +57,38 @@
                         </div>
                     </li>
                 @endif
-                <li class="nav-item dropdown my-auto">
-                    <a class="nav-link dropdown-toggle" id="navbarBrandsLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        {{__('frontend.brands')}}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarBrandsLink">
-                        @foreach($brands as $brand)
-                            <a class="dropdown-item text-center"
-                               href="{{route('products.brand', $brand)}}">
-                                {{ $brand->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                </li>
-                <li class="nav-item dropdown my-auto">
-                    <a class="nav-link dropdown-toggle" id="navbarCategoriesLink" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" href="{{route('products.category')}}">
-                        {{__('frontend.categories')}}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarCategoriesLink">
-                        @foreach($categories as $category)
-                            <a class="dropdown-item text-center"
-                               href="{{route('products.category', $category)}}">
-                                {{ $category->name }}
-                            </a>
-                        @endforeach
-                    </div>
-                </li>
+                @if(count($brands))
+                    <li class="nav-item dropdown my-auto">
+                        <a class="nav-link dropdown-toggle" id="navbarBrandsLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            {{__('frontend.brands')}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarBrandsLink">
+                            @foreach($brands as $brand)
+                                <a class="dropdown-item text-center"
+                                   href="{{route('products.brand', $brand)}}">
+                                    {{ $brand->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
+                @endif
+                @if(count($categories))
+                    <li class="nav-item dropdown my-auto">
+                        <a class="nav-link dropdown-toggle" id="navbarCategoriesLink" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" href="{{route('products.category')}}">
+                            {{__('frontend.categories')}}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarCategoriesLink">
+                            @foreach($categories as $category)
+                                <a class="dropdown-item text-center"
+                                   href="{{route('products.category', $category)}}">
+                                    {{ $category->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
+                @endif
 
                 <li class="nav-item my-auto">
                     <a class="nav-link" href="{{route('articles.index')}}">{{__('frontend.articles')}}

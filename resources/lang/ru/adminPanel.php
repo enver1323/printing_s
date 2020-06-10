@@ -87,7 +87,7 @@ return [
     'lines' => 'Линейки',
     'systems' => 'Системы',
     'products' => 'Товары',
-    'comments' => 'Comments',
+    'comments' => 'Комментарии',
     'languages' => 'Языки',
     'categories' => 'Категории',
 ];

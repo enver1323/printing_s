@@ -50,11 +50,9 @@ class ProductService extends Service
      */
     public function store(ProductStoreRequest $request): Product
     {
-        $product = $this->products->create(array_merge($request->validated(), [
+        return $this->products->create(array_merge($request->validated(), [
             'created_by' => $request->user()->id
         ]));
-
-        return $product;
     }
 
     /**

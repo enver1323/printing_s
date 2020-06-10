@@ -151,9 +151,7 @@ class Translatable {
         this.container.insertBefore(div, this.select.parentNode.parentNode);
 
         if (this.inputType === 'textarea') {
-            ClassicEditor.create(document.getElementById(inputId), {
-                language: 'ru'
-            });
+            ClassicEditor.create(document.getElementById(inputId), {language: 'ru'});
             input.required = false;
         }
 

@@ -33,9 +33,9 @@ class BrandStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|array|keysExist:languages,code',
+            'name' => 'required|array',
             'name.*' => 'required|string|max:255',
-            'description' => 'required|array|keysExist:languages,code',
+            'description' => 'required|array',
             'description.*' => 'required|string',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'
         ];

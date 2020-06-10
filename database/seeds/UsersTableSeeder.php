@@ -14,12 +14,5 @@ class UsersTableSeeder extends Seeder
             'remember_token' => 'sNjxc0jZyL',
             'role' => User::ROLE_ADMIN,
         ]);
-        User::firstOrCreate([
-            'name' => 'stitsyuk',
-            'email' => 'stitsyuk@mail.ru',
-            'password' => '$2y$10$sLuK2wphvzt4WitFJKr9buqip7kYgmuLLbaFtV0OnvbPC9UKo91xC', // stivengerrard
-            'remember_token' => 'sNjxc0jZyL',
-            'role' => User::ROLE_ADMIN,
-        ]);
     }
 }

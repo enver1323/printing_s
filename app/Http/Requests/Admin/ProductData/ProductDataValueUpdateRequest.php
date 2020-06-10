@@ -30,7 +30,7 @@ class ProductDataValueUpdateRequest extends FormRequest
     {
         return [
             'values' => 'required|array|keysExist:data_keys,id',
-            'values.*.value' => 'required|array|keysExist:languages,code',
+            'values.*.value' => 'required|array',
             'values.*.value.*' => 'required|string',
         ];
     }

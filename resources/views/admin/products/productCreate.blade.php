@@ -7,7 +7,8 @@
                 @widget('translatable', ['translation' => __('adminPanel.name')])
             </div>
             <div class="col-lg-6">
-                @widget('translatable', ['name' => 'description', 'input' => 'textarea', 'translation' => __('adminPanel.description')])
+                @widget('translatable', ['name' => 'description', 'input' => 'textarea', 'translation' =>
+                __('adminPanel.description')])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
@@ -15,14 +16,6 @@
                         <h4 class="text-primary">{{__('adminPanel.productCreate')}}</h4>
                     </div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
-                            <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"
-                                   class="form-control-file{{ $errors->has('photo') ? ' is-invalid': '' }}">
-                            @if($errors->has('photo'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('photo') }}</strong></span>
-                            @endif
-                        </div>
                         <div class="form-group">
                             <label class="col-form-label" for="category">{{__('adminPanel.category')}}</label>
                             <select name="category_id" id="category" required
@@ -36,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="brand">{{__('adminPanel.brand')}}</label>
-                            <select name="brand_id" id="brand" required
+                            <select name="brand_id" id="brand"
                                     class="form-control{{ $errors->has('brand_id') ? ' is-invalid': '' }}">
                                 <option value="">{{__('adminPanel.choose')}}</option>
                             </select>

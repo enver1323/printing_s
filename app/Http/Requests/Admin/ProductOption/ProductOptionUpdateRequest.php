@@ -30,9 +30,9 @@ class ProductOptionUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|array|keysExist:languages,code',
+            'name' => 'required|array',
             'name.*' => 'required|string',
-            'description' => 'required|array|keysExist:languages,code',
+            'description' => 'required|array',
             'description.*' => 'required|string',
         ];
     }

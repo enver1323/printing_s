@@ -27,7 +27,7 @@ class ProductController extends WebController
     private $brands;
     private $lines;
 
-    public function __construct(Brand $brands,  Category $categories, Line $lines)
+    public function __construct(Brand $brands, Category $categories, Line $lines)
     {
         $this->categories = $categories;
         $this->brands = $brands;
@@ -70,13 +70,19 @@ class ProductController extends WebController
      */
     protected function productList(ProductGroup $item): LengthAwarePaginator
     {
+        $locale = app()->getLocale();
+
         /** @var LengthAwarePaginator|Collection $paginator */
-        $paginator = $item->products()->with('mainImage')->paginate(self::ITEMS_PER_PAGE);
+        $paginator = $item->products()
+            ->whereNotNull("name->$locale")
+            ->with('mainImage')
+            ->paginate(self::ITEMS_PER_PAGE);
+
         $products = $paginator->getCollection()->mapToGroups(function ($item) {
             return [$item->line_id => $item];
         });
 
-        $lines = $this->lines->find($products->keys())->map(function($value) use($products){
+        $lines = $this->lines->find($products->keys())->map(function ($value) use ($products) {
             $value->products = $products[$value->id];
             return $value;
         });
