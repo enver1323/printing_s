@@ -38,7 +38,7 @@ $route = is_a($item, Product::class) ? route('admin.products.data.values.update'
     <script src="{{mix('js/dataValueList.js', 'build')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function (event) {
-            let list = new DataValueList('values', 'container', "{{route('ajax.data.keys')}}", @json($languages));
+            let list = new DataValueList('values', 'container', "{{route('ajax.data.keys')}}", @json(config('laravellocalization.supportedLocales'), JSON_UNESCAPED_UNICODE));
             list.setEntries(@json($values))
         })
     </script>

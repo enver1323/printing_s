@@ -144,13 +144,7 @@
                 </li>
 
                 <!-- Authentication Links -->
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('login') }}">
-                            <i class="fa fa-sign-in"></i> {{ __('auth.sign_in') }}
-                        </a>
-                    </li>
-                @else
+                @auth
                     <li class="nav-item dropdown my-auto">
                         <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
@@ -172,7 +166,7 @@
                             </form>
                         </div>
                     </li>
-                @endguest
+                @endauth
             </ul>
             <!-- /Links -->
         </div>
