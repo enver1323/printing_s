@@ -33,7 +33,7 @@
                         <div class="col-md-12">
                             <img src="{{$category->photo ? $category->photo->getUrl() : ''}}" alt=""
                                  class="float-left mb-3 mr-3 w-25">
-                            {{$category->description}}
+                            {!! $category->description !!}
                         </div>
                     </div>
                 </div>
