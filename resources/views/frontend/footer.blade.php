@@ -23,10 +23,10 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.categories')}}</h6>
                 @foreach($categories as $category)
-                <p>
-                    <a href="{{route('products.category', $category)}}">{{ $category->name }}</a>
-                </p>
-                    @endforeach
+                    <p>
+                        <a href="{{route('products.category', $category)}}">{{ $category->name }}</a>
+                    </p>
+                @endforeach
             </div>
             <!--/.Second column-->
 
@@ -36,9 +36,9 @@
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.brands')}}</h6>
                 @foreach($brands as $brand)
-                <p>
-                    <a href="{{route('products.brand')}}">{{$brand->name}}</a>
-                </p>
+                    <p>
+                        <a href="{{route('products.brand')}}">{{$brand->name}}</a>
+                    </p>
                 @endforeach
             </div>
             <!--/.Third column-->
@@ -88,23 +88,27 @@
                 <div class="social-section text-center text-md-left">
                     <ul class="list-unstyled list-inline">
                         <li class="list-inline-item mx-0">
-                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
+                               href="https://www.facebook.com/intach.di.polygraphy/" target="_blank">
                                 <i class="fa fa-2x fa-facebook-f"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mx-0">
-                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
+                               href="https://instagram.com/intach.di?igshid=1oclefs62n4ji" target="_blank">
                                 <i class="fa fa-2x fa-twitter"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mx-0">
-                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
-                                <i class="fa fa-2x fa-google"></i>
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
+                               href="https://t.me/intach_di" target="_blank">
+                                <i class="fa fa-2x fa-telegram"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mx-0">
-                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0">
-                                <i class="fa fa-2x fa-linkedin"></i>
+                            <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
+                               href="https://t.me/FastCardBot" target="_blank">
+                                <i class="fa fa-2x fa-reddit-alien"></i>
                             </a>
                         </li>
                     </ul>

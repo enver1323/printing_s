@@ -11,8 +11,8 @@
             </a>
         </div>
         <div class="align-content-center d-none d-md-flex">
-            <button class="btn btn-sm btn-outline-white my-0 ml-sm-2 bvi-open" type="button">
-                <i class="fa fa-eye"></i>
+            <button class="btn btn-sm btn-white my-0 ml-sm-2 bvi-open" type="button">
+                <i class="fa fa-eye fa-lg"></i>
             </button>
             <form class="form-inline ml-auto" action="{{route('results')}}">
                 <div class="md-form form-sm my-0">

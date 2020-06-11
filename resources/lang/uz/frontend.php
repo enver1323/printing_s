@@ -1,14 +1,14 @@
 <?php
 return [
     'home' => 'Главная',
-    'brands' => 'Решения для Вас',
+    'brands' => 'Siz uchun echimlar',
     'search' => 'Поиск',
-    'about_us' => 'Мы для Вас',
-    'articles' => 'Новости и объявления',
-    'contacts' => 'Контакты',
+    'about_us' => 'Biz siz uchun',
+    'articles' => 'Yangiliklar va e\'lonlar',
+    'contacts' => 'Aloqa',
     'readMore' => 'Подробнее',
     'createdAt' => 'Дата создания',
-    'categories' => 'Услуги и продукты',
+    'categories' => 'Xizmatlar va maxsulotlar',
     'description' => 'Описание',
     'topProducts' => 'Топ Товары',
 

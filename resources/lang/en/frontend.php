@@ -1,10 +1,10 @@
 <?php
 return [
     'home' => 'Home',
-    'brands' => 'Brands',
+    'brands' => 'Solutions for You',
     'search' => 'Search',
-    'about_us' => 'About us',
-    'articles' => 'Articles',
+    'about_us' => 'We for You',
+    'articles' => 'News and Notes',
     'contacts' => 'Contacts',
     'readMore' => 'Read More',
     'createdAt' => 'Created at',
