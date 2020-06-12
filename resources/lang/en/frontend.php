@@ -11,6 +11,7 @@ return [
     'categories' => 'Products and Services',
     'description' => 'Description',
     'topProducts' => 'Top Products',
+    'orderCards' => 'Order business cards',
 
     'all' => 'All',
     'author' => 'Author',

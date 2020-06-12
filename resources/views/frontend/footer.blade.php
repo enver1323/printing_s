@@ -96,7 +96,7 @@
                         <li class="list-inline-item mx-0">
                             <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
                                href="https://instagram.com/intach.di?igshid=1oclefs62n4ji" target="_blank">
-                                <i class="fa fa-2x fa-twitter"></i>
+                                <i class="fa fa-2x fa-instagram"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mx-0">
@@ -107,8 +107,8 @@
                         </li>
                         <li class="list-inline-item mx-0">
                             <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
-                               href="https://t.me/FastCardBot" target="_blank">
-                                <i class="fa fa-2x fa-reddit-alien"></i>
+                               href="mailto:info@intach-di.com" target="_blank">
+                                <i class="fa fa-2x fa-envelope"></i>
                             </a>
                         </li>
                     </ul>

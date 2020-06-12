@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="{{mix('css/app.css', 'build')}}">
     <link rel="stylesheet" href="{{asset('js/bvi/css/bvi.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('js/bvi/css/bvi-font.min.css')}}" type="text/css">
     @yield('links')
 </head>
 <body>
@@ -25,9 +24,9 @@
 
 @include('frontend.footer')
 </body>
+
 <script src="{{mix('js/app.js', 'build')}}"></script>
 <script src="{{asset('js/bvi/js/js.cookie.min.js')}}"></script>
-<script src="{{asset('js/bvi/js/responsivevoice.min.js')}}"></script>
 <script src="{{asset('js/bvi/js/bvi.min.js')}}"></script>
 <script src="{{asset('js/bvi/js/bvi-init.js')}}"></script>
 @stack('scripts')

@@ -5,12 +5,12 @@
                 <i class="fa fa-phone white-text"> </i>
                 +998 71 2565354
             </a>
-            <a href="mailto:info@intach-di.com" target="_blank">
-                <i class="fa fa-envelope white-text"> </i>
-                info@intach-di.com
+            <a href="https://t.me/FastCardBot" target="_blank">
+                <i class="fa fa-telegram fa-lg white-text"> </i>
+                {{__('frontend.orderCards')}}
             </a>
         </div>
-        <div class="align-content-center d-none d-md-flex">
+        <div class="align-content-center d-none d-lg-flex">
             <button class="btn btn-sm btn-white my-0 ml-sm-2 bvi-open" type="button">
                 <i class="fa fa-eye fa-lg"></i>
             </button>

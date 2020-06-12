@@ -11,6 +11,7 @@ return [
     'categories' => 'Xizmatlar va maxsulotlar',
     'description' => 'Описание',
     'topProducts' => 'Топ Товары',
+    'orderCards' => 'Заказ визиток онлайн',
 
     'all' => 'Все',
     'author' => 'Автор',

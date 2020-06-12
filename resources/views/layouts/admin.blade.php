@@ -86,5 +86,6 @@
 
 <script src="{{ mix('js/admin.js','build') }}" defer></script>
 @stack('scripts')
+
 </body>
 </html>

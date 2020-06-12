@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 
+require('laravel-mix-polyfill');
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -25,4 +27,9 @@ mix
     .sass('resources/sass/frontend/owlCarousel.scss', 'css')
     .sass('resources/sass/admin.scss', 'css')
     .copy('resources/images', 'public/images')
-    .version();
+    .version()
+    .polyfill({
+        enabled: true,
+        useBuiltIns: "usage",
+        targets: {"firefox": "50", "ie": 11}
+    });
