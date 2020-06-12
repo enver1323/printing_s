@@ -85,7 +85,7 @@
                                     <strong class="job-description-title">{{__('frontend.description')}}:</strong>
                                 </p>
                                 <p>
-                                    {{$product->description}}
+                                    {!! $product->description !!}
                                 </p>
                             </div>
                         </div>

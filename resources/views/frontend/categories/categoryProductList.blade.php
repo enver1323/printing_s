@@ -69,10 +69,10 @@
                                                             </a>
                                                         </strong>
                                                     </h5>
-                                                    <p class="card-text d-block d-md-none"
+                                                    <div class="card-text d-block d-md-none"
                                                        id="product-{{$product->id}}-description">
                                                         {!! $product->description !!}
-                                                    </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

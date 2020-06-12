@@ -4,10 +4,6 @@
     <div class="poster poster-candidate-details">
         <div class="container">
             <div class="info-top">
-                <div class="candidate-logo">
-                    <img src="{{$article->photo ? $article->photo->getUrl() : ''}}" class="img-fluid"/>
-                </div>
-
                 <div class="info-inner">
                     <div class="title-headline">
                         <h2 class="candidate-name">
@@ -113,8 +109,9 @@
                 <div class="sidebar-details">
                     <hr class=""/>
                     <p>
-                        <i class="fas fa-user-graduate pr-3 purple-text"></i><strong>{{__('frontend.author')}}
-                            :</strong><br/><span>{{$article->author->name}}</span><br/>
+                        <i class="fas fa-user-graduate pr-3 purple-text"></i>
+                        <strong>{{__('frontend.author')}}:</strong><br/>
+                        <span>{{$article->author->name}}</span><br/>
                         <i class="fas fa-award pr-3 pink-text"></i><strong>{{__('frontend.createdAt')}} :</strong>
                         <br/><span>{{date('d-m-Y', $article->created_at->timestamp)}}</span><br/>
                     </p>

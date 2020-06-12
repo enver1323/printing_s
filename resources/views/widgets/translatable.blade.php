@@ -5,6 +5,8 @@
     <div class="card-body" id="{{$name}}Container"></div>
 </div>
 <script type="text/javascript" src="{{mix('js/translatable.js', 'build')}}"></script>
+<script type="text/javascript" src="{{asset('js/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/ckeditor/plugins/a11yhelp/dialogs/lang/ru.js')}}"></script>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
         let {{$name}}Entries = new Translatable(@json(['field' => $name, 'translation' => $translation ?? $name]), "{{$name}}Container", @json(config('laravellocalization.supportedLocales'), JSON_UNESCAPED_UNICODE), "{{$input ?? 'input'}}");

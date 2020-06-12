@@ -1,13 +1,5 @@
 import * as helper from '../helpers/mainHelper';
 
-try{
-    const ClassicEditor = require('@ckeditor/ckeditor5-build-classic');
-    require('@ckeditor/ckeditor5-build-classic/build/translations/ru');
-
-    global.ClassicEditor = ClassicEditor;
-    window.ClassicEditor = ClassicEditor;
-}catch (e) {}
-
 class Translatable {
     constructor(name, parentId, languages, inputType = "input") {
         this.setVars(name, parentId, languages, inputType);
@@ -151,8 +143,7 @@ class Translatable {
         this.container.insertBefore(div, this.select.parentNode.parentNode);
 
         if (this.inputType === 'textarea') {
-            ClassicEditor.create(document.getElementById(inputId), {language: 'ru'});
-            input.required = false;
+            CKEDITOR.replace(document.getElementById(inputId), {language: 'ru'});
         }
 
         if(this.select.options.length === 0)
