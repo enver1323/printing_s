@@ -100,10 +100,10 @@
                                 info@intach-di.com
                             </a>
                             <br>
-                            <a href="tel:+998712565354" class="text-white">
+                            <a href="tel:+998712565354" class="text-white" target="_blank">
                                 <i class="fa fa-phone pr-3"></i>+998712565354
                             </a>
-                            <a href="tel:+998977277022" class="text-white">
+                            <a href="tel:+998977277022" class="text-white" target="_blank">
                                 <i class="fa fa-telegram pr-3"></i>+998977277022
                             </a>
                         </div>
