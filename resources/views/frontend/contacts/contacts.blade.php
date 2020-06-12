@@ -28,7 +28,7 @@
 
             <!-- MAP -->
             <div id="map-container" class="z-depth-1-half map-container col-12" style="min-height: 400px">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2997.1593004569445!2d69.2660027!3d41.305398!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b4c504ca78b%3A0xd3020f54b8f2a63!2sIntach-Di!5e0!3m2!1sen!2s!4v1591966687752!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.1559551951536!2d69.2660867154232!3d41.30547077927181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bd324916cc3%3A0x14a9ab43066e67cd!2sIntach-Di!5e0!3m2!1sen!2s!4v1591966798358!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
 
             <!-- /MAP -->
