@@ -19,7 +19,7 @@ class CreateSlidesTable extends Migration
                 ->unsigned()
                 ->default(1);
             $table->string('photo')->nullable();
-            $table->string('description');
+            $table->longText('description');
             $table->string('link');
             $table->integer('created_at')->unsigned();
             $table->integer('updated_at')->unsigned();

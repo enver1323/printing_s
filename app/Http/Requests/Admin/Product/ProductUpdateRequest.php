@@ -39,7 +39,7 @@ class ProductUpdateRequest extends FormRequest
             'name' => 'required|array',
             'name.*' => 'required|string|max:255',
             'description' => 'required|array',
-            'description.*' => 'required|string|max:255',
+            'description.*' => 'required|string',
             'category_id' => 'required|numeric|exists:categories,id',
             'brand_id' => 'nullable|numeric|exists:brands,id',
             'line_id' => 'required|numeric|exists:lines,id'

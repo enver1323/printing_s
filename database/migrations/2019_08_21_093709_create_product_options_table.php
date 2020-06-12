@@ -18,7 +18,7 @@ class CreateProductOptionsTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->json('name');
-            $table->json('description');
+            $table->longText('description');
             $table->integer('created_by')
                 ->unsigned()
                 ->nullable();

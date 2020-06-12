@@ -26,7 +26,7 @@ class PageUpdateRequest extends FormRequest
             'name' => 'required|array',
             'name.*' => 'required|string|max:255',
             'content' => 'required|array',
-            'content.*' => 'required|string|max:255',
+            'content.*' => 'required|string',
             'documents' => 'nullable|array',
             'documents.*' => 'nullable|mimes:pdf'
         ];

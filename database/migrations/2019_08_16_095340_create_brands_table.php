@@ -17,8 +17,8 @@ class CreateBrandsTable extends Migration
             /** Columns */
             $table->increments('id');
             $table->json('name');
-            $table->json('description');
-            $table->json('meta')->nullable();
+            $table->longText('description');
+            $table->jsonb('meta')->nullable();
             $table->string('slug');
             $table->string('photo')->nullable();
             $table->integer('created_at');

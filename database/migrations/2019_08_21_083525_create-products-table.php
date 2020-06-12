@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             /** Columns */
             $table->increments('id');
             $table->json('name');
-            $table->json('description');
+            $table->longText('description');
             $table->json('meta')->nullable();
             $table->string('slug');
             $table->string('manual')->nullable();

@@ -5,7 +5,7 @@
         <div class="container">
             <div class="info-top">
                 <div class="candidate-logo">
-                    <img src="{{$article->photo ? $article->photo->getUrl() : ''}}" class="rounded-circle img-fluid"/>
+                    <img src="{{$article->photo ? $article->photo->getUrl() : ''}}" class="img-fluid"/>
                 </div>
 
                 <div class="info-inner">

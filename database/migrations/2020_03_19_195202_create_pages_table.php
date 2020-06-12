@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             /** Columns */
             $table->increments('id');
             $table->json('name');
-            $table->json('content');
+            $table->longText('content');
             $table->string('slug');
         });
     }

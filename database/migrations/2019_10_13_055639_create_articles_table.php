@@ -16,10 +16,10 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             /** Columns */
             $table->increments('id');
-            $table->string('name');
-            $table->string('description');
+            $table->json('name');
+            $table->longText('description');
             $table->string('slug');
-            $table->string('meta')->nullable();
+            $table->jsonb('meta')->nullable();
             $table->string('photo')->nullable();
             $table->integer('created_by')
                 ->unsigned()

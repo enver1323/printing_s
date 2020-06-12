@@ -19,7 +19,7 @@ class CreateDataValuesTable extends Migration
             $table->integer('data_key')->unsigned();
             $table->integer('owner_id')->unsigned();
             $table->string('owner_type');
-            $table->json('value');
+            $table->longText('value');
 
             /** Foreign keys */
             $table->foreign('data_key')
