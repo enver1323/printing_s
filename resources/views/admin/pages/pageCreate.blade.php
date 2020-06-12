@@ -7,7 +7,8 @@
                 @widget('translatable', ['name' => 'name', 'translation' => __('adminPanel.name')])
             </div>
             <div class="col-lg-6">
-                @widget('translatable', ['name' => 'content', 'input' => 'textarea', 'translation' => __('adminPanel.content')])
+                @widget('translatable', ['name' => 'content', 'input' => 'textarea', 'translation' =>
+                __('adminPanel.content')])
             </div>
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
@@ -17,7 +18,8 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label class="col-form-label" for="documents">{{__('adminPanel.documents')}}</label>
-                            <input name="documents[]" type="file" id="documents" value="{{ old('documents') }}" accept="application/pdf"
+                            <input name="documents[]" type="file" id="documents" value="{{ old('documents') }}"
+                                   accept="application/pdf"
                                    class="form-control-file{{ $errors->has('photo') ? ' is-invalid': '' }}" multiple>
                             @if($errors->has('documents'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('documents') }}</strong></span>

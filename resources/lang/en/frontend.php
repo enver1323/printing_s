@@ -31,4 +31,7 @@ return [
     'techData' => 'Technical Data',
     'technology' => 'Technology',
     'keepInTouch' => 'Keep In Touch',
+
+    'send' => 'Send',
+    'fullLocation' => 'Uzbekistan, Tashkent, Mirabad district, Buyuk Turon street, 75'
 ];

@@ -49,17 +49,36 @@
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.contacts')}}</h6>
                 <p>
-                    <i class="fa fa-envelope mr-3"></i>
-                    info@intach-di.com
+                    <a href="mailto:info@intach-di.com" class="text-white">
+                        <i class="fa fa-envelope mr-3"></i>
+                        info@intach-di.com
+                    </a>
                 </p>
                 <p>
-                    <i class="fa fa-phone mr-3"></i>
-                    +998712565354
+                    <a href="tel:+998712565354" class="text-white">
+                        <i class="fa fa-phone mr-3"></i>
+                        +998712565354
+                    </a>
                 </p>
                 <p>
-                    <i class="fa fa-print mr-3"></i>
-                    +998712565354
+                    <a href="tel:+998712565354" class="text-white">
+                        <i class="fa fa-print mr-3"></i>
+                        +998712565354
+                    </a>
                 </p>
+                <p>
+                    <a href="https://goo.gl/maps/gxqMKDAbqoP45EVUA" class="text-white">
+                        <i class="fa fa-location-arrow mr-3"></i>
+                        {{__('frontend.location')}}
+                    </a>
+                </p>
+                <p>
+                    <a href="https://goo.gl/maps/gxqMKDAbqoP45EVUA" class="text-white">
+                        <i class="fa fa-search-location mr-3"></i>
+                        {{__('frontend.fullLocation')}}
+                    </a>
+                </p>
+
             </div>
             <!--/.Fourth column-->
 

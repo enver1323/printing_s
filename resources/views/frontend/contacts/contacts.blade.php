@@ -28,9 +28,10 @@
 
             <!-- MAP -->
             <div id="map-container" class="z-depth-1-half map-container col-12" style="min-height: 400px">
-                <iframe frameborder="0" scrolling="no" allowfullscreen marginheight="0" marginwidth="0" width="100%" height="400px"
-                        src="https://maps.google.com/maps?q=tashkent%2C%20smart%20market&t=&z=13&ie=UTF8&iwloc=&output=embed">
-                </iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.1593000416015!2d69.26600271579059!3d41.30539800903618!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b4c504ca78b%3A0xd3020f54b8f2a63!2sIntach-Di!5e0!3m2!1sen!2s!4v1591966163648!5m2!1sen!2s"
+                    width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
             </div>
 
             <!-- /MAP -->
@@ -77,7 +78,7 @@
 
                                             <div class="btn-contact-wrapper">
                                                 <button class="btn btn-outline-primary btn-rounded" type="submit">
-                                                    {{__('adminPanel.save')}}
+                                                    {{__('frontend.send')}}
                                                     <i class="fa fa-paper-plane pl-2"></i>
                                                 </button>
                                             </div>
@@ -94,9 +95,14 @@
                         <div class="card-body contact-card-right">
                             <h3 class="contact-header">{{__('frontend.contacts')}}</h3>
 
-                            <p><i class="fa fa-envelope pr-3"></i>printing@mail.com</p>
-
-                            <p><i class="fa fa-phone pr-3"></i>+998 (90) 123 45 67</p>
+                            <a href="mailto:info@intach-di.com" class="text-white">
+                                <i class="fa fa-envelope pr-3"></i>
+                                info@intach-di.com
+                            </a>
+                            <br>
+                            <a href="tel:+998712565354" class="text-white">
+                                <i class="fa fa-phone pr-3"></i>+998712565354
+                            </a>
                         </div>
                     </div>
                     <!-- Contact Right -->
