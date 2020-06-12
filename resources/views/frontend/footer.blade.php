@@ -67,13 +67,13 @@
                     </a>
                 </p>
                 <p>
-                    <a href="https://goo.gl/maps/gxqMKDAbqoP45EVUA" class="text-white">
+                    <a href="https://g.page/Intach-DI?share" class="text-white">
                         <i class="fa fa-location-arrow mr-3"></i>
                         {{__('frontend.location')}}
                     </a>
                 </p>
                 <p>
-                    <a href="https://goo.gl/maps/gxqMKDAbqoP45EVUA" class="text-white">
+                    <a href="https://g.page/Intach-DI?share" class="text-white">
                         <i class="fa fa-search-location mr-3"></i>
                         {{__('frontend.fullLocation')}}
                     </a>
