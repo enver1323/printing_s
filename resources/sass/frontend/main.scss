@@ -150,7 +150,7 @@ footer.page-footer {
 }
 
 .poster h1 {
-    margin-top: 96px;
+    margin-top: 135px;
     color: white;
     font-size: 50px;
     font-weight: 500;
@@ -160,7 +160,7 @@ footer.page-footer {
 
 @media (max-width: 1200px) {
     .poster h1 {
-        font-size: 48px;
+        font-size: 20px;
     }
 }
 
@@ -1497,4 +1497,8 @@ footer img {
             color: white;
         }
     }
+}
+
+.md-tabs, .md-tabs .nav-link.active, .md-tabs .nav-item.open .nav-link {
+    border-radius: 0.25rem !important;
 }

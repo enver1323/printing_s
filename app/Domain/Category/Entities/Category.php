@@ -83,4 +83,13 @@ class Category extends Entity implements ProductGroup
     {
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
+
+    public function getShortDescriptionAttribute(int $length = null): ?string
+    {
+        $length = $length ?? 258;
+        if (strlen($this->description) >= $length)
+            return substr($this->description, 0, $length) . " ... ";
+
+        return $this->description;
+    }
 }

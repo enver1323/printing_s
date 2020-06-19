@@ -31,8 +31,10 @@ function setImage(id) {
 function setReadMoreLink(id) {
     let readMore = document.getElementById('product-link');
     let link = document.getElementById(`product-${id}-image`);
-    if(link)
+    if(link) {
         readMore.href = link.parentNode.href;
+        readMore.style.display = 'block';
+    }
 }
 
 for (let i = 0; i < jobItems.length; i++) {

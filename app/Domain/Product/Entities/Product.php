@@ -7,7 +7,6 @@ namespace App\Domain\Product\Entities;
 use App\Domain\_core\Entity;
 use App\Domain\_core\Manual\HasManual;
 use App\Domain\_core\Photo\HasPhoto;
-use App\Domain\_core\Meta\HasMeta;
 use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
@@ -181,5 +180,14 @@ class Product extends Entity implements HasFacilities
     protected function getManualDirectoryPath(): string
     {
         return 'products';
+    }
+
+    public function getShortDescriptionAttribute(int $length = null): ?string
+    {
+        $length = $length ?? 258;
+        if (strlen($this->description) >= $length)
+            return substr($this->description, 0, $length) . " ... ";
+
+        return $this->description;
     }
 }
