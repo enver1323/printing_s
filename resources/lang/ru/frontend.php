@@ -12,6 +12,7 @@ return [
     'description' => 'Описание',
     'topProducts' => 'Топ Товары',
     'orderCards' => 'Заказ визиток онлайн',
+    'productNumber' => 'Товаров',
 
     'all' => 'Все',
     'author' => 'Автор',

@@ -47,7 +47,9 @@
 
             <!--Fourth column-->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.contacts')}}</h6>
+                <a href="{{route('contacts')}}">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">{{__('frontend.contacts')}}</h6>
+                </a>
                 <p>
                     <a href="mailto:info@intach-di.com" class="text-white" target="_blank">
                         <i class="fa fa-envelope mr-3"></i>
@@ -62,8 +64,14 @@
                 </p>
                 <p>
                     <a href="tel:+9998977277022" class="text-white" target="_blank">
-                        <i class="fa fa-print mr-3"></i>
+                        <i class="fa fa-mobile fa-lg mr-3"></i>
                         +9998977277022
+                    </a>
+                </p>
+                <p>
+                    <a href="https://t.me/IntachDi" class="text-white" target="_blank">
+                        <i class="fa fa-telegram mr-3"></i>
+                        @IntachDI
                     </a>
                 </p>
                 <p>

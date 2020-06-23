@@ -65,10 +65,10 @@ class IndexController extends WebController
     public function index(): View
     {
         $categories = $this->categories->withCount('products')->orderByDesc('id')->take(4)->get();
-        $articles = $this->articles->take(4)->get();
-        $products = $this->products->take(6)->with('mainImage')->get();
-        $brands = $this->brands->take(12)->get();
-        $slides = $this->slides->get();
+        $articles = $this->articles->orderByDesc('id')->take(4)->get();
+        $products = $this->products->take(6)->with('mainImage')->orderByDesc('id')->get();
+        $brands = $this->brands->orderByDesc('id')->take(12)->get();
+        $slides = $this->slides->orderByDesc('id')->get();
 
         return $this->render('index', [
             'categories' => $categories,

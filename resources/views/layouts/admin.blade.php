@@ -17,8 +17,8 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    @include('admin._sidebar')
-    <!-- End of Sidebar -->
+@include('admin._sidebar')
+<!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -39,8 +39,9 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <p>&copy <a target="_blank" href="https://extravel.com">printing.com</a> {{date('Y')}} | All Rights Reserved.</p>
-                    <span>Powered by <a target="_blank" href="https://madetec.uz">Enver Menadjiev</a></span>
+                    <p>&copy <a target="_blank" href="{{route('main')}}">{{config('app.name')}}</a> {{date('Y')}} | All
+                        Rights Reserved.</p>
+                    <span>Powered by <a target="_blank" href="{{route('admin.home')}}">Enver Menadjiev</a></span>
                 </div>
             </div>
         </footer>

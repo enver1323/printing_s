@@ -73,6 +73,13 @@ section {
 /* Navigation */
 .navbar {
     background-color: #34495e75;
+
+    .nav-item.active {
+        
+        .nav-link {
+            color: #8ef4ff !important;
+        }
+    }
 }
 
 .scrolling-navbar {

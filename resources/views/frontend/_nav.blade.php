@@ -41,6 +41,11 @@
 
             <!-- Links -->
             <ul class="navbar-nav ml-auto d-flex">
+                <li class="nav-item my-auto {{request()->routeIs('main') ? 'active' : ''}}">
+                    <a class="nav-link" href="{{route('main')}}">{{__('frontend.home')}}
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
                 @if(count($pages))
                     <li class="nav-item dropdown my-auto">
                         <a class="nav-link dropdown-toggle" id="navbarAboutLink" data-toggle="dropdown"
@@ -58,7 +63,7 @@
                     </li>
                 @endif
                 @if(count($brands))
-                    <li class="nav-item dropdown my-auto">
+                    <li class="nav-item dropdown my-auto {{request()->routeIs('products.brand') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" id="navbarBrandsLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
                             {{__('frontend.brands')}}
@@ -74,7 +79,7 @@
                     </li>
                 @endif
                 @if(count($categories))
-                    <li class="nav-item dropdown my-auto">
+                    <li class="nav-item dropdown my-auto {{request()->routeIs('products.show', 'products.category') ? 'active' : ''}}">
                         <a class="nav-link dropdown-toggle" id="navbarCategoriesLink" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" href="{{route('products.category')}}">
                             {{__('frontend.categories')}}
@@ -90,13 +95,14 @@
                     </li>
                 @endif
 
-                <li class="nav-item my-auto">
-                    <a class="nav-link" href="{{route('articles.index')}}">{{__('frontend.articles')}}
+                <li class="nav-item my-auto {{request()->routeIs('articles.*') ? 'active' : ''}}">
+                    <a class="nav-link"
+                       href="{{route('articles.index')}}">{{__('frontend.articles')}}
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
 
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto {{request()->routeIs('contacts') ? 'active' : ''}}">
                     <a class="nav-link" href="{{route('contacts')}}">{{__('frontend.contacts')}}
                         <span class="sr-only">(current)</span>
                     </a>

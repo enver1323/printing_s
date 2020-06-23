@@ -44,7 +44,7 @@
                                         </h6>
                                         <p>
                                             (
-                                            {{sprintf('%s %s', $category->products_count, Str::plural(__('frontend.product')))}}
+                                            {{sprintf('%s: %s', __('frontend.productNumber'), $category->products_count)}}
                                             )
                                         </p>
                                     </div>
