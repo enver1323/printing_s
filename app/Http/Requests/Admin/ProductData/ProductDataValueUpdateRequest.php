@@ -29,7 +29,7 @@ class ProductDataValueUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'values' => 'required|array|keysExist:data_keys,id',
+            'values' => 'required|array',
             'values.*.value' => 'required|array',
             'values.*.value.*' => 'required|string',
         ];
