@@ -1,7 +1,11 @@
 @extends('layouts.app')
+@section('links')
+    <link rel="stylesheet" href="{{mix('css/owlCarousel.css', 'build')}}">
+    <link rel="stylesheet" href="{{asset('js/chocolat/css/chocolat.css')}}">
+@endsection
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-sm poster-job-details">
+    <div class="poster poster-job-details">
         <div class="container">
             <div class="row page-title">
                 <h1>
@@ -39,11 +43,6 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">
-                                    {{__('frontend.gallery')}}<i class="fa fa-image ml-2"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#related" role="tab">
                                     {{__('frontend.related')}}<i class="fa fa-share-alt ml-2"></i>
                                 </a>
@@ -76,6 +75,15 @@
                                         </h2>
                                         <hr/>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="owl-carousel owl-theme" id="owl">
+                                    @foreach($product->images as $image)
+                                            <a class="chocolat-image" href="{{$image->photo->getUrl()}}">
+                                                <img src="{{$image->photo->getUrl()}}" class="img-responsive">
+                                            </a>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -120,40 +128,6 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        </div>
-                    </div>
-                    <!-- Panel 2 -->
-                    <!-- Panel 3 -->
-                    <div class="tab-pane fade" id="gallery" role="tabpanel">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="section-title section-title-blue">
-                                    <div>
-                                        <h2>
-                                            {{strtoupper(__('frontend.gallery'))}}
-                                        </h2>
-                                        <hr/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="mdb-lightbox-ui"></div>
-                                <div class="mdb-lightbox">
-                                    @foreach($product->images as $image)
-                                        <figure class="col-md-4">
-                                            <a href="{{$image->photo->getUrl()}}"
-                                               data-size="1600x1067">
-                                                <img
-                                                    src="{{$image->photo->getUrl()}}"
-                                                    alt="placeholder"
-                                                    class="img-fluid">
-                                            </a>
-                                        </figure>
-                                    @endforeach
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="related" role="tabpanel">
@@ -217,4 +191,27 @@
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{mix('js/productListSidebar.js', 'build')}}"></script>
+    <script type="text/javascript" src="{{mix('js/owlCarousel.js', 'build')}}"></script>
+    <script type="text/javascript" src="{{asset('js/chocolat/js/chocolat.js')}}"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            let options = {
+                loop: true,
+                margin: 10,
+                items: 1,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                autoplayHoverPause: true,
+                autoplaySpeed: 3000,
+                dotsSpeed: 1500,
+                dragEndSpeed: 2000,
+            };
+            $('#owl').owlCarousel(options);
+            Chocolat(document.querySelectorAll('.chocolat-image'), {
+                // options here
+            })
+
+        });
+    </script>
 @endpush

@@ -1,16 +1,13 @@
 @extends('layouts.app')
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-candidate-details">
+    <div class="poster poster-job-details">
         <div class="container">
-            <div class="info-top">
-                <div class="info-inner">
-                    <div class="title-headline">
-                        <h2 class="candidate-name">
-                            {{$article->name}}
-                        </h2>
-                    </div>
-                </div>
+            <div class="row page-title">
+                <h1>
+                    {{$article->name}}
+
+                </h1>
             </div>
         </div>
     </div>
@@ -20,7 +17,7 @@
     <div class="container">
         <div class="row">
             <!--Main listing-->
-            <div class="col-lg-8 col-12 px-lg-4">
+            <div class="col-12 px-lg-4">
                 <div class="main-info">
                     <div id="aboutme">
                         <div class="row">
@@ -105,19 +102,19 @@
             <!--Main listing-->
 
             <!--Sidebar-->
-            <div class="col-lg-4 col-12 mb-3 order-xl-last order-lg-last order-md-first order-first">
-                <div class="sidebar-details">
-                    <hr class=""/>
-                    <p>
-                        <i class="fas fa-user-graduate pr-3 purple-text"></i>
-                        <strong>{{__('frontend.author')}}:</strong><br/>
-                        <span>{{$article->author->name}}</span><br/>
-                        <i class="fas fa-award pr-3 pink-text"></i><strong>{{__('frontend.createdAt')}} :</strong>
-                        <br/><span>{{date('d-m-Y', $article->created_at->timestamp)}}</span><br/>
-                    </p>
-                    <hr/>
-                </div>
-            </div>
+{{--            <div class="col-lg-4 col-12 mb-3 order-xl-last order-lg-last order-md-first order-first">--}}
+{{--                <div class="sidebar-details">--}}
+{{--                    <hr class=""/>--}}
+{{--                    <p>--}}
+{{--                        <i class="fas fa-user-graduate pr-3 purple-text"></i>--}}
+{{--                        <strong>{{__('frontend.author')}}:</strong><br/>--}}
+{{--                        <span>{{$article->author->name}}</span><br/>--}}
+{{--                        <i class="fas fa-award pr-3 pink-text"></i><strong>{{__('frontend.createdAt')}} :</strong>--}}
+{{--                        <br/><span>{{date('d-m-Y', $article->created_at->timestamp)}}</span><br/>--}}
+{{--                    </p>--}}
+{{--                    <hr/>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <!--Sidebar-->
         </div>
     </div>

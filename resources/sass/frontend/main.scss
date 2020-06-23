@@ -1,3 +1,5 @@
+$nav-height: 115px;
+
 html,
 body {
     height: 100%;
@@ -11,8 +13,13 @@ body {
     flex-direction: column;
 }
 
+header {
+    padding-top: $nav-height;
+}
+
 main {
     flex: 1;
+    //min-height: calc(100% - #{$nav-height});
 }
 
 section {
@@ -73,7 +80,7 @@ section {
 }
 
 .top-nav-collapse {
-    background-color: #34495e;
+    background-color: #34495e !important;
 }
 
 footer.page-footer {
@@ -150,7 +157,7 @@ footer.page-footer {
 }
 
 .poster h1 {
-    margin-top: 135px;
+    margin-top: 40px;
     color: white;
     font-size: 50px;
     font-weight: 500;

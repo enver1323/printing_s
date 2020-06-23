@@ -61,9 +61,9 @@
                     </a>
                 </p>
                 <p>
-                    <a href="tel:+998712565354" class="text-white" target="_blank">
+                    <a href="tel:+9998977277022" class="text-white" target="_blank">
                         <i class="fa fa-print mr-3"></i>
-                        +998712565354
+                        +9998977277022
                     </a>
                 </p>
                 <p>
@@ -120,14 +120,14 @@
                         </li>
                         <li class="list-inline-item mx-0">
                             <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
-                               href="https://t.me/intach_di" target="_blank">
-                                <i class="fa fa-2x fa-telegram"></i>
+                               href="mailto:info@intach-di.com" target="_blank">
+                                <i class="fa fa-2x fa-envelope"></i>
                             </a>
                         </li>
                         <li class="list-inline-item mx-0">
                             <a class="btn-floating btn-sm rgba-white-slight mr-xl-4 waves-effect waves-light p-0"
-                               href="mailto:info@intach-di.com" target="_blank">
-                                <i class="fa fa-2x fa-envelope"></i>
+                               href="https://t.me/intach_di" target="_blank">
+                                <i class="fa fa-2x fa-telegram"></i>
                             </a>
                         </li>
                     </ul>

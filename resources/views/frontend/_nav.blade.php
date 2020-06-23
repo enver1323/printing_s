@@ -1,5 +1,5 @@
 <div class="fixed-top">
-    <div class="top-bar d--flex">
+    <div class="top-bar">
         <div class="top-bar-socials">
             <a href="tel:998712565354" target="_blank">
                 <i class="fa fa-phone white-text"> </i>
@@ -24,7 +24,7 @@
             </form>
         </div>
     </div>
-    <nav class="navbar navbar-expand-xl navbar-dark scrolling-navbar ">
+    <nav class="navbar navbar-expand-xl navbar-dark top-bar top-nav-collapse">
         <a class="navbar-brand m-0 p-0" href="{{route('main')}}">
             <img src="{{asset('images/logo.png')}}" alt="{{config('app.name')}}"/>
         </a>
