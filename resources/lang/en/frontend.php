@@ -12,6 +12,7 @@ return [
     'description' => 'Description',
     'topProducts' => 'Top Products',
     'orderCards' => 'Order business cards',
+    'productNumber' => 'Products number',
 
     'all' => 'All',
     'author' => 'Author',

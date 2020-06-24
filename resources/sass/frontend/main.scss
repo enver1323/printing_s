@@ -1,4 +1,4 @@
-$nav-height: 115px;
+$nav-height: 6.5rem;
 
 html,
 body {
@@ -75,7 +75,7 @@ section {
     background-color: #34495e75;
 
     .nav-item.active {
-        
+
         .nav-link {
             color: #8ef4ff !important;
         }
@@ -129,9 +129,10 @@ footer.page-footer {
 
 /* Poster */
 .poster-index {
-    min-height: 500px;
+    min-height: 20rem;
     display: flex;
     align-items: center;
+
 }
 
 .poster-full {

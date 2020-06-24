@@ -113,21 +113,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="job-detail-info">
-                            <ul>
+                        <div id="product-{{$product->id}}-description">
+                            <table class="table table-striped table-hover table-bordered">
                                 @foreach($product->dataValues  as $value)
-                                    <li class="salary">
-                                        <div class="content-inner">
-                                            <div class="inner-left">
-                                                <span class="detail-title">{{$value->dataKey->name}}:</span>
-                                            </div>
-                                            <div class="inner-right">
-                                                {{$value->value}}
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <tr>
+                                        <td>
+                                            {{$value->dataKey->name}}
+                                        </td>
+                                        <td>
+                                            {{$value->value}}
+                                        </td>
+                                    </tr>
                                 @endforeach
-                            </ul>
+                            </table>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="related" role="tabpanel">
@@ -178,7 +176,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="col-md-6 sidebar-details" id="sidebar" style="display: none">
+                            <div class="col-md-6 sidebar-details mt-0" id="sidebar" style="display: none">
                                 <div id="product-description"></div>
                             </div>
                         </div>

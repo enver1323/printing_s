@@ -44,7 +44,7 @@
                                         </h6>
                                         <p>
                                             (
-                                            {{sprintf('%s: %s', __('frontend.productNumber'), $category->products_count)}}
+                                            {{__('frontend.productNumber')}}: {{$category->products_count}}
                                             )
                                         </p>
                                     </div>
