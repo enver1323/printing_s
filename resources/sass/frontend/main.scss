@@ -125,8 +125,6 @@ footer.page-footer {
     }
 }
 
-/* /Navigation */
-
 /* Poster */
 .poster-index {
     min-height: 60vh;
@@ -451,13 +449,14 @@ footer.page-footer {
     display: flex;
     justify-content: center;
     margin: auto;
+    padding-right: 0;
 }
 
 .job .card .card-image-wrapper .card-image,
 .candidate .card .card-image-wrapper .card-image,
 .employer .card .card-image-wrapper .card-image {
     width: 100%;
-    margin: 16px;
+    margin: 8px;
 }
 
 .job .card-body p {
@@ -1524,4 +1523,14 @@ footer img {
 
 .md-tabs, .md-tabs .nav-link.active, .md-tabs .nav-item.open .nav-link {
     border-radius: 0.25rem !important;
+}
+
+#articles.owl-carousel{
+    position: relative;
+
+    .owl-dots{
+        position: absolute;
+        top: -8px;
+        right: 0;
+    }
 }
