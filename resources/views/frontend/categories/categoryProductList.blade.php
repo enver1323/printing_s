@@ -18,9 +18,15 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="nav md-tabs nav-justified custom-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link {{$category == null ? 'active' : ''}}"
+                               href="{{route('products.category')}}">
+                                {{__('frontend.all')}}
+                            </a>
+                        </li>
                         @foreach($categories as $categoryItem)
                             <li class="nav-item">
-                                <a class="nav-link {{$categoryItem->id === $category->id ? 'active' : ''}}"
+                                <a class="nav-link {{isset($category->id) && $categoryItem->id === $category->id ? 'active' : ''}}"
                                    href="{{route('products.category', $categoryItem)}}">
                                     {{$categoryItem->name}}
                                 </a>
@@ -31,18 +37,20 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3 order-md-last">
-                    <div class="job-sidebar" id="sidebar" style="display: block">
+                    <div class="job-sidebar" id="sidebar" style="display: @isset($category) block @else none @endisset">
                         <div class="sidebar-details">
                             <hr/>
                             <div class="employer-logo">
-                                <img src='{{$category->photo ? $category->photo->getUrl() : ''}}' alt="" class="img-fluid" id="product-image">
+                                <img src='{{isset($category->photo) ? $category->photo->getUrl() : ''}}' alt=""
+                                     class="img-fluid" id="product-image">
                             </div>
                             <hr/>
                             <span id="product-description">
-                                {!! $category->shortDescription !!}
+                                {!! $category->shortDescription ?? '' !!}
                             </span>
                             <hr/>
-                            <a href="" id="product-link" class="green-text font-weight-bold font-small" style="display: none">
+                            <a href="" id="product-link" class="green-text font-weight-bold font-small"
+                               style="display: none">
                                 {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
                             </a>
                         </div>

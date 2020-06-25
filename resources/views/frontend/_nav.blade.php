@@ -68,6 +68,10 @@
                             {{__('frontend.brands')}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarBrandsLink">
+                            <a class="dropdown-item text-center"
+                               href="{{route('products.brand')}}">
+                                {{ __('frontend.all') }}
+                            </a>
                             @foreach($brands as $brand)
                                 <a class="dropdown-item text-center"
                                    href="{{route('products.brand', $brand)}}">
@@ -84,6 +88,10 @@
                             {{__('frontend.categories')}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-center" aria-labelledby="navbarCategoriesLink">
+                            <a class="dropdown-item text-center"
+                               href="{{route('products.category')}}">
+                                {{ __('frontend.all') }}
+                            </a>
                             @foreach($categories as $category)
                                 <a class="dropdown-item text-center"
                                    href="{{route('products.category', $category)}}">

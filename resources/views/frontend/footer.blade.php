@@ -63,9 +63,9 @@
                     </a>
                 </p>
                 <p>
-                    <a href="tel:+9998977277022" class="text-white" target="_blank">
+                    <a href="tel:+998977277022" class="text-white" target="_blank">
                         <i class="fa fa-mobile fa-lg mr-3"></i>
-                        +9998977277022
+                        +998977277022
                     </a>
                 </p>
                 <p>

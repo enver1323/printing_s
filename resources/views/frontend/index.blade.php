@@ -24,6 +24,57 @@
 
 @endsection
 @section('content')
+    <section class="jobs-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 candidate">
+                    <div class="card">
+                        <div class="owl-carousel owl-theme" id="articles">
+                            @foreach($articles as $article)
+                                <div class="row">
+                                    <!-- Card image -->
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 card-image-wrapper">
+                                        <div class="card-image">
+                                            <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}"
+                                                 class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-7">
+                                        <div class="card-body">
+
+                                            <h5 class="card-title">
+                                                <strong>
+                                                    <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>
+                                                </strong>
+                                            </h5>
+                                            <h6 class="card-subtitle">{{date("d-m-Y", $article->created_at->timestamp)}}</h6>
+                                            <p>
+                                                {!! $article->description !!}
+                                            </p>
+                                            <h6 class="mb-2 mr-2 d-flex justify-content-between">
+                                                <a href="{{route('articles.index')}}"
+                                                   class="font-small pink-text">
+                                                    {{mb_strtolower(sprintf("%s %s", __("frontend.all"), __("frontend.articles")))}}
+                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                                                </a>
+                                                <a href="{{route('articles.show', $article)}}"
+                                                   class="pink-text font-small">
+                                                    {{mb_strtolower(__("frontend.readMore"))}}
+                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="categories-wrapper">
         <div class="container">
             <div class="row categories">
@@ -77,56 +128,6 @@
                             </a>
                         </div>
                         <!-- Card -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="jobs-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 candidate">
-                    <div class="card">
-                        <div class="owl-carousel owl-theme" id="articles">
-                            @foreach($articles as $article)
-                                <div class="row">
-                                    <!-- Card image -->
-                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 card-image-wrapper">
-                                        <div class="card-image">
-                                            <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}"
-                                                 class="img-fluid" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-9 col-lg-9 col-md-8 col-sm-7">
-                                        <div class="card-body">
-
-                                            <h5 class="card-title">
-                                                <strong>
-                                                    <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>
-                                                </strong>
-                                            </h5>
-                                            <h6 class="card-subtitle">{{date("d-m-Y", $article->created_at->timestamp)}}</h6>
-                                            <p>
-                                                {!! $article->description !!}
-                                            </p>
-                                            <h6 class="mb-2 mr-2 d-flex justify-content-between">
-                                                <a href="{{route('articles.index')}}"
-                                                   class="font-small pink-text">
-                                                    {{mb_strtolower(sprintf("%s %s", __("frontend.all"), __("frontend.articles")))}}
-                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
-                                                </a>
-                                                <a href="{{route('articles.show', $article)}}"
-                                                   class="pink-text font-small">
-                                                    {{mb_strtolower(__("frontend.readMore"))}}
-                                                    <i class="fa fa-arrow-circle-right ml-2"></i>
-                                                </a>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
                     </div>
                 </div>
             </div>

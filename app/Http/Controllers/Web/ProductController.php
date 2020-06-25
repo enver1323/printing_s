@@ -18,18 +18,21 @@ use Illuminate\View\View;
  * @package App\Http\Controllers\Web
  *
  * @property Category $categories
+ * @property Product $products
  * @property Brand $brands
  * @property Line $lines
  */
 class ProductController extends WebController
 {
     private $categories;
+    private $products;
     private $brands;
     private $lines;
 
-    public function __construct(Brand $brands, Category $categories, Line $lines)
+    public function __construct(Brand $brands, Category $categories, Line $lines, Product $products)
     {
         $this->categories = $categories;
+        $this->products = $products;
         $this->brands = $brands;
         $this->lines = $lines;
     }
@@ -40,8 +43,6 @@ class ProductController extends WebController
      */
     public function brandList(Brand $brand = null): View
     {
-        $brand = $brand ?? $this->brands->first();
-
         return $this->render('brands.brandProductList', [
             'brand' => $brand,
             'brands' => $this->brands->all(),
@@ -55,8 +56,6 @@ class ProductController extends WebController
      */
     public function categoryList(Category $category = null): View
     {
-        $category = $category ?? $this->categories->first();
-
         return $this->render('categories.categoryProductList', [
             'category' => $category,
             'categories' => $this->categories->all(),
@@ -68,12 +67,13 @@ class ProductController extends WebController
      * @param ProductGroup $item
      * @return LengthAwarePaginator
      */
-    protected function productList(ProductGroup $item): LengthAwarePaginator
+    protected function productList(ProductGroup $item = null): LengthAwarePaginator
     {
+        $products = isset($item) ? $item->products() : $this->products;
         $locale = app()->getLocale();
 
         /** @var LengthAwarePaginator|Collection $paginator */
-        $paginator = $item->products()
+        $paginator = $products
             ->whereNotNull("name->$locale")
             ->with('mainImage')
             ->paginate(self::ITEMS_PER_PAGE);
