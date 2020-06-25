@@ -61,6 +61,7 @@ return [
     'lineCreate' => 'Create line',
     'brandCreate' => 'Create brand',
     'slideCreate' => 'Create slide',
+    'offerCreate' => 'Create Offer',
     'optionCreate' => 'Create product option',
     'articleCreate' => 'Create Article',
     'dataKeyCreate' => 'Create Data Key',

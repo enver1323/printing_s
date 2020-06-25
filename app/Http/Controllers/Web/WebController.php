@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
+use App\Domain\Offer\Entities\Offer;
 use App\Domain\Page\Entities\Page;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
@@ -48,6 +49,7 @@ class WebController extends Controller
     {
         $reserved = [
             'categories' => Category::all(),
+            'offers' => Offer::all(),
             'brands' => Brand::all(),
             'pages' => Page::all()
         ];

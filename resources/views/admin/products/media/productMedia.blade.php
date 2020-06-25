@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label class="col-form-label" for="photos">{{__('adminPanel.photo')}}</label>
-                            <input name="photos[]" type="file" id="photos" value="{{ old('photos') }}" accept="image/*"
+                            <input name="photos[]" type="file" id="photos" value="{{ old('photos') }}" accept="image/*, video/*"
                                    class="form-control-file{{ $errors->has('photos') ? ' is-invalid': '' }}"
                                    multiple="multiple">
                             @if($errors->has('photos'))

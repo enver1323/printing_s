@@ -23,4 +23,5 @@ return [
     'languages' => 'Languages',
     'categories' => 'Categories',
     'reset_password' => 'Reset password',
+    'offers' => 'Offers'
 ];

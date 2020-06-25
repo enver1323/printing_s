@@ -105,6 +105,13 @@
         </a>
     </li>
 
+    <li class="nav-item {{request()->routeIs('admin.offers*') ? 'active' : ''}}">
+        <a class="nav-link" href="{{ route('admin.offers.index') }}">
+            <i class="fas fa-gift"></i>
+            <span>{{__('breadcrumbs.offers')}}</span>
+        </a>
+    </li>
+
 <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

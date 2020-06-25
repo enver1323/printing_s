@@ -76,6 +76,7 @@ class ProductController extends WebController
         $paginator = $products
             ->whereNotNull("name->$locale")
             ->with('mainImage')
+            ->withCount('offers')
             ->orderByDesc('updated_at')
             ->paginate(self::ITEMS_PER_PAGE);
 

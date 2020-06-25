@@ -38,7 +38,7 @@
     </form>
 @endsection
 @push('scripts')
-    <script type="text/javascript" src="{{asset('js/admin/apiSelect.js')}}"></script>
+    <script src="{{mix('js/apiSelect.js', 'build')}}" type="text/javascript"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             new APISelect("#product", "{{route('ajax.products')}}");

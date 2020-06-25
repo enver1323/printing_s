@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('seo.description', $product->description ?? null)
+@section('seo.title', sprintf("%s: %s", __('frontend.product'), $product->name))
+@section('seo.image', $product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : null)
 @section('links')
     <link rel="stylesheet" href="{{mix('css/owlCarousel.css', 'build')}}">
     <link rel="stylesheet" href="{{asset('js/chocolat/css/chocolat.css')}}">
@@ -32,10 +35,6 @@
                                     </a>
                                 @endforeach
                             </div>
-                            {{--                            <img--}}
-                            {{--                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"--}}
-                            {{--                                alt=""--}}
-                            {{--                                class="img-fluid"/>--}}
                         </div>
                         <hr/>
                         <ul class="nav md-pills pills-primary flex-column" role="tablist">
@@ -66,6 +65,13 @@
                                     </a>
                                 </li>
                             @endisset
+                            @if(count($product->offers))
+                                <li class="nav-item">
+                                    <a class="nav-link pink-text" data-toggle="tab" href="#offers" role="tab">
+                                        {{__('frontend.offers')}}<i class="fa fa-gift ml-2"></i>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                         <hr/>
                     </div>
@@ -207,6 +213,31 @@
                             <div class="col-md-6 sidebar-details mt-0" id="sidebar" style="display: none">
                                 <div id="product-description"></div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="offers" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="section-title section-title-blue">
+                                    <div>
+                                        <h2>
+                                            {{strtoupper(__('frontend.offers'))}}
+                                        </h2>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach($product->offers as $offer)
+                                <div class="col-md-4">
+                                    <div class="img-thumbnail">
+                                        <a class="" href="{{route('offers.show', $offer)}}">
+                                            <img src="{{isset($offer->photo) ? $offer->photo->getUrl() : (isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : '')}}" class="img-responsive w-100">
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

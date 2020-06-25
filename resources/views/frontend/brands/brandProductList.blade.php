@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('seo.description', $brand->description ?? null)
+@section('seo.title', isset($brand) ? sprintf("%s: %s", __('frontend.brand'), $brand->name) : __('frontend.brands'))
+@section('seo.image', isset($brand->photo) ? $brand->photo->getUrl() : null)
 @section('header')
     <!-- Poster -->
     <div class="poster poster-jobs-listing">
@@ -18,9 +21,15 @@
             <div class="row">
                 <div class="col-12">
                     <ul class="nav md-tabs nav-justified custom-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link {{$brand == null ? 'active' : ''}}"
+                               href="{{route('products.brand')}}">
+                                {{__('frontend.all')}}
+                            </a>
+                        </li>
                         @foreach($brands as $brandItem)
                             <li class="nav-item">
-                                <a class="nav-link {{$brandItem->id === $brand->id ? 'active' : ''}}"
+                                <a class="nav-link {{isset($brand) && $brandItem->id === $brand->id ? 'active' : ''}}"
                                    href="{{route('products.brand', $brandItem)}}">
                                     {{$brandItem->name}}
                                 </a>
@@ -31,16 +40,16 @@
             </div>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-3 order-md-last">
-                    <div class="job-sidebar" id="sidebar">
+                    <div class="job-sidebar" id="sidebar" style="display: @isset($category) block @else none @endisset">
                         <div class="sidebar-details">
                             <hr/>
                             <div class="employer-logo">
-                                <img src='{{$brand->photo ? $brand->photo->getUrl() : ''}}' alt="" class="img-fluid"
+                                <img src='{{isset($brand) && $brand->photo ? $brand->photo->getUrl() : ''}}' alt="" class="img-fluid"
                                      id="product-image">
                             </div>
                             <hr/>
                             <span id="product-description">
-                                {!! $brand->shortDescription !!}
+                                {!! $brand->shortDescription ?? '' !!}
                             </span>
                             <hr/>
                             <a href="" id="product-link" class="green-text font-weight-bold font-small">
@@ -79,6 +88,9 @@
                                                                 {{$product->name}}
                                                             </a>
                                                         </strong>
+                                                        @if($product->offers_count)
+                                                            <i class="pink-text fa fa-gift"></i>
+                                                        @endif
                                                     </h5>
                                                     <div class="card-text d-block d-md-none"
                                                          id="product-{{$product->id}}-description">

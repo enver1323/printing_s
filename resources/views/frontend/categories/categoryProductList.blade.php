@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('seo.description', $category->description ?? null)
+@section('seo.title', isset($category) ? sprintf("%s: %s", __('frontend.category'), $category->name) : __('frontend.categories'))
+@section('seo.image', isset($category->photo) ? $category->photo->getUrl() : null)
 @section('header')
     <!-- Poster -->
     <div class="poster poster-jobs-listing">
@@ -85,6 +88,9 @@
                                                                 {{$product->name}}
                                                             </a>
                                                         </strong>
+                                                        @if($product->offers_count)
+                                                            <i class="pink-text fa fa-gift"></i>
+                                                        @endif
                                                     </h5>
                                                     <div class="card-text d-block d-md-none"
                                                          id="product-{{$product->id}}-description">

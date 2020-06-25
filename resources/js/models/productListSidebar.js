@@ -3,7 +3,14 @@ let jobItemButtons = document.getElementsByClassName("job-detail-button");
 let sidebar = document.getElementById('sidebar');
 
 let showJobDetails = function (event) {
-    let id = event.target.getAttribute('data-id');
+    let target = event.target
+
+    while(!target.classList.contains('card-body'))
+        target = target.parentNode;
+
+    console.log(target)
+
+    const id = event.target.getAttribute('data-id');
     sidebar.style.display = 'block';
 
     setImage(id);
@@ -38,5 +45,7 @@ function setReadMoreLink(id) {
 }
 
 for (let i = 0; i < jobItems.length; i++) {
-    jobItems[i].addEventListener('mouseover', showJobDetails, false);
+    const item = jobItems[i];
+    item.addEventListener('mouseover', showJobDetails, false);
+    item.addEventListener('click', showJobDetails, false);
 }

@@ -11,6 +11,7 @@ use App\Domain\_core\Traits\Sluggable;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Line\Entities\Line;
+use App\Domain\Offer\Entities\Offer;
 use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Facilities\DataValue;
 use App\Domain\Product\Entities\Facilities\HasFacilities;
@@ -48,6 +49,7 @@ use Illuminate\Support\Collection;
  * @property DataValue[]|Collection $dataValues
  * @property ProductImage[]|Collection $images
  * @property ProductImage $mainImage
+ * @property Offer[]|Collection $offers
  */
 class Product extends Entity implements HasFacilities
 {
@@ -189,5 +191,10 @@ class Product extends Entity implements HasFacilities
             return substr($this->description, 0, $length) . " ... ";
 
         return $this->description;
+    }
+
+    public function offers(): HasMany
+    {
+        return $this->hasMany(Offer::class);
     }
 }

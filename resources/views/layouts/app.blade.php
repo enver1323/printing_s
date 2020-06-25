@@ -6,11 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <title>{{config('app.name')}}</title>
-
     <link rel="stylesheet" href="{{mix('css/app.css', 'build')}}">
     <link rel="stylesheet" href="{{asset('js/bvi/css/bvi.min.css')}}" type="text/css">
     @yield('links')
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield("seo.title") | {{ config('app.name') }}</title>
+
+    <meta property="og:url" content="{{url()->current()}}"/>
+    <meta property="og:title" content="@yield('seo.title') | {{config('app.name')}}"/>
+    <meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}"/>
+    <meta property="og:locale:alternate" content="{{app()->getLocale()}}"/>
+    <meta name="description" content="@yield('seo.description', __('frontend.siteDescription'))"/>
+    <meta property="og:description" content="@yield('seo.description', __('frontend.siteDescription'))"/>
+    <meta property="og:site_name" content="{{config('app.name')}}"/>
+
+    <meta name='description' itemprop='description' content='@yield('seo.description')'/>
+    <meta name='keywords' content='@yield('seo.description', __('frontend.siteDescription'))'/>
+
+    <meta property="og:image" content="@yield('seo.image', asset('images/logo.png'))"/>
+
+    <meta name="twitter:card" content="@yield('seo.description', __('frontend.siteDescription'))"/>
+    <meta name="twitter:title" content="@yield("seo.title") | {{ config('app.name') }}"/>
+    @yield('head')
+
 </head>
 <body>
 <header>
@@ -21,7 +43,7 @@
 <main>
     @yield('content')
 </main>
-
+@stack('modals')
 @include('frontend.footer')
 </body>
 

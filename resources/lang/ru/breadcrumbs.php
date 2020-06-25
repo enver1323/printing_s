@@ -23,4 +23,5 @@ return [
     'dataKeys' => 'Ключи данных',
     'categories' => 'Категории',
     'reset_password' => 'Сброс пароля',
+    'offers' => 'Предложения'
 ];

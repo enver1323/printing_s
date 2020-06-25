@@ -1,41 +1,45 @@
 <div class="row">
-    <!-- Card -->
-    <div class="col-lg-12 col-md-12 candidate">
-        <div class="card">
-            <div class="row">
-                <!-- Card image -->
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 card-image-wrapper">
-                    <div class="card-image">
-                        <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}" class="img-fluid" alt="">
-                    </div>
-                </div>
-                <!--Card image -->
-
-                <div class="col-xl-9 col-lg-9 col-md-8 col-sm-7">
-                    <div class="card-body">
-
-                        <h5 class="card-title">
-                            <strong>
-                                <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>
-                            </strong>
-                        </h5>
-                        <h6 class="card-subtitle">{{date("d-m-Y", $article->created_at->timestamp)}}</h6>
-
-                        <p>
-                            {!! $article->description !!}
-                        </p>
-
-                        <h6 class="mt-2 mb-0 d-flex justify-content-end">
-                            <a href="{{route('articles.show', $article)}}"
-                               class="green-text font-weight-bold font-small">
-                                {{__("frontend.readMore")}} <i class="fa fa-arrow-circle-right green-text ml-2"></i>
-                            </a>
-                        </h6>
-
-                    </div>
-                </div>
-            </div>
+    <!-- Card image -->
+    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-6 card-image-wrapper">
+        <div class="card-image">
+            <img src="{{isset($article->photo) ? $article->photo->getUrl() : ''}}"
+                 class="img-fluid" alt="">
         </div>
     </div>
-    <!-- /Card -->
+    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-6">
+        <div class="card-body h-100 d-flex flex-column">
+            <div class="card-title d-block">
+                <h5 class='d-inline'>
+                    <strong>
+                        <a href="{{route('articles.index')}}">
+                            {{__('frontend.articles')}}
+                        </a>
+                    </strong>
+                </h5>
+                <small>
+                    {{$article->created_at->format("d-m-Y")}}
+                </small>
+            </div>
+            <div class="my-auto">
+                <h6 class="card-subtitle">
+                    <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>
+                </h6>
+                <p>
+                    {!! $article->description !!}
+                </p>
+            </div>
+            <h6 class="mb-2 mr-2 d-flex justify-content-between">
+                <a href="{{route('articles.index')}}"
+                   class="font-small pink-text">
+                    {{mb_strtolower(sprintf("%s %s", __("frontend.all"), __("frontend.articles")))}}
+                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                </a>
+                <a href="{{route('articles.show', $article)}}"
+                   class="pink-text font-small">
+                    {{mb_strtolower(__("frontend.readMore"))}}
+                    <i class="fa fa-arrow-circle-right ml-2"></i>
+                </a>
+            </h6>
+        </div>
+    </div>
 </div>

@@ -4,6 +4,7 @@ use App\Domain\Article\Entities\Article;
 use App\Domain\Brand\Entities\Brand;
 use App\Domain\Category\Entities\Category;
 use App\Domain\Line\Entities\Line;
+use App\Domain\Offer\Entities\Offer;
 use App\Domain\Page\Entities\Page;
 use App\Domain\Product\Entities\Facilities\DataKey;
 use App\Domain\Product\Entities\Product;
@@ -248,7 +249,7 @@ Breadcrumbs::for('admin.slides.edit', function (Crumbs $crumbs, Slide $slide) {
     $crumbs->push(__('breadcrumbs.edit'), route('admin.slides.edit', $slide));
 });
 
-/** Admin Slides */
+/** Admin Articles */
 Breadcrumbs::for('admin.articles.index', function (Crumbs $crumbs) {
     $crumbs->parent('admin.home');
     $crumbs->push(__('breadcrumbs.articles'), route('admin.articles.index'));
@@ -267,6 +268,27 @@ Breadcrumbs::for('admin.articles.show', function (Crumbs $crumbs, Article $artic
 Breadcrumbs::for('admin.articles.edit', function (Crumbs $crumbs, Article $article) {
     $crumbs->parent('admin.articles.show', $article);
     $crumbs->push(__('breadcrumbs.edit'), route('admin.articles.edit', $article));
+});
+
+/** Admin Offers */
+Breadcrumbs::for('admin.offers.index', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.home');
+    $crumbs->push(__('breadcrumbs.offers'), route('admin.offers.index'));
+});
+
+Breadcrumbs::for('admin.offers.create', function (Crumbs $crumbs) {
+    $crumbs->parent('admin.offers.index');
+    $crumbs->push(__('breadcrumbs.create'), route('admin.offers.create'));
+});
+
+Breadcrumbs::for('admin.offers.show', function (Crumbs $crumbs, Offer $offer) {
+    $crumbs->parent('admin.offers.index');
+    $crumbs->push($offer->name, route('admin.offers.show', $offer));
+});
+
+Breadcrumbs::for('admin.offers.edit', function (Crumbs $crumbs, Offer $offer) {
+    $crumbs->parent('admin.offers.show', $offer);
+    $crumbs->push(__('breadcrumbs.edit'), route('admin.offers.edit', $offer));
 });
 
 /** Admin Pages */

@@ -62,6 +62,7 @@ return [
     'lineCreate' => 'Создать линейку',
     'brandCreate' => 'Создать бренд',
     'slideCreate' => 'Создать слайд',
+    'offerCreate' => 'Создать предложение',
     'optionCreate' => 'Создать опцию товара',
     'articleCreate' => 'Создать новость',
     'dataKeyCreate' => 'Create Data Key',

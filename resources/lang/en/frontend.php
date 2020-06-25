@@ -1,13 +1,18 @@
 <?php
 return [
     'home' => 'Home',
+    'brand' => 'Brand',
     'brands' => 'Solutions for You',
     'search' => 'Search',
     'about_us' => 'We for You',
     'articles' => 'News and Notes',
     'contacts' => 'Contacts',
+    'contactUs' => 'Contact us',
     'readMore' => 'Read More',
     'createdAt' => 'Created at',
+    'category' => 'Category',
+    'offer' => 'Offer',
+    'offers' => 'Offers',
     'categories' => 'Products and Services',
     'description' => 'Description',
     'topProducts' => 'Top Products',
@@ -34,5 +39,6 @@ return [
     'keepInTouch' => 'Keep In Touch',
 
     'send' => 'Send',
-    'fullLocation' => 'Uzbekistan, Tashkent, Mirabad district, Buyuk Turon street, 75'
+    'fullLocation' => 'Uzbekistan, Tashkent, Mirabad district, Buyuk Turon street, 75',
+    'siteDescription' => 'IntachDI is the best printing service not only in Tashkent, but in the whole Uzbekistan'
 ];

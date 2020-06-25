@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('seo.title', __('frontend.articles'))
 @section('header')
     <!-- Poster -->
     <div class="poster poster-jobs-listing">
@@ -15,7 +16,13 @@
 @section('content')
     <div class="container mt-4">
         @foreach($articles as $article)
-            @include('frontend.articles.articleItem', ['article' => $article])
+            <div class="row">
+                <div class="col-lg-12 col-md-12 candidate">
+                    <div class="card">
+                        @include('frontend.articles.articleItem', ['article' => $article])
+                    </div>
+                </div>
+            </div>
         @endforeach
         {{$articles->links()}}
     </div>

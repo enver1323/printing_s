@@ -72,6 +72,15 @@ Route::group([
                 Route::delete('{brand}/photo/delete', 'BrandController@deletePhoto')->name('photo.delete');
             });
 
+            /** Offers routes */
+            Route::resource('offers', 'OfferController');
+            Route::group([
+                'as' => 'offers.',
+                'prefix' => 'offers',
+            ], function () {
+                Route::delete('{offer}/photo/delete', 'OfferController@deletePhoto')->name('photo.delete');
+            });
+
             /** Products routes */
             Route::resource('products', 'ProductController');
             Route::group([
@@ -166,6 +175,15 @@ Route::group([
         ], function() {
             Route::get('', 'ArticleController@index')->name('index');
             Route::get('{article}', 'ArticleController@show')->name('show');
+        });
+
+        /** Offer Routes */
+        Route::group([
+            'as' => 'offers.',
+            'prefix' => 'offers'
+        ], function() {
+            Route::get('', 'OfferController@index')->name('index');
+            Route::get('{offer}', 'OfferController@show')->name('show');
         });
 
         Route::get('about/{page}', 'PageController@show')->name('about.page');
