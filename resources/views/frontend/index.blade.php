@@ -41,7 +41,6 @@
                                     </div>
                                     <div class="col-xl-9 col-lg-9 col-md-8 col-sm-7">
                                         <div class="card-body">
-
                                             <h5 class="card-title">
                                                 <strong>
                                                     <a href="{{route('articles.show', $article)}}">{{$article->name}}</a>

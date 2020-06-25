@@ -1,10 +1,10 @@
-<footer class="page-footer rgba-stylish-strong text-center text-md-left mt-0 pt-4">
+<footer class="page-footer rgba-stylish-strong text-center text-md-left">
 
     <!--Footer Links-->
     <div class="container">
 
         <!-- Footer links -->
-        <div class="row text-center text-md-left mt-3 pb-3">
+        <div class="row text-center text-md-left">
 
             <!--First column-->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
