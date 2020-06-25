@@ -25,10 +25,17 @@
                     <div class="sidebar-details">
                         <hr/>
                         <div class="employer-logo">
-                            <img
-                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"
-                                alt=""
-                                class="img-fluid"/>
+                            <div class="owl-carousel owl-theme" id="owl">
+                                @foreach($product->images as $image)
+                                    <a class="chocolat-image" href="{{$image->photo->getUrl()}}">
+                                        <img src="{{$image->photo->getUrl()}}" class="img-responsive">
+                                    </a>
+                                @endforeach
+                            </div>
+                            {{--                            <img--}}
+                            {{--                                src="{{$product->mainImage && $product->mainImage->photo ? $product->mainImage->photo->getUrl() : ''}}"--}}
+                            {{--                                alt=""--}}
+                            {{--                                class="img-fluid"/>--}}
                         </div>
                         <hr/>
                         <ul class="nav md-pills pills-primary flex-column" role="tablist">
@@ -40,6 +47,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#techData" role="tab">
                                     {{__('frontend.techData')}}<i class="fa fa-list ml-2"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">
+                                    {{__('frontend.gallery')}}<i class="fa fa-image ml-2"></i>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -77,15 +89,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="owl-carousel owl-theme" id="owl">
-                                    @foreach($product->images as $image)
-                                            <a class="chocolat-image" href="{{$image->photo->getUrl()}}">
-                                                <img src="{{$image->photo->getUrl()}}" class="img-responsive">
-                                            </a>
-                                    @endforeach
-                                </div>
-                            </div>
                         </div>
                         <div class="job-info">
                             <div class="job-description">
@@ -114,7 +117,7 @@
                             </div>
                         </div>
                         <div id="product-{{$product->id}}-description">
-                            <table class="table table-striped table-hover table-bordered">
+                            <table class="table table-striped table-hover table-bordered table-sm">
                                 @foreach($product->dataValues  as $value)
                                     <tr>
                                         <td>
@@ -126,6 +129,31 @@
                                     </tr>
                                 @endforeach
                             </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="gallery" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="section-title section-title-blue">
+                                    <div>
+                                        <h2>
+                                            {{strtoupper(__('frontend.gallery'))}}
+                                        </h2>
+                                        <hr/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            @foreach($product->images as $image)
+                                <div class="col-md-4">
+                                    <div class="img-thumbnail">
+                                        <a class="chocolat-image" href="{{$image->photo->getUrl()}}">
+                                            <img src="{{$image->photo->getUrl()}}" class="img-responsive w-100">
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tab-pane fade" id="related" role="tabpanel">
@@ -160,7 +188,7 @@
                                         <div id="product-{{$option->id}}-description">
                                             {!! $option->description !!}
                                             <hr>
-                                            <table class="table table-striped">
+                                            <table class="table table-striped table-hover table-sm">
                                                 @foreach($option->dataValues  as $value)
                                                     <tr>
                                                         <td>
@@ -183,7 +211,6 @@
                     </div>
                 </div>
             </div>
-            <!--Main listing-->
         </div>
     </div>
 @endsection

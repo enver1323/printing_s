@@ -129,7 +129,7 @@ footer.page-footer {
 
 /* Poster */
 .poster-index {
-    min-height: 20rem;
+    min-height: 50vh;
     display: flex;
     align-items: center;
 
@@ -456,11 +456,16 @@ footer.page-footer {
 .job .card .card-image-wrapper .card-image,
 .candidate .card .card-image-wrapper .card-image,
 .employer .card .card-image-wrapper .card-image {
-    margin-left: 16px;
+    width: 100%;
+    margin: 16px;
 }
 
 .job .card-body p {
     margin: 0;
+}
+
+.candidate .card .card-body {
+    overflow: auto;
 }
 
 .badge {
@@ -483,7 +488,7 @@ footer.page-footer {
 
 @media (max-width: 576px) {
     .candidate .card .card-image img {
-        width: 86px;
+        width: 100%;
         margin-top: 16px;
     }
 
@@ -1219,7 +1224,7 @@ footer img {
 }
 
 .sidebar-details {
-    padding: 24px 32px;
+    padding: 3px 15px;
     background-color: #eceff1;
     margin-top: 32px;
     border-radius: 1rem;
@@ -1281,6 +1286,7 @@ footer img {
 
 /* /Candidate Details */
 
+
 .poster-job-details {
     background-image: url("../../images/slider-bg.jpg");
 }
@@ -1299,6 +1305,13 @@ footer img {
     line-height: 95px;
     overflow: hidden;
     margin: 0 auto 30px;
+
+    .owl-carousel {
+        .owl-dots {
+            height: 50px;
+            margin: 0;
+        }
+    }
 }
 
 .job-sidebar .employer-logo img {
@@ -1401,15 +1414,12 @@ footer img {
 
 .job-info {
     padding: 10px 40px;
+
+    .job-description p {
+        text-align: justify;
+    }
 }
 
-.job-info .job-description {
-    padding-top: 36px;
-}
-
-.job-info .job-description p {
-    text-align: justify;
-}
 
 .job-info .job-description .job-description-title {
     font-weight: bold;
@@ -1493,8 +1503,6 @@ footer img {
 
 .top-bar {
     padding: 0.5rem 1rem;
-    display: flex;
-    flex-flow: row;
     justify-content: space-between;
     align-content: center;
     width: 100%;

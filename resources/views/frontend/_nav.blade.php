@@ -1,5 +1,5 @@
 <div class="fixed-top">
-    <div class="top-bar">
+    <div class="top-bar d-flex">
         <div class="top-bar-socials">
             <a href="tel:998712565354" target="_blank">
                 <i class="fa fa-phone white-text"> </i>
@@ -38,7 +38,6 @@
 
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="mainNav">
-
             <!-- Links -->
             <ul class="navbar-nav ml-auto d-flex">
                 <li class="nav-item my-auto {{request()->routeIs('main') ? 'active' : ''}}">

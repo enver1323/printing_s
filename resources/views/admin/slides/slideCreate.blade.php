@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-form-label" for="link">{{__('adminPanel.link')}}</label>
-                            <input name="link" type="text" id="link" value="{{ old('link') }}"
+                            <input name="link" type="text" id="link" value="{{ old('link') }}" required
                                    class="form-control {{ $errors->has('link') ? ' is-invalid': '' }}">
                             @if($errors->has('link'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('link') }}</strong></span>
