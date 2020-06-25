@@ -43,8 +43,8 @@
 <main>
     @yield('content')
 </main>
-@stack('modals')
 @include('frontend.footer')
+@stack('modals')
 </body>
 
 <script src="{{mix('js/app.js', 'build')}}"></script>
