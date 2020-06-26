@@ -10,11 +10,9 @@
         <div class="card-body h-100 d-flex flex-column">
             <div class="card-title d-block">
                 <h5 class='d-inline'>
-                    <strong>
-                        <a href="{{route('articles.index')}}">
-                            {{__('frontend.articles')}}
-                        </a>
-                    </strong>
+                    <a href="{{route('articles.index')}}">
+                        {{__('frontend.articles')}}
+                    </a>
                 </h5>
                 <small>
                     {{$article->created_at->format("d-m-Y")}}
