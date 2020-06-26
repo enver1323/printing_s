@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('header')
     <!-- Poster -->
-    <div class="poster poster-sm poster-contact">
+    <div class="poster poster-job-details">
         <div class="container">
             <div class="row page-title">
                 <h1>
