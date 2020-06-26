@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('seo.description', $page->description ?? null)
-@section('seo.title', sprintf("%s: %s", __('frontend.page'), $page->name))
+@section('seo.title', $page->name)
 @section('header')
     <!-- Poster -->
     <div class="poster poster-jobs-listing">
