@@ -37,13 +37,13 @@
                             </div>
                         </div>
                         <hr/>
-                        <ul class="nav md-pills pills-primary flex-column" role="tablist">
-                            <li class="nav-item">
+                        <ul class="nav md-pills pills-primary flex-column p-0" role="tablist">
+                            <li class="nav-item p-0">
                                 <a class="nav-link active" href="{{route('products.show', $offer->product)}}">
                                     {{$offer->product->name}}<i class="fa fa-info ml-2"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item p-0">
                                 <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
                                     <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
                                     <a class="a2a_button_facebook"></a>

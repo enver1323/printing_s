@@ -37,36 +37,36 @@
                             </div>
                         </div>
                         <hr/>
-                        <ul class="nav md-pills pills-primary flex-column" role="tablist">
-                            <li class="nav-item">
+                        <ul class="nav md-pills pills-primary flex-column p-0" role="tablist">
+                            <li class="nav-item p-0">
                                 <a class="nav-link active" data-toggle="tab" href="#overView" role="tab">
                                     {{__('frontend.overview')}}<i class="fa fa-info ml-2"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item p-0">
                                 <a class="nav-link" data-toggle="tab" href="#techData" role="tab">
                                     {{__('frontend.techData')}}<i class="fa fa-list ml-2"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item p-0">
                                 <a class="nav-link" data-toggle="tab" href="#gallery" role="tab">
                                     {{__('frontend.gallery')}}<i class="fa fa-image ml-2"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item p-0">
                                 <a class="nav-link" data-toggle="tab" href="#related" role="tab">
                                     {{__('frontend.related')}}<i class="fa fa-share-alt ml-2"></i>
                                 </a>
                             </li>
                             @isset($product->manual)
-                                <li class="nav-item">
+                                <li class="nav-item p-0">
                                     <a class="nav-link" href="{{$product->manual->getUrl()}}">
                                         {{__('frontend.manual')}}<i class="fa fa-paperclip ml-2"></i>
                                     </a>
                                 </li>
                             @endisset
                             @if(count($product->offers))
-                                <li class="nav-item">
+                                <li class="nav-item p-0">
                                     <a class="nav-link pink-text" data-toggle="tab" href="#offers" role="tab">
                                         {{__('frontend.offers')}}<i class="fa fa-gift ml-2"></i>
                                     </a>
