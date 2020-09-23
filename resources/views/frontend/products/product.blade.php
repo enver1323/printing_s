@@ -233,7 +233,9 @@
                                 <div class="col-md-4">
                                     <div class="img-thumbnail">
                                         <a class="" href="{{route('offers.show', $offer)}}">
-                                            <img src="{{isset($offer->photo) ? $offer->photo->getUrl() : (isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : '')}}" class="img-responsive w-100">
+                                            <img
+                                                src="{{isset($offer->photo) ? $offer->photo->getUrl() : (isset($product->mainImage->photo) ? $product->mainImage->photo->getUrl() : '')}}"
+                                                class="img-responsive w-100">
                                         </a>
                                     </div>
                                 </div>
@@ -253,10 +255,10 @@
         document.addEventListener('DOMContentLoaded', function () {
             let options = {
                 loop: true,
-                margin: 10,
+                center: true,
                 items: 1,
                 responsiveClass: true,
-                autoplay: true,
+                autoplay: false,
                 autoplayTimeout: 6000,
                 autoplayHoverPause: true,
                 autoplaySpeed: 3000,

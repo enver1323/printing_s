@@ -8,12 +8,12 @@
             <form action="{{route('admin.categories.index')}}" method="GET" class="form-inline">
                 <div class="form-group mx-1 mb-1">
                     <label for="id" class="sr-only">{{__('adminPanel.id')}}</label>
-                    <input type="number" class="form-control" id="id" name="id" placeholder="ID"
+                    <input type="number" class="form-control" id="id" name="id" placeholder="{{__('adminPanel.id')}}"
                            value="{{request('id')}}">
                 </div>
                 <div class="form-group mx-1 mb-1">
                     <label for="name" class="sr-only">{{__('adminPanel.name')}}</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                    <input type="text" class="form-control" id="name" name="name" placeholder="{{__('adminPanel.name')}}"
                            value="{{request('name')}}">
                 </div>
                 <div class="mx-1 mb-1">
