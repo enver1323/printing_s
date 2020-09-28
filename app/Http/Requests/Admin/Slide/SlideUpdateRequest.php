@@ -38,6 +38,7 @@ class SlideUpdateRequest extends FormRequest
             'description' => 'required|array',
             'description.*' => 'required|string',
             'link' => 'required|string',
+            'video' => 'nullable:photo|string',
         ];
     }
 }

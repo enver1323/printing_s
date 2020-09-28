@@ -36,7 +36,7 @@
                 @foreach($slide->getTranslations('description') as $language => $entry)
                     <div class="mb-4">
                         <span>{{ucfirst($language)}}  {{__('adminPanel.language')}}: </span>
-                        <span>{{$entry}}</span>
+                        <span>{!! $entry !!}</span>
                     </div>
                 @endforeach
             </div>
@@ -44,6 +44,12 @@
                 <div class="col">
                     <strong>{{__('adminPanel.link')}}: </strong>
                     <span>{{$slide->link}}</span>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <strong>{{__('adminPanel.video')}}: </strong>
+                    <span>{{$slide->video}}</span>
                 </div>
             </div>
             <div class="row mb-4">

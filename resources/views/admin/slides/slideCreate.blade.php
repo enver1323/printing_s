@@ -29,6 +29,14 @@
                             @endif
                         </div>
                         <div class="form-group">
+                            <label class="col-form-label" for="video">{{__('adminPanel.video')}}</label>
+                            <input name="video" type="text" id="video" value="{{ old('video') }}"
+                                   class="form-control {{ $errors->has('video') ? ' is-invalid': '' }}">
+                            @if($errors->has('video'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('video') }}</strong></span>
+                            @endif
+                        </div>
+                        <div class="form-group">
                             <label class="col-form-label" for="order">{{__('adminPanel.order')}}</label>
                             <input name="order" type="number" id="order" value="{{ old('order') }}"
                                    class="form-control {{ $errors->has('order') ? ' is-invalid': '' }}">

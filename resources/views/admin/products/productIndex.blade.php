@@ -4,7 +4,7 @@
         <div class="card-header">
             <a href="{{route('admin.products.create')}}" class="btn btn-primary mr-1">{{__('adminPanel.create')}}</a>
             <a href="{{route('admin.products.data.keys.index')}}" class="btn btn-secondary mr-1">
-                {{Str::plural(__('adminPanel.dataKey'))}}
+                {{__('adminPanel.dataKey')}}
             </a>
         </div>
 

@@ -31,6 +31,7 @@ return [
     'passwordConfirm' => 'Подтвердите пароль',
 
     'photo' => 'Фото',
+    'video' => 'Видео',
     'manual' => 'Manual',
     'gender' => 'Пол',
     'profile' => 'Профиль',

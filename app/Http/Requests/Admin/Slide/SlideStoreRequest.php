@@ -34,10 +34,11 @@ class SlideStoreRequest extends FormRequest
     {
         return [
             'order' => 'required|numeric',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'photo' => 'required_without:video|image|mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required|array',
             'description.*' => 'required|string',
             'link' => 'required|string',
+            'video' => 'required_without:photo|string',
         ];
     }
 }

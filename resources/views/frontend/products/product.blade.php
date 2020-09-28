@@ -270,6 +270,10 @@
                 // options here
             })
 
+            $('.md-pills > li > a').hover(function() {
+                $(this).tab('show');
+            });
+
         });
     </script>
 @endpush

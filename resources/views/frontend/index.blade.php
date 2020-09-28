@@ -7,17 +7,21 @@
     <div class="owl-carousel owl-theme" id="owl">
         @foreach($slides as $slide)
             <a href="{{$slide->link}}">
-                <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
-                    <div class="container">
-                        <div class="row ">
-                            <div class="col-md-12">
-                                <div class="text-center">
-                                    <h1><strong>{!! $slide->description !!}</strong></h1>
+                @if($slide->video)
+                    <video src="{{$slide->video}}" autoplay></video>
+                @else
+                    <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="text-center">
+                                        <h1><strong>{!! $slide->description !!}</strong></h1>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </a>
         @endforeach
     </div>

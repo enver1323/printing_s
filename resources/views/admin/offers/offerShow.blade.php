@@ -47,7 +47,7 @@
                 @foreach($offer->getTranslations('description') as $language => $entry)
                     <div class="mb-4">
                         <span>{{ucfirst($language)}}  {{__('adminPanel.language')}}: </span>
-                        <span>{{$entry}}</span>
+                        <span>{!! $entry !!}</span>
                     </div>
                 @endforeach
             </div>

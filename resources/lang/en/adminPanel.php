@@ -9,6 +9,7 @@ return [
     'name' => 'Name',
     'names' => 'Names',
     'parent' => 'Parent',
+    'content' => 'Content',
     'language' => 'Language',
     'location' => 'Location',
     'description' => 'Description',
@@ -30,6 +31,7 @@ return [
     'passwordConfirm' => 'Password confirmation',
 
     'photo' => 'Photo',
+    'video' => 'Video',
     'manual' => 'Manual',
     'gender' => 'Gender',
     'profile' => 'Profile',
