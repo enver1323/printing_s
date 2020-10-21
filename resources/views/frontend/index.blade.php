@@ -8,7 +8,8 @@
         @foreach($slides as $slide)
             <a href="{{$slide->link}}">
                 @if($slide->video)
-                    <video src="{{$slide->video}}" autoplay></video>
+                    <video src="{{$slide->video}}" autoplay
+                           poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}"></video>
                 @else
                     <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
                         <div class="container">
