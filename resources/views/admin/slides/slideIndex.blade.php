@@ -26,7 +26,8 @@ use App\Domain\Slide\Entities\Slide;
                         <th scope="row">{{ $slide->order }}</th>
                         <td width="10%">
                             <a href="{{route('admin.slides.show', $slide)}}">
-                                <img src="{{$slide->photo->getUrl()}}" alt="{{$slide->description}}" class="w-100">
+                                <img src="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}"
+                                     alt="{{$slide->description}}" class="w-100">
                             </a>
                             @unless($loop->first)
                                 <a href="{{route('admin.slides.left', $slide)}}" class="btn btn-secondary">
