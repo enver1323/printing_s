@@ -23,7 +23,11 @@ use App\Domain\Slide\Entities\Slide;
                 <tbody>
                 @foreach($slides as $slide)
                     <tr>
-                        <th scope="row">{{ $slide->order }}</th>
+                        <th scope="row">
+                            <a href="{{route('admin.slides.show', $slide)}}">
+                                {{ $slide->order }}
+                            </a>
+                        </th>
                         <td width="10%">
                             <a href="{{route('admin.slides.show', $slide)}}">
                                 <img src="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}" class="w-100">
