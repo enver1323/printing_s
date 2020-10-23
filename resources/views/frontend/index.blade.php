@@ -8,8 +8,11 @@
         @foreach($slides as $slide)
             <a href="{{$slide->link}}">
                 @if($slide->video)
-                    <video src="{{$slide->video}}" autoplay
-                           poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}"></video>
+                    <div class="item-video poster-index" style="overflow: hidden;">
+                        <video autoplay loop id="video-background" muted poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}">
+                            <source src="{{$slide->video}}" type="video/mp4">
+                        </video>
+                    </div>
                 @else
                     <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
                         <div class="container">
@@ -120,6 +123,7 @@
                 autoplaySpeed: 3000,
                 dotsSpeed: 1500,
                 dragEndSpeed: 2000,
+                video: true
             };
             $('#owl').owlCarousel(options);
             $('#articles').owlCarousel(options);

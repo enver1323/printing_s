@@ -27,7 +27,7 @@ class ArticleController extends WebController
      */
     public function index(): View
     {
-        $articles = $this->articles->paginate(self::ITEMS_PER_PAGE);
+        $articles = $this->articles->orderByDesc('updated_at')->paginate(self::ITEMS_PER_PAGE);
         return $this->render('articles.articleList', [
             'articles' => $articles
         ]);
