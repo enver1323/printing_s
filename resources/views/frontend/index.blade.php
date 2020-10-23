@@ -9,7 +9,7 @@
             <a href="{{$slide->link}}">
                 @if($slide->video)
                     <div class="item-video poster-index" style="overflow: hidden;">
-                        <video autoplay loop id="video-background" muted poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}">
+                        <video autoplay loop id="video-background" muted poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}" width="100%">
                             <source src="{{$slide->video}}" type="video/mp4">
                         </video>
                     </div>
