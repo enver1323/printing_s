@@ -16,6 +16,9 @@
                         <h4 class="text-primary">{{__('adminPanel.articleCreate')}}</h4>
                     </div>
                     <div class="card-body">
+                        @isset($article->photo)
+                            <img src="{{$article->photo->getUrl()}}" alt="" class="img-thumbnail">
+                        @endisset
                         <div class="form-group">
                             <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
                             <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"

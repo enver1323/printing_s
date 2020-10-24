@@ -31,6 +31,9 @@
                                     class="invalid-feedback"><strong>{{ $errors->first('product_id') }}</strong></span>
                             @endif
                         </div>
+                        @isset($offer->photo)
+                            <img src="{{$offer->photo->getUrl()}}" alt="" class="img-thumbnail">
+                        @endisset
                         <div class="form-group">
                             <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
                             <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"

@@ -13,6 +13,9 @@
                         <h4 class="text-primary">{{__('adminPanel.categoryCreate')}}</h4>
                     </div>
                     <div class="card-body">
+                        @isset($category->photo)
+                            <img src="{{$category->photo->getUrl()}}" alt="" class="img-thumbnail">
+                        @endisset
                         <div class="form-group">
                             <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
                             <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"

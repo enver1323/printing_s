@@ -62,7 +62,10 @@ class CategoryService extends Service
     public function update(CategoryUpdateRequest $request, Category $category): Category
     {
         $category->update($request->except('photo'));
-        $category->updatePhoto($request->file('photo'));
+
+        $image = $request->file('photo');
+        if (isset($image))
+            $category->updatePhoto($image);
 
         return $category;
     }

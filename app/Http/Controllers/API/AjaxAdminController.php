@@ -25,7 +25,7 @@ use App\Http\Resources\Admin\User\UserResource;
 
 class AjaxAdminController extends APIController
 {
-    const ITEMS_PER_PAGE = 8;
+    const ITEMS_PER_PAGE = 50;
 
     /**
      * @param CategorySearchRequest $request

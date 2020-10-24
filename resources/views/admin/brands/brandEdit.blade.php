@@ -16,6 +16,9 @@
                         <h4 class="text-primary">{{__('adminPanel.brandCreate')}}</h4>
                     </div>
                     <div class="card-body">
+                        @isset($brand->photo)
+                            <img src="{{$brand->photo->getUrl()}}" alt="" class="img-thumbnail">
+                        @endisset
                         <div class="form-group">
                             <label class="col-form-label" for="photo">{{__('adminPanel.photo')}}</label>
                             <input name="photo" type="file" id="photo" value="{{ old('photo') }}" accept="image/*"
