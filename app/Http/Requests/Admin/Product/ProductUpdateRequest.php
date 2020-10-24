@@ -35,6 +35,8 @@ class ProductUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $product = $this->route('product');
+
         return [
             'name' => 'required|array',
             'name.*' => 'required|string|max:255',
@@ -42,7 +44,8 @@ class ProductUpdateRequest extends FormRequest
             'description.*' => 'required|string',
             'category_id' => 'required|numeric|exists:categories,id',
             'brand_id' => 'nullable|numeric|exists:brands,id',
-            'line_id' => 'required|numeric|exists:lines,id'
+            'line_id' => 'required|numeric|exists:lines,id',
+            'slug' => "required|string|unique:products,slug,$product->id"
         ];
     }
 

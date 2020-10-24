@@ -12,7 +12,6 @@
                     'entries' => $page->getTranslations('content'), 'translation' => __('adminPanel.content')
                 ])
             </div>
-
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header">

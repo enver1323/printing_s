@@ -34,7 +34,11 @@
                                 </div>
                             </div>
                         </div>
-
+                        @isset($article->photo)
+                        <div class="w-100">
+                            <img src="{{$article->photo->getUrl()}}" alt="" class="img-thumbnail">
+                        </div>
+                        @endisset
                         <p class="text-justify">
                             {!! $article->description !!}
                         </p>

@@ -13,13 +13,21 @@
                 'entries' => $product->getTranslations('description'), 'translation' => __('adminPanel.description')
                 ])
             </div>
-
             <div class="col-lg-6">
                 <div class="card shadow mb-4">
                     <div class="card-header">
                         <h4 class="text-primary">{{__('adminPanel.productCreate')}}</h4>
                     </div>
                     <div class="card-body">
+                        <div class="form-group">
+                            <label class="col-form-label" for="slug">{{__('adminPanel.slug')}}</label>
+                            <input name="slug" class="form-control{{ $errors->has('slug') ? ' is-invalid': '' }}"
+                                   id="slug"
+                                   value="{{ $product->slug }}" required>
+                            @if($errors->has('slug'))
+                                <span class="invalid-feedback"><strong>{{ $errors->first('slug') }}</strong></span>
+                            @endif
+                        </div>
                         <div class="form-group">
                             <label class="col-form-label" for="category">{{__('adminPanel.category')}}</label>
                             <select name="category_id" id="category" required
