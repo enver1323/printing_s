@@ -8,9 +8,12 @@ class BrandsTableSeeder extends Seeder
 {
     public function run()
     {
-        Brand::firstOrCreate([
-            'name->en' => 'Renz',
-            'description->en' => 'German company',
+        Brand::insert([
+            'name' => json_encode(['en' => 'Renz']),
+            'description' => json_encode(['en' => 'German company']),
+            'slug' => 'renz',
+            'created_at' => time(),
+            'updated_at' => time(),
         ]);
     }
 }

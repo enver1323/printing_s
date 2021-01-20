@@ -14,6 +14,9 @@ return [
     'location' => 'Местоположение',
     'description' => 'Описание',
 
+    'watchSlide' => 'Просмотр',
+    'followSlide' => 'Перейти',
+
     'new' => 'Новый',
     'link' => 'Ссылка',
     'order' => 'Порядок',

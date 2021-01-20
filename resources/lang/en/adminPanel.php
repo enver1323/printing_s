@@ -14,6 +14,9 @@ return [
     'location' => 'Location',
     'description' => 'Description',
 
+    'watchSlide' => 'Watch',
+    'followSlide' => 'Follow',
+
     'new' => 'New',
     'link' => 'Link',
     'order' => 'Order',

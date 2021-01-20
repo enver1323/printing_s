@@ -4,29 +4,41 @@
 @endsection
 @section('header')
     <!-- Poster -->
-    <div class="owl-carousel owl-theme" id="owl">
+    <div class="owl-carousel owl-theme relative" id="owl">
         @foreach($slides as $slide)
-            <a href="{{$slide->link}}">
-                @if($slide->video)
-                    <div class="item-video poster-index" style="overflow: hidden;">
-                        <video autoplay loop id="video-background" muted poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}" width="100%">
-                            <source src="{{$slide->video}}" type="video/mp4">
-                        </video>
+            @if($slide->video)
+                <div class="item-video poster-index" style="overflow: hidden;">
+                    <video autoplay loop id="video-background" muted
+                           poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}" width="100%">
+                        <source src="{{$slide->video}}" type="video/mp4">
+                    </video>
+                    <div class="d-flex slider-btn-container">
+                        <a href="{{$slide->video}}" class="btn btn-danger video-slide" data-rebox-template="video">
+                            {{__('adminPanel.watchSlide')}}
+                        </a>
+                        @if($slide->link)
+                            <a class="btn btn-primary" href="{{$slide->link}}">{{__('adminPanel.followSlide')}}</a>
+                        @endif
                     </div>
-                @else
-                    <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
-                        <div class="container">
-                            <div class="row ">
-                                <div class="col-md-12">
-                                    <div class="text-center">
-                                        <h1><strong>{!! $slide->description !!}</strong></h1>
-                                    </div>
+                </div>
+            @else
+                <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="text-center">
+                                    <h1><strong>{!! $slide->description !!}</strong></h1>
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endif
-            </a>
+                    <div class="d-flex slider-btn-container">
+                        @if($slide->link)
+                            <a class="btn btn-primary" href="{{$slide->link}}">{{__('adminPanel.followSlide')}}</a>
+                        @endif
+                    </div>
+                </div>
+            @endif
         @endforeach
     </div>
 
@@ -110,6 +122,7 @@
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{mix('js/owlCarousel.js', 'build')}}"></script>
+    <script type="text/javascript" src="{{asset('js/chocolat/js/chocolat.js')}}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             let options = {
@@ -127,6 +140,19 @@
             };
             $('#owl').owlCarousel(options);
             $('#articles').owlCarousel(options);
+
+            $('.video-slide').rebox({
+                templates:{
+                    video: function($item, settings, callback){
+                        var url = $item.attr('href').replace(/\.\w+$/,'');
+                        return $('<video class="'+ settings.theme +'-content" controls preload="metadata">'+
+                            '<source src="'+url+'.webm" type="video/webm" />'+
+                            '<source src="'+url+'.mp4" type="video/mp4" />'+
+                            'Your browser does not support the HTML5 video tag'+
+                            '</video>').on('loadeddata', callback);
+                    }
+                }
+            });
         });
     </script>
 @endpush

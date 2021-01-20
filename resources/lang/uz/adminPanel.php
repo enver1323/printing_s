@@ -14,6 +14,9 @@ return [
     'location' => 'Местоположение',
     'description' => 'Описание',
 
+    'watchSlide' => 'K\'orish',
+    'followSlide' => 'O\'tish',
+
     'new' => 'Новый',
     'link' => 'Ссылка',
     'order' => 'Порядок',
