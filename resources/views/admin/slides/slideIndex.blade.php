@@ -16,6 +16,7 @@ use App\Domain\Slide\Entities\Slide;
                 <tr>
                     <th scope="col">{{__('adminPanel.order')}}</th>
                     <th scope="col">{{__('adminPanel.photo')}}</th>
+                    <th scope="col">{{__('adminPanel.video')}}</th>
                     <th scope="col">{{__('adminPanel.description')}}</th>
                     <th scope="col">{{__('adminPanel.link')}}</th>
                 </tr>
@@ -42,6 +43,11 @@ use App\Domain\Slide\Entities\Slide;
                                     <i class="fas fa-arrow-down"></i>
                                 </a>
                             @endunless
+                        </td>
+                        <td width="20%">
+                            @isset($slide->video)
+                                <video src="{{$slide->video}}" class="w-100" autoplay muted></video>
+                            @endisset
                         </td>
                         <td>
                             {!! $slide->description !!}

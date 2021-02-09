@@ -13,13 +13,15 @@
                         <source src="{{$slide->video}}" type="video/mp4">
                     </video>
                     <div class="d-flex slider-btn-container">
-                        <a href="{{$slide->video}}" class="btn btn-danger video-slide" data-rebox-template="video">
+                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                data-target="#video-modal-{{$slide->id}}">
                             {{__('adminPanel.watchSlide')}}
-                        </a>
+                        </button>
                         @if($slide->link)
                             <a class="btn btn-primary" href="{{$slide->link}}">{{__('adminPanel.followSlide')}}</a>
                         @endif
                     </div>
+
                 </div>
             @else
                 <div class="poster poster-index item" style="background-image: url('{{$slide->photo->getUrl()}}')">
@@ -119,6 +121,21 @@
             </div>
         </div>
     </section>
+    @foreach($slides as $slide)
+        <div class="modal fade" tabindex="-1" role="dialog" id="video-modal-{{$slide->id}}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="card-body p-2">
+                            <video loop id="video-background" src="{{$slide->video}}" width="100%" controls
+                                   poster="{{isset($slide->photo) ? $slide->photo->getUrl() : ''}}">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 @push('scripts')
     <script type="text/javascript" src="{{mix('js/owlCarousel.js', 'build')}}"></script>
@@ -140,19 +157,6 @@
             };
             $('#owl').owlCarousel(options);
             $('#articles').owlCarousel(options);
-
-            $('.video-slide').rebox({
-                templates:{
-                    video: function($item, settings, callback){
-                        var url = $item.attr('href').replace(/\.\w+$/,'');
-                        return $('<video class="'+ settings.theme +'-content" controls preload="metadata">'+
-                            '<source src="'+url+'.webm" type="video/webm" />'+
-                            '<source src="'+url+'.mp4" type="video/mp4" />'+
-                            'Your browser does not support the HTML5 video tag'+
-                            '</video>').on('loadeddata', callback);
-                    }
-                }
-            });
         });
     </script>
 @endpush
